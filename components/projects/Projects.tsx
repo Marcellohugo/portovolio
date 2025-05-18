@@ -16,7 +16,7 @@ export default function project() {
         
       </div>
 
-      <div className="section-body">
+      <div className="section-body w-[100%]">
         <div className="mb-24 grid w-full max-w-[1200px] grid-cols-1 gap-x-6 gap-y-6 lg:grid-cols-1">
           {projects.map((project, index) => (
           <ProjectCard

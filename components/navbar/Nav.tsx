@@ -3,6 +3,7 @@
 import React from "react";
 import { FaGamepad, FaVolumeMute, FaArrowUp, FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 import MagneticEffect from "../ui/button/MagneticEffect";
+// import ThemeSwitcher from "../ui/ThemeSwitcher";
 
 const Nav: React.FC = () => {
   const handleScrollTop = () => {
@@ -94,6 +95,7 @@ const Nav: React.FC = () => {
               <FaVolumeMute className="w-6 h-6" />
             </MagneticEffect>
           </div>
+          {/* <ThemeSwitcher /> */}
         </div>
       </div>
     </>

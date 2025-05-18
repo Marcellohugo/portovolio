@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import RotatingText from "../ui/text/RotatingText";
+import RotatingText from "./RotatingText";
 import Particles from "../ui/background/Particles";
 import SpotlightCard from "../ui/animation/SpotlightCard";
 

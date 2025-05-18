@@ -2,92 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-  }
-
-  .dark {
-    --foreground: 240 10% 3.9%;
-  }
-}
-
 /* =================== SECTION WRAPPER =================== */
 .section {
   position: relative;
-  top: 0;
-  background-color: rgba(0, 0, 0, 0.8); /* bg-black/90 */
   display: flex;
+  flex-direction: column;
+  width: 100%;
   min-height: 100vh;
   height: 100%;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
+  padding-top: 5rem;
+  background-color: rgba(0, 0, 0, 0.8); /* bg-black/90 */
+  color: whitesmoke;
   overflow: hidden;
-  flex-direction: column;
 }
 
 /* =================== SECTION HEADER =================== */
 .section-header {
-  margin-left: auto;
-  margin-right: auto;
   display: flex;
-  width: 80%;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-}
-
-.title {
-
-}
-
-.subtitle {
-
-}
-
-.explanation {
-
-}
-
-/* =================== CONTAINERS =================== */
-.container-top {
-
-}
-
-.container-bottom {
-
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* =================== SECTION BODY =================== */
 .section-body {
-  margin-left: auto;
-  margin-right: auto;
   display: flex;
-  width: 100%;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-}
-
-
-.section-body .left {
+  min-height: 100%;
   margin-left: auto;
   margin-right: auto;
+  /* width: 100%; */ /* optional - jika ingin lebar penuh */
+}
+
+.left, .right {
   display: flex;
-  width: 100%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-.section-body .right {
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  width: 50%;
+  margin: 0 auto;
 }

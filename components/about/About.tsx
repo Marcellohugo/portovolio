@@ -1,12 +1,11 @@
 "use client"
 
 import TiltedCard from "../ui/animation/TiltedCard"
-import ScrollReveal from "../ui/text/ScrollReveal"
-import ParallaxText from "../ui/text/ParallaxText"
+import ScrollReveal from "./ScrollReveal"
+import ParallaxText from "./ParallaxText"
 import AboutTitle from "./AboutTitle"
 import AboutSubtitle from "./AboutSubtitle"
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
+import { Button } from "../ui/button/button"
 import MagneticEffect from "../ui/button/MagneticEffect"
 
 export default function About() {
@@ -20,28 +19,27 @@ export default function About() {
         <AboutSubtitle/>
       </div>
 
-      <div className="section-body">
-        <div className="section-body left">
+      <div className="section-body w-[80%]">
+        
+        <div className="left">
           <ScrollReveal
             baseRotation = {0}
             enableBlur = {false}
           >
             Saya Marco Marcello Hugo. Selama perjalanan karir saya, saya senang berkecimpung di bidang Front-end Development dan Mobile Development. Dalam mengisi pengalaman di ranah dunia pekerjaan, saya juga aktif terlibat dalam berbagai kegiatan yang berkaitan dengan logistik dan persiapan peralatan.
           </ScrollReveal>
-          <Stack spacing={2} direction="row">
             <MagneticEffect>
-              <Button variant="text">Download CV</Button> 
+              <Button variant="outline">Download CV</Button> 
             </MagneticEffect>
             <MagneticEffect>
-              <Button href="about" variant="contained">Get to know me</Button>
+              <Button variant="outline">Get to know me</Button>
             </MagneticEffect>
             <MagneticEffect>
-              <Button href="#contact" variant="outlined">Contact Me</Button>
+              <Button variant="outline">Contact Me</Button>
             </MagneticEffect>
-          </Stack>
         </div>
 
-        <div className="section-body right">
+        <div className="right">
           <TiltedCard
             imageSrc="/images/Profile.png"
             altText="Kendrick Lamar - GNX Album Cover"

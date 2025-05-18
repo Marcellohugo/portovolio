@@ -1,4 +1,4 @@
-import GradientText from "../ui/text/GradientText"
+import GradientText from "../ui/text/AnimateSubtitle"
 
 export default function ProjectsSubtitle() {
     return (

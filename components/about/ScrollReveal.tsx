@@ -27,7 +27,7 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
   containerClassName = "",
   textClassName = "",
   rotationEnd = "top 40%",
-  wordAnimationEnd = "top 40%",
+  wordAnimationEnd = "top 50%",
 }) => {
   const containerRef = useRef<HTMLHeadingElement>(null);
 

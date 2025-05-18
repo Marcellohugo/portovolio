@@ -35,10 +35,8 @@ export default function Home() {
     {preloadDone && (
       <main data-scroll-container className="relative">
         <Nav/>
-
-        <div className="sticky top-0 z-0">
           <Hero/>
-        </div>
+
         {/* <div> */}
         <Heroblank/>
         <About/>
