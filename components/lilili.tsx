@@ -1,113 +1,41 @@
-"use client"
 
-import { useEffect, useState, useRef } from "react";
-import { AnimatePresence } from "framer-motion";
-import Preload from "./preload/Preload";
-import Hero from "./hero/Hero";
-import About from "./about/About";
-import Projects from "./projects/Projects";
-import Contact from "./contact/Contact";
-import Heroblank from "@/components/hero/Heroblank";
-import Nav from "@/components/navbar/Nav";
 
-export default function Home() {
-  const [showPreloader, setShowPreloader] = useState(false);
-  const [preloadDone, setPreloadDone] = useState(false);
-  const heroRef = useRef<HTMLElement | null>(null);
-  const aboutRef = useRef<HTMLElement | null>(null);
-  const lastScrollY = useRef(0);
-  const scrollDir = useRef<"up" | "down">("down");
+import { projects } from "@/lib/projectData"
+import ProjectCard from "./ProjectCard"
+import ProjectButton from "./ProjectButton"
+import ProjectsTitle from "./ProjectsTittle"
+import ProjectsSubtitle from "./ProjectsSubtittle"
 
-  useEffect(() => {
-    const handleReady = () => setShowPreloader(true);
-    if (document.readyState === "complete") {
-      handleReady();
-    } else {
-      window.addEventListener("load", handleReady);
-      return () => window.removeEventListener("load", handleReady);
-    }
-  }, []);
-
-  // Update arah scroll
-  useEffect(() => {
-    const updateScrollDir = () => {
-      const currentY = window.scrollY;
-      scrollDir.current = currentY > lastScrollY.current ? "down" : "up";
-      lastScrollY.current = currentY;
-    };
-
-    window.addEventListener("scroll", updateScrollDir);
-    return () => window.removeEventListener("scroll", updateScrollDir);
-  }, []);
-
-  // Scroll otomatis berdasarkan posisi Hero & About
-  useEffect(() => {
-    if (!preloadDone) return;
-
-    const observers: IntersectionObserver[] = [];
-
-    // Scroll ke about saat bagian atas about terlihat (dari bawah)
-    if (aboutRef.current) {
-      const observerAbout = new IntersectionObserver(([entry]) => {
-        if (
-          entry.isIntersecting &&
-          entry.boundingClientRect.top > 0 && // bagian atas masuk
-          scrollDir.current === "down"
-        ) {
-          entry.target.scrollIntoView({ behavior: "smooth" });
-        }
-      }, { threshold: 0.05 });
-
-      observerAbout.observe(aboutRef.current);
-      observers.push(observerAbout);
-    }
-
-    // Scroll ke hero saat bagian bawah hero terlihat (dari atas)
-    if (heroRef.current) {
-      const observerHero = new IntersectionObserver(([entry]) => {
-        if (
-          entry.isIntersecting &&
-          entry.boundingClientRect.top < 0 && // bagian bawah masuk ke layar
-          scrollDir.current === "up"
-        ) {
-          entry.target.scrollIntoView({ behavior: "smooth" });
-        }
-      }, { threshold: 0.05 });
-
-      observerHero.observe(heroRef.current);
-      observers.push(observerHero);
-    }
-
-    return () => {
-      observers.forEach((observer) => observer.disconnect());
-    };
-  }, [preloadDone]);
-
+export default function project() {
   return (
-    <>
-      <AnimatePresence mode="wait">
-        {showPreloader && !preloadDone && (
-          <Preload onStart={() => setPreloadDone(true)} />
-        )}
-      </AnimatePresence>
-
-      {preloadDone && (
-        <main data-scroll-container className="relative">
-          <Nav/>
-          <section ref={heroRef} className="z-0">
-            <Hero />
-          </section>
-
-          <div className="z-10">
-            <section ref={aboutRef}>
-              <Heroblank />
-              <About />
-              <Projects />
-              <Contact />
-            </section>
+    <section
+      id="project"
+      className="relative bg-black/90 flex min-h-screen h-full w-full items-center justify-center overflow-hidden"
+    >
+      <div className="mx-auto flex w-full flex-col items-center justify-center">
+        <div className="mx-auto flex w-[90%] flex-col items-start justify-center lg:max-w-[1212.8px]">
+          <ProjectsTitle/>
+          <ProjectsSubtitle/>
+          <ProjectButton />
+          
+          <div className="w-full flex flex-col items-center justify-center">
+            <div className="mb-24 grid w-full max-w-[1200px] grid-cols-1 gap-x-6 gap-y-6 lg:grid-cols-1">
+              {projects.map((project, index) => (
+              <ProjectCard
+                key={index}
+                title={project.title}
+                description={project.description}
+                image={project.image}
+                tech={project.tech}
+                repo={project.repo}
+                projectLink={project.linkProject}
+              />
+              ))}
+            </div>
           </div>
-        </main>
-      )}
-    </>
-  );
+        </div>
+      </div>
+
+    </section>
+  )
 }

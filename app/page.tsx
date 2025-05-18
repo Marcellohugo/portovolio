@@ -39,12 +39,12 @@ export default function Home() {
         <div className="sticky top-0 z-0">
           <Hero/>
         </div>
-        <div>
+        {/* <div> */}
         <Heroblank/>
         <About/>
         <Project/>
         <Contact/>
-        </div>
+        {/* </div> */}
       </main>
     )}
     </>
