@@ -12,7 +12,7 @@ export default function GradientText({
   children,
   className = "",
   colors = ["#092965", "#A3D8FF", "#092965", "#A3D8FF","#092965"],
-  animationSpeed = 8,
+  animationSpeed = 10,
   showBorder = false,
 }: GradientTextProps) {
   const gradientStyle = {
@@ -59,21 +59,3 @@ export default function GradientText({
   );
 }
 
-// tailwind.config.js
-// module.exports = {
-//   theme: {
-//     extend: {
-//       keyframes: {
-//         gradient: {
-//           '0%': { backgroundPosition: '0% 50%' },
-//           '50%': { backgroundPosition: '100% 50%' },
-//           '100%': { backgroundPosition: '0% 50%' },
-//         },
-//       },
-//       animation: {
-//         gradient: 'gradient 8s linear infinite'
-//       },
-//     },
-//   },
-//   plugins: [],
-// };

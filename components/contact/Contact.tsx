@@ -8,18 +8,18 @@ export default function contact() {
     return (
       <section
         id="contact"
-        className="section"
+        className="relative flex flex-col w-full min-h-screen h-full pt-20 bg-black/90 text-[whitesmoke] overflow-hidden"
       >
-        <div className="section-header">
+        <div className="flex flex-col items-start justify-center w-4/5 mx-auto">
           <ContactTitle/>
           <ContactSubtitle/>
         </div>
 
-      <div className="section-body w-[100%]">
-        <div className="left">
+      <div className="flex flex-row items-center justify-center min-h-full mx-auto w-[100%]">
+        <div className="flex flex-col items-center justify-center w-1/2 mx-auto">
           <Lanyard />
         </div>
-        <div className="right mr-[5]">
+        <div className="flex flex-col items-center justify-center w-1/2 mx-auto mr-[5]">
           <ContactForm/>
         </div>
       </div>

@@ -6,7 +6,6 @@ export default function AboutSubtitle() {
             className="my-5 w-full flex flex-col items-center justify-center overflow-hidden"
         >
             <GradientText
-                animationSpeed={3}
                 showBorder={false}
                 className="items-center justify-center text-[clamp(1.6rem,4vw,3rem)] leading-[1.5] font-semibold"
                 >

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import RotatingText from "./RotatingText";
 import Particles from "../ui/background/Particles";
 import SpotlightCard from "../ui/animation/SpotlightCard";
+import { motion, AnimatePresence } from "framer-motion";
 
 type PreloadProps = {
   onStart: () => void;
@@ -17,37 +18,53 @@ export default function Preload({ onStart }: PreloadProps) {
   }, [step]);
 
   return (
-    <div className="relative flex min-h-screen w-full items-center justify-center overflow-hidden">
-      {step === 1 && (
-        <div className="relative z-10 flex items-center justify-center w-full">
-          <span className="text-4xl sm:text-6xl md:text-8xl font-bold mr-4 text-white">
-            I am
-          </span>
-          <RotatingText
-            texts={['Front-End Dev', 'Full-Stack Dev', 'Funny Guy', 'Marco Marcello Hugo']}
-          />
-        </div>
-      )}
-
-      {step === 2 && (
-        <div className="relative z-10 flex flex-col items-center justify-center gap-6">
-          <SpotlightCard
-            spotlightColor="rgba(255, 255, 255, 0.25)"
-            className="flex flex-col items-center justify-center rounded-xl border border-neutral-800 bg-neutral-900 p-6 w-80 h-80"
+    <div className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-black">
+      <AnimatePresence mode="wait">
+        {step === 1 && (
+          <motion.div
+            key="step1"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="relative z-10 flex items-center justify-center w-full"
           >
-            <h1 className="text-2xl font-bold text-white text-center">Welcome</h1>
-            <p className="mt-2 text-base text-gray-300 text-center">
-              Explore my projects and skills.
-            </p>
-            <button
-              className="mt-4 rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 transition"
-              onClick={onStart}
+            <span className="text-4xl sm:text-6xl md:text-8xl font-bold mr-4 text-white">
+              I am
+            </span>
+            <RotatingText
+              texts={['Front-End Dev', 'Full-Stack Dev', 'Funny Guy', 'Marco Marcello Hugo']}
+            />
+          </motion.div>
+        )}
+  
+        {step === 2 && (
+          <motion.div
+            key="step2"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -50 }}
+            transition={{ duration: 0.5 }}
+            className="relative z-10 flex flex-col items-center justify-center gap-6"
+          >
+            <SpotlightCard
+              spotlightColor="rgba(255, 255, 255, 0.25)"
+              className="flex flex-col items-center justify-center rounded-xl border border-neutral-800 bg-neutral-900 p-6 w-80 h-80"
             >
-              Get Started
-            </button>
-          </SpotlightCard>
-        </div>
-      )}
+              <h1 className="text-2xl font-bold text-white text-center">Welcome</h1>
+              <p className="mt-2 text-base text-gray-300 text-center">
+                Explore my projects and skills.
+              </p>
+              <button
+                className="mt-4 rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 transition"
+                onClick={onStart}
+              >
+                Get Started
+              </button>
+            </SpotlightCard>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

@@ -8,15 +8,14 @@ export default function project() {
   return (
     <section
       id="project"
-      className="section"
+      className="relative flex flex-col w-full min-h-screen h-full pt-20 bg-black/90 text-[whitesmoke] overflow-hidden"
     >
-      <div className="section-header">
+      <div className="flex flex-col items-start justify-center w-4/5 mx-auto">
         <ProjectsTitle/>
-        <ProjectsSubtitle/>
-        
+        <ProjectsSubtitle/>  
       </div>
 
-      <div className="section-body w-[100%]">
+      <div className="flex flex-row items-center justify-center min-h-full mx-auto w-[100%]">
         <div className="mb-24 grid w-full max-w-[1200px] grid-cols-1 gap-x-6 gap-y-6 lg:grid-cols-1">
           {projects.map((project, index) => (
           <ProjectCard
