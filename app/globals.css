@@ -2,6 +2,116 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+  }
+
+  .dark {
+    --foreground: 240 10% 3.9%;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: black;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* =================== SECTION WRAPPER =================== */
+.section {
+  position: relative;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.8); /* bg-black/90 */
+  display: flex;
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-direction: column;
+}
+
+/* =================== SECTION HEADER =================== */
+.section-header {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  width: 80%;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.title {
+}
+
+.subtitle {
+}
+
+.explanation {
+}
+
+/* =================== CONTAINERS =================== */
+.container-top {
+}
+
+.container-bottom {
+}
+
+/* =================== SECTION BODY =================== */
+.section-body {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-body .left {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-body .right {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =================== Stars animation =================== */
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.stars-container div {
+  animation: twinkle 4s infinite;
+  animation-delay: calc(var(--index, 0) * 0.5s);
+}
+
 /* globals.css */
 .hide-scrollbar::-webkit-scrollbar {
     display: none;

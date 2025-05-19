@@ -12,7 +12,7 @@ export default function project() {
     >
       <div className="flex flex-col items-start justify-center w-4/5 mx-auto">
         <ProjectsTitle/>
-        <ProjectsSubtitle/>  
+        <ProjectsSubtitle/> 
       </div>
 
       <div className="flex flex-row items-center justify-center min-h-full mx-auto w-[100%]">

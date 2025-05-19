@@ -1,27 +1,15 @@
 "use client"
-
-import Particles from "../ui/background/Particles";
-import VideoInText from "./VideoInText";
+import VideoInText from "./VideoInText"
+import { motion } from "framer-motion"
+import ComputerCanvas from "./Computers"
 
 export default function Hero() {
   return (
-    <section
-      id="hero"
-      className="min-h-screen w-full items-center justify-center"
-    >
+    <section id="hero" className="min-h-screen w-full flex items-center justify-center relative overflow-hidden">
+      <div className="h-screen w-full bg-white">
+        <ComputerCanvas />
+      </div>
 
-      <VideoInText />
-
-      {/* <Particles
-        particleColors={['#ffffff', '#ffffff']}
-        particleCount={200}
-        particleSpread={10}
-        speed={0.1}
-        particleBaseSize={100}
-        moveParticlesOnHover={true}
-        alphaParticles={false}
-        disableRotation={false}
-      />  */}
     </section>
   )
 }
