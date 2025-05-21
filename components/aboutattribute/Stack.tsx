@@ -15,6 +15,8 @@ import {
   SiReactrouter,
 } from 'react-icons/si';
 import clsx from 'clsx';
+import { Button } from '../ui/button/button';
+import MagneticEffect from '../ui/button/MagneticEffect';
 
 interface SkillCard {
   id: number;
@@ -65,6 +67,18 @@ function CardRotate({ children, onSendToBack, sensitivity }: CardRotateProps) {
 const skillCards: SkillCard[] = [
   {
     id: 1,
+    title: 'Frontend',
+    skills: [
+      { icon: <SiNextdotjs />, name: 'Next' },
+      { icon: <SiReact />, name: 'React Native' },
+      { icon: <SiTailwindcss />, name: 'Tailwind' },
+      { icon: <SiRedux />, name: 'Redux' },
+    ],
+    description:
+      'I blend artwork with technology, designing immersive and functional interfaces.',
+  },
+  {
+    id: 2,
     title: 'Backend',
     skills: [
       { icon: <SiExpress />, name: 'Express' },
@@ -75,18 +89,6 @@ const skillCards: SkillCard[] = [
     ],
     description:
       'I have foundational knowledge and minimal experience in developing APIs.',
-  },
-  {
-    id: 2,
-    title: 'Frontend',
-    skills: [
-      { icon: <SiNextdotjs />, name: 'Next' },
-      { icon: <SiReact />, name: 'React Native' },
-      { icon: <SiTailwindcss />, name: 'Tailwind' },
-      { icon: <SiRedux />, name: 'Redux' },
-    ],
-    description:
-      'I blend artwork with technology, designing immersive and functional interfaces.',
   },
   {
     id: 3,
@@ -196,25 +198,29 @@ export default function SkillCardStack() {
       })}
 
       {/* Tombol Navigasi Kiri */}
-      <div className="absolute -left-16 top-1/2 -translate-y-1/2 z-10">
-        <button
-          onClick={moveBackward}
-          className="text-white bg-white/10 hover:bg-white/20 p-3 rounded-full shadow-lg backdrop-blur transition"
-          aria-label="Previous"
-        >
-          &laquo;
-        </button>
+      <div className="absolute -left-20 top-1/2 -translate-y-1/2 z-10">
+        <MagneticEffect>
+          <Button
+            variant="outline"
+            className="rounded-full py-8 px-6 text-4xl"
+            onClick={moveBackward}
+          >
+            &laquo;
+          </Button>
+        </MagneticEffect>
       </div>
 
       {/* Tombol Navigasi Kanan */}
-      <div className="absolute -right-16 top-1/2 -translate-y-1/2 z-10">
-        <button
-          onClick={moveForward}
-          className="text-white bg-white/10 hover:bg-white/20 p-3 rounded-full shadow-lg backdrop-blur transition"
-          aria-label="Next"
-        >
-          &raquo;
-        </button>
+      <div className="absolute -right-20 top-1/2 -translate-y-1/2 z-10">
+        <MagneticEffect>
+          <Button
+            variant="outline"
+            className="rounded-full py-8 px-6 text-4xl"
+            onClick={moveForward}
+          >
+            &raquo;
+          </Button>
+        </MagneticEffect>
       </div>
     </div>
   );

@@ -10,7 +10,7 @@ export default function AboutTitle() {
                 showBorder={false}
                 className="text-[clamp(1.6rem,4vw,3rem)] leading-[1.5] font-semibold"
                 >
-                Introduction
+                INTRODUCTION
             </GradientText>
             <AnimateTitle
             >

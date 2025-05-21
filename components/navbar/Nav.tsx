@@ -89,9 +89,6 @@ const Nav: React.FC = () => {
           </MagneticEffect>
           <div className="flex flex-row items-center justify-center space-x-4">
             <MagneticEffect>
-              <FaGamepad className="w-6 h-6" />
-            </MagneticEffect>
-            <MagneticEffect>
               <FaVolumeMute className="w-6 h-6" />
             </MagneticEffect>
           </div>

@@ -1,6 +1,7 @@
 import { cn } from "../lib/utils"
 import type { Metadata } from "next"
 import { Work_Sans } from "next/font/google"
+import Nav from "@/components/navbar/Nav"
 import "./globals.css"
 
 const font = Work_Sans({ subsets: ["latin"] })
@@ -95,6 +96,7 @@ export default function RootLayout({
           font.className
         )}
       >
+        <Nav/>
         {children}
       </body>
     </html>

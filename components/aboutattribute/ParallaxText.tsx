@@ -78,7 +78,7 @@ export default function ParallaxText({
     >
       <motion.div
         style={{ x }}
-        className="flex flex-nowrap whitespace-nowrap text-2xl font-semibold uppercase md:text-6xl"
+        className="flex flex-nowrap whitespace-nowrap text-[50px] font-semibold uppercase md:text-[100px]"
       >
         <motion.span
           style={{ skew: skewVelocityFactor }}
