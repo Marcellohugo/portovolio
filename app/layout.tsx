@@ -1,7 +1,9 @@
+import React from "react"
 import { cn } from "../lib/utils"
 import type { Metadata } from "next"
 import { Work_Sans } from "next/font/google"
 import Nav from "@/components/navbar/Nav"
+import PreloadWrapper from "@/components/preload/PreloadWrapper"
 import "./globals.css"
 
 const font = Work_Sans({ subsets: ["latin"] })
@@ -72,10 +74,10 @@ export const metadata: Metadata = {
     },
     description:
       "A seasoned frontend web developer with a passion for creating engaging and interactive websites.",
-    creator: "@aafrzl",
+    creator: "@marcellohugo__",
     images: [
       {
-        url: "/public/images/og-images.jpg",
+        url: "/public/images/Profile.png",
         width: 1000,
         height: 1200,
       },
@@ -84,21 +86,16 @@ export const metadata: Metadata = {
   category: "technology",
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body
-        className={cn(
-          font.className
-        )}
-      >
-        <Nav/>
-        {children}
+      <body className={cn(font.className)}>
+        {/* PreloadWrapper handles showing Preload (client) and then Nav + children */}
+        <PreloadWrapper>
+          <Nav />
+          {children}
+        </PreloadWrapper>
       </body>
     </html>
-  );
+  )
 }

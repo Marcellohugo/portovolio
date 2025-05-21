@@ -3,7 +3,7 @@ import GradientText from "../ui/text/AnimateSubtitle"
 export default function ProjectsSubtitle() {
     return (
         <section
-            className="my-5 w-full flex flex-col items-center justify-center overflow-hidden"
+            className="w-full flex flex-col items-center justify-center overflow-hidden"
         >
             <GradientText
                 showBorder={false}
@@ -14,7 +14,7 @@ export default function ProjectsSubtitle() {
             <span
              className="text-[clamp(1rem,2vw,1.5rem)] leading-[1.4] font-semibold text-center"
             >
-                List of selected portofolio
+                LIST OF SELECTED PORTOFOLIO
             </span>
         </section>
     )

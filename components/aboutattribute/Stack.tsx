@@ -178,14 +178,14 @@ export default function SkillCardStack() {
                 height: cardDimensions.height,
               }}
             >
-              <h3 className="text-2xl font-bold mb-1">{card.title}</h3>
+              <h3 className="text-[clamp(1rem,2vw,1.5rem)] font-bold mb-1">{card.title}</h3>
               <p className="text-xs text-gray-400 mb-4 tracking-widest">
                 DRAG TO INTERACT
               </p>
               <hr className="border-t border-blue-500 w-2/3 mx-auto mb-6" />
               <div className="hide-scrollbar flex flex-col gap-4 items-start max-h-48 overflow-y-auto px-2 mb-6 text-left">
                 {card.skills.map((skill, j) => (
-                  <div key={j} className="flex items-center gap-3 text-lg">
+                  <div key={j} className="flex items-center gap-3 text-xl">
                     {skill.icon}
                     <span>{skill.name}</span>
                   </div>

@@ -4,14 +4,15 @@ import ScrollReveal from "./ScrollReveal"
 import { Button } from "../ui/button/button"
 import MagneticEffect from "../ui/button/MagneticEffect"
 import TiltedCard from "../ui/animation/TiltedCard"
+import Link from "next/link"
 
 export default function About() {
   return (
     <section id="about" className="relative w-full pt-24 ">
-      <div className="relative z-10 mx-auto flex-row px-4 text-[whitesmoke]">
+      <div className="relative z-10 mx-auto flex-col px-4 text-[whitesmoke]">
 
         {/* First content block: Title, Subtitle, Text, Buttons, Image */}
-        <div className="flex flex-col items-start justify-center max-w-[1200px] mx-auto mb-2">
+        <div className="flex flex-col items-start justify-center max-w-[1200px] mx-auto">
           <AboutTitle />
           <AboutSubtitle />
         </div>
@@ -24,9 +25,11 @@ export default function About() {
               <MagneticEffect>
                 <Button variant="outline">Download CV</Button>
               </MagneticEffect>
-              <MagneticEffect>
-                <Button variant="outline">Get to know me</Button>
-              </MagneticEffect>
+              <Link href="/About">
+                <MagneticEffect>
+                  <Button variant="outline">Get to know me</Button>
+                </MagneticEffect>
+              </Link>
             </div>
           </div>
           <div className="flex flex-col items-center justify-center w-1/2 mx-auto mb-20">

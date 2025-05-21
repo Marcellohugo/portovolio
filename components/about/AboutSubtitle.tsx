@@ -3,7 +3,7 @@ import GradientText from "../ui/text/AnimateSubtitle"
 export default function AboutSubtitle() {
     return (
         <section
-            className="my-5 w-full flex flex-col items-center justify-center overflow-hidden"
+            className="w-full flex flex-col items-center justify-center overflow-hidden"
         >
             <GradientText
                 showBorder={false}

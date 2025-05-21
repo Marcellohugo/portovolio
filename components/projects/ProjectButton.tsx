@@ -30,7 +30,7 @@ export default function ProjectButton() {
       variants={projectCardAnimation}
       className="mb-10 flex flex-col items-center justify-center gap-4"
     >
-      <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold text-center">See other projects</h2>
+      <h2 className="text-[clamp(1.6rem,4vw,3rem)] font-bold text-center">See other projects</h2>
       <MagneticEffect>
         <Button
           size="lg"

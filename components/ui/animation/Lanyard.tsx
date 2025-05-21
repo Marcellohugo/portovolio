@@ -33,13 +33,13 @@ interface LanyardProps {
 }
 
 export default function Lanyard({
-  position = [0, 0, 15],
+  position = [0, 0, 5],
   gravity = [0, -40, 0],
-  fov = 20,
+  fov = 40,
   transparent = true,
 }: LanyardProps) {
   return (
-    <div className="relative z-0 w-full h-screen flex justify-center items-center transform scale-100 origin-center">
+    <div className="relative h-[60vh] z-0 w-full flex justify-center items-center transform scale-100 origin-center">
       <Canvas
         camera={{ position, fov }}
         gl={{ alpha: transparent }}
@@ -91,7 +91,7 @@ interface BandProps {
   minSpeed?: number;
 }
 
-function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
+function Band({ maxSpeed = 100, minSpeed = 50 }: BandProps) {
   // Using "any" for refs since the exact types depend on Rapier's internals
   const band = useRef<any>(null);
   const fixed = useRef<any>(null);
@@ -143,9 +143,9 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
     return (): void => window.removeEventListener("resize", handleResize);
   }, []);
 
-  useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 1]);
-  useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 1]);
-  useRopeJoint(j2, j3, [[0, 0, 0], [0, 0, 0], 1]);
+  useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 0.8]);
+  useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 0.8]);
+  useRopeJoint(j2, j3, [[0, 0, 0], [0, 0, 0], 0.8]);
   useSphericalJoint(j3, card, [
     [0, 0, 0],
     [0, 1.45, 0],

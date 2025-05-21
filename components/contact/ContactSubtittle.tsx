@@ -3,19 +3,14 @@ import GradientText from "../ui/text/AnimateSubtitle"
 export default function ContactSubtitle() {
     return (
         <section
-            className="my-5 w-full flex flex-col items-center justify-center overflow-hidden"
+            className="w-full flex flex-col items-center justify-center overflow-hidden"
         >
             <GradientText
                 showBorder={false}
                 className="items-center justify-center text-[clamp(1.6rem,4vw,3rem)] leading-[1.5] font-semibold"
                 >
-                Stay In Touch
+                STAY IN TOUCH
             </GradientText>
-            {/* <span
-             className="text-[clamp(1rem,2vw,1.5rem)] leading-[1.4] font-semibold text-center"
-            >
-                List of selected portofolio
-            </span> */}
         </section>
     )
 }
