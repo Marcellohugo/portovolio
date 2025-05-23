@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import MagneticEffect from "../button/MagneticEffect";
 
 interface TypingTextProps {
   text: string;
@@ -33,7 +34,7 @@ const TypingText: React.FC<TypingTextProps> = ({
   }, [index, text, speed, loop, delay]);
 
   return (
-    <div className="font-mono text-xl text-white">
+    <div className="text-[clamp(1.6rem,4vw,3rem)] font-serif text-center text-white">
       {displayedText}
       <span className="animate-pulse">|</span>
     </div>

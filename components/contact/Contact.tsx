@@ -16,11 +16,11 @@ export default function contact() {
           <ContactSubtitle/>
         </div>
 
-        <div className="flex flex-row items-center justify-center mx-auto w-[100%]">
+        <div className="flex flex-row items-center justify-center mx-auto max-w-[1200px]">
           <div className="flex flex-col items-center justify-center w-1/2 mx-auto">
             <Lanyard />
           </div>
-          <div className="flex flex-col items-center justify-center w-1/2 max-w-[50%] pr-10">
+          <div className="flex flex-col items-center justify-center w-1/2 max-w-[50%]">
             <ContactForm/>
           </div>
         </div>

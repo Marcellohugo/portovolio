@@ -23,7 +23,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="relative">
+    <main className="relative scroll-smooth">
       {/* Hero tetap fixed; akan di-blur setelah scroll pertama */}
       <div
         className="fixed top-0 left-0 w-full h-screen z-0 transition-filter duration-500"

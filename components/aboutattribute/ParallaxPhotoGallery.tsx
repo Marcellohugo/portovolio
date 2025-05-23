@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import Logo from '/public/images/logo1.png';
 
 interface PhotoConfig {
   src: string;
@@ -38,10 +37,7 @@ export default function ParallaxPhotoGallery() {
           {photoConfigs.map((cfg, index) => (
             <motion.div
               key={index}
-              style={{
-                y: offsetY * speedVariants[index % speedVariants.length],
-              }}
-
+              style={{ y: offsetY * speedVariants[index % speedVariants.length] }}
               transition={{ ease: 'easeOut', duration: 0.5 }}
             >
               <div
@@ -68,7 +64,7 @@ export default function ParallaxPhotoGallery() {
           transition={{ duration: 1, ease: 'easeOut' }}
         >
           <Image
-            src={Logo}
+            src="/icons/logo1.png"
             alt="Logo"
             width={800}
             height={800}

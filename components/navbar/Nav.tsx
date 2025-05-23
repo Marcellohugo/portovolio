@@ -17,7 +17,7 @@ const Nav: React.FC = () => {
         {/* Logo */}
         <div className="flex items-center gap-2">
           <img
-            src="/images/logo.png"
+            src="/icons/logo.png"
             alt="Logo"
             width={40}
             height={40}
