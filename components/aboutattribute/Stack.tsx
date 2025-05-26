@@ -201,7 +201,7 @@ export default function SkillCardStack() {
       <div className="absolute -left-20 top-1/2 -translate-y-1/2 z-10">
         <MagneticEffect>
           <Button
-            variant="outline"
+            variant="secondary"
             className="rounded-full py-8 px-6 text-4xl"
             onClick={moveBackward}
           >
@@ -214,7 +214,7 @@ export default function SkillCardStack() {
       <div className="absolute -right-20 top-1/2 -translate-y-1/2 z-10">
         <MagneticEffect>
           <Button
-            variant="outline"
+            variant="secondary"
             className="rounded-full py-8 px-6 text-4xl"
             onClick={moveForward}
           >

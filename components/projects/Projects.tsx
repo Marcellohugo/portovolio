@@ -1,4 +1,4 @@
-import { projects } from "@/lib/projectData"
+import { projects } from "@/components/projects/projectData"
 import ProjectCard from "./ProjectCard"
 import ProjectButton from "./ProjectButton"
 import ProjectsTitle from "./ProjectsTittle"

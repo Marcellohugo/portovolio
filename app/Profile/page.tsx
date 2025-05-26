@@ -19,7 +19,9 @@ export default function Profile() {
             className="relative w-full pt-24 "
         >
           <div className="fixed inset-0 -z-10">
-            <Aurora/>
+            <Aurora
+              colorStops={["#092965", "#A3D8FF", "#092965"]}
+            />
           </div>
           <div className="relative z-10 mx-auto flex-coltext-[whitesmoke]">
               <div className="flex flex-col items-start justify-center max-w-[1200px] mx-auto">
@@ -49,7 +51,7 @@ export default function Profile() {
               <div className=" relative w-full h-[500px] overflow-hidden">
                   {/* Background Image */}
                   <Image
-                    src="/images/Profile.png"
+                    src="/images/Profile1.png"
                     alt="Marco"
                     layout="fill"
                     objectFit="cover"

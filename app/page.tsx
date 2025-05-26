@@ -1,14 +1,29 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Nav from "@/components/navbar/Nav";
 import Hero from "../components/hero/Hero";
 import About from "../components/about/About";
 import AboutAttribute from "../components/aboutattribute/AboutAttribute";
 import Project from "../components/projects/Projects";
 import Contact from "../components/contact/Contact";
+import Preload from "@/components/preload/Preload";
+import { AnimatePresence } from "framer-motion";
 
 export default function Home() {
   const [isBlurred, setIsBlurred] = useState(false);
+  const [showPreloader, setShowPreloader] = useState(false);
+  const [preloadDone, setPreloadDone] = useState(false);
+
+  useEffect(() => {
+    const handleReady = () => setShowPreloader(true);
+    if (document.readyState === "complete") {
+      handleReady();
+    } else {
+      window.addEventListener("load", handleReady);
+      return () => window.removeEventListener("load", handleReady);
+    }
+  }, []);
 
   useEffect(() => {
     const onScroll = () => {
@@ -23,25 +38,36 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="relative scroll-smooth">
-      {/* Hero tetap fixed; akan di-blur setelah scroll pertama */}
-      <div
-        className="fixed top-0 left-0 w-full h-screen z-0 transition-filter duration-500"
-        style={{ filter: isBlurred ? "blur(30px)" : "blur(0px)" }}
-      >
-        <Hero />
-      </div>
+    <>
+      <AnimatePresence mode="wait">
+        {showPreloader && !preloadDone && (
+          <Preload onStart={() => setPreloadDone(true)} />
+        )}
+      </AnimatePresence>
 
-      {/* Spacer agar konten tidak menumpuk di bawah Hero */}
-      <div className="h-screen w-full" />
+      {preloadDone && (
+      <main className="relative scroll-smooth">
+        {/* Hero tetap fixed; akan di-blur setelah scroll pertama */}
+        <div
+          className="fixed top-0 left-0 w-full h-screen z-0 transition-filter duration-500"
+          style={{ filter: isBlurred ? "blur(30px)" : "blur(0px)" }}
+        >
+          <Hero />
+        </div>
 
-      {/* Konten utama */}
-      <div className="relative z-10">
-        <About />
-        <AboutAttribute />
-        <Project />
-        <Contact />
-      </div>
-    </main>
+        {/* Spacer agar konten tidak menumpuk di bawah Hero */}
+        <div className="h-screen w-full" />
+
+        {/* Konten utama */}
+        <div className="relative z-10">
+          <Nav/>
+          <About />
+          <AboutAttribute />
+          <Project />
+          <Contact />
+        </div>
+      </main>
+      )}
+    </>
   );
 }

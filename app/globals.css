@@ -23,77 +23,13 @@ body {
   overflow-x: hidden;
 }
 
-/* =================== SECTION WRAPPER =================== */
-.section {
-  position: relative;
-  top: 0;
-  background-color: rgba(0, 0, 0, 0.8); /* bg-black/90 */
-  display: flex;
-  min-height: 100vh;
-  height: 100%;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  flex-direction: column;
+/* globals.css */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
 }
-
-/* =================== SECTION HEADER =================== */
-.section-header {
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  width: 80%;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-}
-
-.title {
-}
-
-.subtitle {
-}
-
-.explanation {
-}
-
-/* =================== CONTAINERS =================== */
-.container-top {
-}
-
-.container-bottom {
-}
-
-/* =================== SECTION BODY =================== */
-.section-body {
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  width: 100%;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-
-.section-body .left {
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.section-body .right {
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;     /* Firefox */
 }
 
 /* =================== Stars animation =================== */
@@ -112,12 +48,12 @@ body {
   animation-delay: calc(var(--index, 0) * 0.5s);
 }
 
-/* globals.css */
-.hide-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-  .hide-scrollbar {
-    -ms-overflow-style: none;  /* Internet Explorer 10+ */
-    scrollbar-width: none;     /* Firefox */
-  }
-  
+.violet-gradient {
+  background: #A3D8FF;
+  background: linear-gradient(-90deg, #A3D8FF 0%, rgba(60, 51, 80, 0) 100%);
+  background: -webkit-linear-gradient(
+    -90deg,
+    #A3D8FF 0%,
+    rgba(60, 51, 80, 0) 100%
+  );
+}

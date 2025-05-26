@@ -8,15 +8,42 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline:
-          "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
-        secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+        default: `
+          bg-white text-gray-900 
+          hover:bg-[#092965] hover:text-white
+          focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary 
+          transition-colors duration-200
+        `,
+        destructive: `
+          bg-red-600 text-white 
+          hover:bg-red-700 
+          focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 
+          transition-colors duration-200
+        `,
+        outline: `
+          border border-white text-white
+          hover:bg-gray-50 hover:text-gray-900 
+          focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary 
+          transition-colors duration-200
+        `,
+        secondary: `
+          bg-[#092965] text-white 
+          hover:bg-white hover:text-gray-900 
+          focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#092965] 
+          transition-colors duration-200
+        `,
+        ghost: `
+          bg-transparent text-gray-900 
+          hover:bg-gray-100 
+          focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary 
+          transition-colors duration-200
+        `,
+        link: `
+          bg-transparent underline-offset-4 text-primary 
+          hover:underline 
+          focus:outline-none focus:ring-0 
+          transition-colors duration-200
+        `,
       },
       size: {
         default: "h-10 px-4 py-2",

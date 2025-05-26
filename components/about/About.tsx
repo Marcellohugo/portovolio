@@ -1,4 +1,3 @@
-import Aurora from "../ui/background/Aurora"
 import AboutTitle from "./AboutTitle"
 import AboutSubtitle from "./AboutSubtitle"
 import ScrollReveal from "./ScrollReveal"
@@ -28,7 +27,7 @@ export default function About() {
               </MagneticEffect>
               <Link href="/Profile">
                 <MagneticEffect>
-                  <Button variant="outline">Get to know me</Button>
+                  <Button variant="secondary">Get to know me</Button>
                 </MagneticEffect>
               </Link>
             </div>

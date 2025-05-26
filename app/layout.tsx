@@ -2,7 +2,6 @@ import React from "react"
 import { cn } from "../lib/utils"
 import type { Metadata } from "next"
 import { Work_Sans } from "next/font/google"
-import Nav from "@/components/navbar/Nav"
 import PreloadWrapper from "@/components/preload/PreloadWrapper"
 import "./globals.css"
 
@@ -91,10 +90,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={cn(font.className)}>
         {/* PreloadWrapper handles showing Preload (client) and then Nav + children */}
-        <PreloadWrapper>
-          <Nav />
+        {/* <PreloadWrapper> */}
+          
           {children}
-        </PreloadWrapper>
+        {/* </PreloadWrapper> */}
       </body>
     </html>
   )

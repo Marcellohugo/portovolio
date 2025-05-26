@@ -1,16 +1,13 @@
-"use client"
-
-import Particles from "../ui/background/Particles"
-import ComputerCanvas from "./Computers"
-import VideoText from "../ui/animation/VideoText"
+import { motion } from "framer-motion";
+import ComputerCanvas from "./Computers";
+import Particles from "../ui/background/Particles";
 
 export default function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen w-full flex items-center justify-center relative overflow-hidden bg-black"
+      className="relative mx-auto h-screen w-full"
     >
-      {/* Uncomment for background particles */}
       <div className="absolute inset-0 z-0">
         <Particles
           particleColors={['#ffffff', '#ffffff']}
@@ -20,18 +17,40 @@ export default function Hero() {
           particleBaseSize={100}
         />
       </div>
-     
-
-      <div className="relative z-10 h-full w-full flex flex-col items-center justify-center">
-        {/* Video-text animation sits above the canvas */}
-        <div className="w-full flex justify-center mt-24">
-          <VideoText text="MARCELLO" />
+      <div className="absolute inset-0 top-[120px] mx-auto max-w-[1200px] sm:px-16 px-6 flex flex-row items-start gap-5">
+        <div className="mt-5 flex flex-col items-center justify-center">
+          <div className="h-5 w-5 rounded-full bg-[#A3D8FF]" />
+          <div className="violet-gradient h-40 w-1 sm:h-80" />
         </div>
 
-        {/* 3D computer canvas */}
-        <div className="w-full top-0 h-[60vh] sm:h-[70vh]">
-          <ComputerCanvas />
+        <div>
+          <h1 className={`font-black text-white text-[4rem] md:text-[4rem] lg:text-[6rem] lg:leading-[98px] mt-2`}>
+            Hi, I'm <span className="text-[#A3D8FF]">Marcello</span>
+          </h1>
+          <p className={`text-white font-medium lg:text-[30px] sm:text-[26px] xs:text-[20px] text-[16px] lg:leading-[40px] text-white-100 mt-2`}>
+            I Develop attractive and interactive <br className="hidden sm:block" />
+            websites applications
+          </p>
         </div>
+      </div>
+      <ComputerCanvas />
+
+      <div className="xs:bottom-10 absolute bottom-32 flex w-full items-center justify-center">
+        <a href="#about">
+          <div className="border-secondary flex h-[64px] w-[35px] items-start justify-center rounded-3xl border-4 p-2">
+            <motion.div
+              animate={{
+                y: [0, 24, 0],
+              }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                repeatType: "loop",
+              }}
+              className="bg-white mb-1 h-3 w-3 rounded-full"
+            />
+          </div>
+        </a>
       </div>
     </section>
   )

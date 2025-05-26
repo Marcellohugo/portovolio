@@ -23,7 +23,7 @@ const Nav: React.FC = () => {
             height={40}
           /> 
           <div>
-            <div className="text-sky-400 font-bold text-lg">Marcello Hugo</div>
+            <div className="text-[#A3D8FF] font-bold text-lg">Marcello Hugo</div>
             <div className="text-xs">Frond-end Developer</div>
           </div>
         </div>
@@ -31,17 +31,17 @@ const Nav: React.FC = () => {
         {/* Navigation Links */}
         <div className="hidden md:flex space-x-8 text-sm font-medium uppercase tracking-widest">
           <MagneticEffect>
-            <a href="#about" className="hover:text-sky-400 transition">
+            <a href="#about" className="hover:text-[#A3D8FF] transition">
               Profile
             </a>
           </MagneticEffect>
           <MagneticEffect>
-            <a href="#project" className="hover:text-sky-400 transition">
+            <a href="#project" className="hover:text-[#A3D8FF] transition">
               Projects
             </a>
           </MagneticEffect>
           <MagneticEffect>
-            <a href="#contact" className="hover:text-sky-400 transition">
+            <a href="#contact" className="hover:text-[#A3D8FF] transition">
               Contact
             </a>
           </MagneticEffect>
@@ -51,17 +51,17 @@ const Nav: React.FC = () => {
         <div className="flex items-center space-x-4">
           <MagneticEffect>
             <a href="https://instagram.com/marcellohugo__" target="_blank" rel="noopener noreferrer">
-              <FaInstagram className="w-6 h-6 cursor-pointer hover:text-sky-400 transition" />
+              <FaInstagram className="w-6 h-6 cursor-pointer hover:text-[#A3D8FF] transition" />
             </a>
           </MagneticEffect>
           <MagneticEffect>
             <a href="https://linkedin.com/in/marcellohugo" target="_blank" rel="noopener noreferrer">
-              <FaLinkedin className="w-6 h-6 cursor-pointer hover:text-sky-400 transition" />
+              <FaLinkedin className="w-6 h-6 cursor-pointer hover:text-[#A3D8FF] transition" />
             </a>
           </MagneticEffect>
           <MagneticEffect>
             <a href="https://github.com/marcellohugo" target="_blank" rel="noopener noreferrer">
-              <FaGithub className="w-6 h-6 cursor-pointer hover:text-sky-400 transition" />
+              <FaGithub className="w-6 h-6 cursor-pointer hover:text-[#A3D8FF] transition" />
             </a>
           </MagneticEffect>
         </div>

@@ -25,7 +25,7 @@ const AnimateTitle: React.FC<ScrollFloatProps> = ({
   ease = "back.inOut(2)",
   scrollStart = "top bottom",
   scrollEnd = "top 20%",
-  stagger = 0.03,
+  stagger = 0.05,
 }) => {
   const containerRef = useRef<HTMLHeadingElement>(null)
 

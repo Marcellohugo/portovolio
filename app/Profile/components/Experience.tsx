@@ -63,7 +63,7 @@ export const Experience: React.FC = () => {
                   {/* Left side */}
                   <div className={`w-1/2 px-4 ${!isLeft ? 'opacity-0' : 'opacity-100'}`}>                
                     {isLeft && (
-                      <div className="bg-gray-800 p-6 rounded-2xl shadow-lg">
+                      <div className="border border-foreground/20 bg-zinc-900 p-6 rounded-2xl shadow-lg">
                         <div className="flex items-center mb-4">
                           <img src={item.logoUrl} alt={`${item.company} logo`} className="w-8 h-8 mr-3" />
                           <div>
@@ -82,14 +82,14 @@ export const Experience: React.FC = () => {
                   </div>
     
                   {/* Circle marker */}
-                  <div className="w-24 h-20 rounded-full bg-gray-700 border-2 border-gray-600 flex items-center justify-center z-10">
+                  <div className="w-24 h-20 rounded-full border border-foreground/20 bg-zinc-900 flex items-center justify-center z-10">
                     <img src={item.logoUrl} alt="logo" className="w-12 h-12" />
                   </div>
     
                   {/* Right side */}
                   <div className={`w-1/2 px-4 ${isLeft ? 'opacity-0' : 'opacity-100'}`}>                
                     {!isLeft && (
-                      <div className="bg-gray-800 p-6 rounded-2xl shadow-lg text-right">
+                      <div className="border border-foreground/20 bg-zinc-900 p-6 rounded-2xl shadow-lg text-right">
                         <div className="flex items-center mb-4 justify-end">
                           <div>
                             <h3 className="text-xl font-bold">{item.title}</h3>

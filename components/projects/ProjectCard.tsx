@@ -47,7 +47,7 @@ export default function ProjectCard({
       initial="hidden"
       variants={projectCardAnimation}
       aria-hidden="true"
-      className="relative z-10 h-[550px] w-full items-stretch justify-center overflow-hidden rounded-3xl border border-foreground/20 bg-zinc-200 dark:bg-zinc-800"
+      className="relative z-10 h-[400px] w-full items-stretch justify-center overflow-hidden rounded-3xl border border-foreground/20 bg-zinc-900"
     >
       <motion.div
         ref={ref}
@@ -78,7 +78,7 @@ export default function ProjectCard({
           className="rounded-full bg-foreground p-2 transition-all duration-300 ease-in-out hover:bg-foreground/50"
           aria-label="Open Github Repo"
         >
-          <FaGithub className="h-6 w-6 text-zinc-100 dark:text-zinc-800 md:h-8 md:w-8 lg:h-10 lg:w-10" />
+          <FaGithub className="h-6 w-6 text-zinc-100 md:h-8 md:w-8 lg:h-10 lg:w-10" />
         </Link>
         <Link
           href={projectLink}
@@ -86,7 +86,7 @@ export default function ProjectCard({
           className="rounded-full bg-foreground p-2 transition-all duration-300 ease-in-out hover:bg-foreground/50"
           aria-label="Open Live Demo"
         >
-          <FaLinkedin className="h-6 w-6 text-zinc-100 dark:text-zinc-800 md:h-8 md:w-8 lg:h-10 lg:w-10" />
+          <FaLinkedin className="h-6 w-6 text-zinc-100 md:h-8 md:w-8 lg:h-10 lg:w-10" />
         </Link>
       </motion.div>
 
