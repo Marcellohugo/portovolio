@@ -2,8 +2,8 @@ import React from "react"
 import { cn } from "../lib/utils"
 import type { Metadata } from "next"
 import { Work_Sans } from "next/font/google"
-import PreloadWrapper from "@/components/preload/PreloadWrapper"
 import "./globals.css"
+import PreloadWrapper from "@/components/preload/PreloadWrapper"
 
 const font = Work_Sans({ subsets: ["latin"] })
 
@@ -89,11 +89,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={cn(font.className)}>
-        {/* PreloadWrapper handles showing Preload (client) and then Nav + children */}
-        {/* <PreloadWrapper> */}
-          
+        <PreloadWrapper>
           {children}
-        {/* </PreloadWrapper> */}
+        </PreloadWrapper>
       </body>
     </html>
   )

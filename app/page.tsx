@@ -7,23 +7,9 @@ import About from "../components/about/About";
 import AboutAttribute from "../components/aboutattribute/AboutAttribute";
 import Project from "../components/projects/Projects";
 import Contact from "../components/contact/Contact";
-import Preload from "@/components/preload/Preload";
-import { AnimatePresence } from "framer-motion";
 
 export default function Home() {
   const [isBlurred, setIsBlurred] = useState(false);
-  const [showPreloader, setShowPreloader] = useState(false);
-  const [preloadDone, setPreloadDone] = useState(false);
-
-  useEffect(() => {
-    const handleReady = () => setShowPreloader(true);
-    if (document.readyState === "complete") {
-      handleReady();
-    } else {
-      window.addEventListener("load", handleReady);
-      return () => window.removeEventListener("load", handleReady);
-    }
-  }, []);
 
   useEffect(() => {
     const onScroll = () => {
@@ -38,36 +24,26 @@ export default function Home() {
   }, []);
 
   return (
-    <>
-      <AnimatePresence mode="wait">
-        {showPreloader && !preloadDone && (
-          <Preload onStart={() => setPreloadDone(true)} />
-        )}
-      </AnimatePresence>
+    <main className="relative scroll-smooth">
+      {/* Hero tetap fixed; akan di-blur setelah scroll pertama */}
+      <div
+        className="fixed top-0 left-0 w-full h-screen z-0 transition-filter duration-500"
+        style={{ filter: isBlurred ? "blur(30px)" : "blur(0px)" }}
+      >
+        <Hero />
+      </div>
 
-      {preloadDone && (
-      <main className="relative scroll-smooth">
-        {/* Hero tetap fixed; akan di-blur setelah scroll pertama */}
-        <div
-          className="fixed top-0 left-0 w-full h-screen z-0 transition-filter duration-500"
-          style={{ filter: isBlurred ? "blur(30px)" : "blur(0px)" }}
-        >
-          <Hero />
-        </div>
+      {/* Spacer agar konten tidak menumpuk di bawah Hero */}
+      <div className="h-screen w-full" />
 
-        {/* Spacer agar konten tidak menumpuk di bawah Hero */}
-        <div className="h-screen w-full" />
-
-        {/* Konten utama */}
-        <div className="relative z-10">
-          <Nav/>
-          <About />
-          <AboutAttribute />
-          <Project />
-          <Contact />
-        </div>
-      </main>
-      )}
-    </>
+      {/* Konten utama */}
+      <div className="relative z-10">
+        <Nav/>
+        <About/>
+        <AboutAttribute/>
+        <Project/>
+        <Contact/>
+      </div>
+    </main>
   );
 }

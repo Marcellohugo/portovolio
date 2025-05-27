@@ -1,4 +1,6 @@
-import React, { Suspense, useEffect, useState } from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 
@@ -20,9 +22,7 @@ const Computers: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
       <primitive
         object={computer.scene}
         scale={isMobile ? 0.7 : 0.75}
-        position={
-          isMobile ? [0, -2.0, -2.2] : [0, -3.0, -1.5]
-        }
+        position={isMobile ? [0, -2.0, -2.2] : [0, -3.0, -1.5]}
         rotation={[-0.01, -0.2, -0.1]}
       />
     </mesh>
@@ -31,7 +31,14 @@ const Computers: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
 
 const ComputersCanvas: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [hasMounted, setHasMounted] = useState(false);
 
+  // 1. Mount guard
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  // 2. Media query
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 500px)");
     setIsMobile(mediaQuery.matches);
@@ -46,7 +53,8 @@ const ComputersCanvas: React.FC = () => {
     };
   }, []);
 
-  if (isMobile) {
+  // Jika belum di-mount, atau di mobile, jangan render Canvas
+  if (!hasMounted || isMobile) {
     return null;
   }
 
@@ -58,13 +66,13 @@ const ComputersCanvas: React.FC = () => {
       camera={{ position: [20, 3, 5], fov: 25 }}
       gl={{ preserveDrawingBuffer: true }}
     >
-        <OrbitControls
-          enablePan={false}
-          enableZoom={false}
-          maxPolarAngle={Math.PI / 2}
-          minPolarAngle={Math.PI / 2}
-        />
-        <Computers isMobile={isMobile} />
+      <OrbitControls
+        enablePan={false}
+        enableZoom={false}
+        maxPolarAngle={Math.PI / 2}
+        minPolarAngle={Math.PI / 2}
+      />
+      <Computers isMobile={isMobile} />
       <Preload all />
     </Canvas>
   );

@@ -1,6 +1,13 @@
+import dynamic from "next/dynamic";
+import React from "react";
 import { motion } from "framer-motion";
 import ComputerCanvas from "./Computers";
 import Particles from "../ui/background/Particles";
+
+const ComputersCanvasNoSSR = dynamic(
+  () => import("./Computers"), 
+  { ssr: false }
+);
 
 export default function Hero() {
   return (
@@ -33,7 +40,7 @@ export default function Hero() {
           </p>
         </div>
       </div>
-      <ComputerCanvas />
+      <ComputersCanvasNoSSR />
 
       <div className="xs:bottom-10 absolute bottom-32 flex w-full items-center justify-center">
         <a href="#about">

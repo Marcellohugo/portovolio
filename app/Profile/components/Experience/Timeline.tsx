@@ -94,8 +94,7 @@ const Timeline: React.FC = () => {
 
       {itemsToShow.map(item => (
         <div key={item.id} className="relative mb-16 ml-16 z-10">
-          <div className="absolute -left-10 top-0 flex items-center justify-center w-6 h-6 bg-[#092965] rounded-full ring-8 ring-white ">
-            <div className="w-2 h-2 bg-white rounded-full "></div>
+          <div className="absolute -left-10 top-0 flex items-center justify-center w-6 h-6 bg-zinc-900 rounded-full ring-8 ring-white ">
           </div>
           <time className="text-sm font-medium text-[#A3D8FF] ">
             {item.period}

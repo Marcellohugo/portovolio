@@ -22,31 +22,49 @@ const filters: Array<{ label: string; value: Project['category'] | 'All' }> = [
 // Sample data, replace with real
 const projects: Project[] = [
   {
-    id: 'ludoang',
-    title: 'LUDOang',
-    year: 2023,
-    description: 'LUDOang is a game that my team and I created for a final project in my university. The game is built with Python, pygame, and OpenGL.',
-    tags: ['Python', 'Pygame', 'OpenGL'],
+    id: 'Web-1',
+    title: 'Portfolio Website',
+    year: 2025,
+    description: 'A personal portfolio website that showcases my skills, projects, and experiences. This project was created using React, TypeScript, Next.js, and TailwindCSS.',
+    tags: ['React', 'Typescript', 'Nextjs', 'TailwindCSS'],
     category: 'Web Development',
-    imageUrl: '/images/Castafest.png',
+    imageUrl: '/images/Personal.png',
   },
   {
-    id: 'aleph-bot',
-    title: 'Aleph Discord Bot',
-    year: 2023,
-    description: 'Aleph is a Discord bot that I created for my Discord server to use. The bot is built using Python and the discord.py library.',
-    tags: ['Python', 'Discord.py', 'Google Serp API'],
-    category: 'Web Development',
-    imageUrl: '/images/Castafest.png',
-  },
-  {
-    id: 'aleph',
-    title: 'Aleph Discord Bot',
-    year: 2023,
-    description: 'Aleph is a Discord bot that I created for my Discord server to use. The bot is built using Python and the discord.py library.',
-    tags: ['Python', 'Discord.py', 'Google Serp API'],
+    id: 'Web-2',
+    title: 'CV Maker',
+    year: 2024,
+    description: 'A simple CV maker website that allows users to create and download their CVs in PDF format. This project was created using HTML and CSS.',
+    tags: ['HTML', 'CSS'],
     category: 'Web Development',
     imageUrl: '/images/CVMaker.png',
+  },
+  {
+    id: 'Web-3',
+    title: 'Castafest Website',
+    year: 2024,
+    description: 'A website created for the Castafest event, an annual event held by Amsa-Undip. This website was created using WIX.',
+    tags: ['WIX', 'Javascript'],
+    category: 'Web Development',
+    imageUrl: '/images/Castafest.png',
+  },
+  {
+    id: 'UI-1',
+    title: 'CARe',
+    year: 2024,
+    description: 'This UI designed for an automotive service mobile app—users log in and can browse and select car models (e.g. Honda, Audi, Porsche), perfect for booking, rental, or vehicle maintenance management features.',
+    tags: ['Figma'],
+    category: 'UI/UX',
+    imageUrl: '/images/Care.png',
+  },
+  {
+    id: 'UI-2',
+    title: 'Countlories',
+    year: 2024,
+    description: '“CountLories” app to help users achieve fitness goals by scanning food—the main screen contains food category icons and logos, and a camera scanner screen to recognize dishes and count calories in real-time.',
+    tags: ['Figma'],
+    category: 'UI/UX',
+    imageUrl: '/images/Countlories.png',
   },
   // Add more projects here
 ];
@@ -116,7 +134,6 @@ const OtherProjectsSection: React.FC = () => {
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

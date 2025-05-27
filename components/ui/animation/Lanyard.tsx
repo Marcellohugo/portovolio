@@ -38,6 +38,9 @@ export default function Lanyard({
   fov = 40,
   transparent = true,
 }: LanyardProps) {
+  const [hasMounted, setHasMounted] = useState(false);
+  useEffect(() => { setHasMounted(true); }, []);
+  if (!hasMounted) return null;
   return (
     <div className="relative h-[60vh] z-0 w-full flex justify-center items-center transform scale-100 origin-center">
       <Canvas

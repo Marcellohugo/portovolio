@@ -1,3 +1,5 @@
+"use client"
+
 import { useEffect, useState } from "react";
 import RotatingText from "./RotatingText";
 import { motion, AnimatePresence } from "framer-motion";

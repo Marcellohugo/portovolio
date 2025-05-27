@@ -1,8 +1,15 @@
+import dynamic from "next/dynamic";
+import React from "react";
 import ContactTitle from "./ContactTittle";
 import ContactSubtitle from "./ContactSubtittle";
 import MagneticEffect from "../ui/button/MagneticEffect";
 import Lanyard from "../ui/animation/Lanyard";
 import ContactForm from "./ContactForm";
+
+const LanyardNoSSR = dynamic(
+  () => import("../ui/animation/Lanyard"), 
+  { ssr: false }
+);
 
 export default function contact() {
     return (
@@ -18,7 +25,7 @@ export default function contact() {
 
         <div className="flex flex-row items-center justify-center mx-auto max-w-[1200px]">
           <div className="flex flex-col items-center justify-center w-1/2 mx-auto">
-            <Lanyard />
+            <LanyardNoSSR />
           </div>
           <div className="flex flex-col items-center justify-center w-1/2 max-w-[50%]">
             <ContactForm/>
@@ -35,7 +42,7 @@ export default function contact() {
             </MagneticEffect>
             <MagneticEffect>
               <div className="text-[10px] text-gray-400">
-                  Copyright © 2023 - 2025 by Marcello Hugo
+                  Copyright © 2025 by Marcello Hugo
               </div>
             </MagneticEffect>
           </div>

@@ -1,13 +1,25 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import Preload from './Preload'
+import { useState } from "react";
+import Preload from "./Preload";
 
-export default function PreloadWrapper({ children }: { children: React.ReactNode }) {
-  const [started, setStarted] = useState(false)
-  const handleStart = () => setStarted(true)
+interface PreloadWrapperProps {
+  children: React.ReactNode;
+}
 
-  // Until user clicks "Get Started", show Preload;
-  // afterward, render children (Nav + page content)
-  return !started ? <Preload onStart={handleStart} /> : <>{children}</>
+export default function PreloadWrapper({ children }: PreloadWrapperProps) {
+  const [initialDone, setInitialDone] = useState(false);
+
+  // dipanggil Preload saat animasi selesai
+  const handleStart = () => {
+    setInitialDone(true);
+  };
+
+  // sebelum initial selesai → tampilkan Preload
+  if (!initialDone) {
+    return <Preload onStart={handleStart} />;
+  }
+
+  // setelah initial selesai → langsung render semua children biasa
+  return <>{children}</>;
 }

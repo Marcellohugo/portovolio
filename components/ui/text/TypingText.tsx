@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import MagneticEffect from "../button/MagneticEffect";
 
 interface TypingTextProps {
   text: string;

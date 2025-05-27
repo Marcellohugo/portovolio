@@ -22,9 +22,6 @@ export default function About() {
               Saya Marco Marcello Hugo. Selama perjalanan karir saya, saya senang berkecimpung di bidang Front-end Development dan Mobile Development. Dalam mengisi pengalaman di ranah dunia pekerjaan, saya juga aktif terlibat dalam berbagai kegiatan yang berkaitan dengan logistik dan persiapan peralatan.
             </ScrollReveal>
             <div className="flex flex-row w-full items-start justify-start space-x-6 mt-4">
-              <MagneticEffect>
-                <Button variant="outline">Download CV</Button>
-              </MagneticEffect>
               <Link href="/Profile">
                 <MagneticEffect>
                   <Button variant="secondary">Get to know me</Button>
