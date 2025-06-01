@@ -3,7 +3,7 @@
 import React from "react";
 import { FaGamepad, FaVolumeMute, FaArrowUp, FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 import MagneticEffect from "../ui/button/MagneticEffect";
-import { Button } from "../ui/button/button";
+import BackButton from "../ui/button/BackButton";
 // import ThemeSwitcher from "../ui/ThemeSwitcher";
 
 const Nav: React.FC = () => {
@@ -11,32 +11,13 @@ const Nav: React.FC = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  // Optional: handler for logo button click
-  const handleLogoClick = () => {
-    console.log("Logo button clicked");
-    // e.g., navigate to home, or trigger some action
-    window.location.href = "/";
-  };
-
   return (
     <>
       {/* Top Navbar */}
       <nav className="fixed top-0 w-full z-50 flex items-center justify-between px-8 py-4 backdrop-blur-md bg-black/50 text-white">
-        {/* Logo as Button */}
-        <div className="flex items-center gap-2">
-          <MagneticEffect>
-            <Button
-              variant="secondary"
-              className="py-5 justify-center items-center text-4xl"
-              onClick={handleLogoClick}
-            >
-              &laquo;
-            </Button>
-          </MagneticEffect>
-          <div>
-            <div className="text-[#A3D8FF] font-bold text-lg">Marcello Hugo</div>
-            <div className="text-xs">Frontend Developer</div>
-          </div>
+        {/* Logo */}
+        <div className="flex">
+            <BackButton/>
         </div>
 
         {/* Right Icons */}

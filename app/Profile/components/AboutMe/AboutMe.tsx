@@ -33,7 +33,7 @@ export default function AboutMe() {
         </div>
         <StoryOfMyLife/>
         <RotatingWords/>
-        <div className=" relative w-full h-[500px] overflow-hidden">
+        <div className=" relative w-full h-[120px] sm:h-[500px] overflow-hidden">
           {/* Background Image */}
           <Image
             src="/images/Profile1.png"

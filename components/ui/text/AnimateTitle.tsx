@@ -91,7 +91,7 @@ const AnimateTitle: React.FC<ScrollFloatProps> = ({
       className={`overflow-hidden ${containerClassName}`}
     >
       <span
-        className={"inline-block text-[6rem] md:text-[8rem] lg:text-[10rem] font-bold leading-[1.1]"}
+        className={"inline-block text-[4rem] md:text-[8rem] lg:text-[10rem] font-bold leading-[1.1]"}
       >
         {splitText}
       </span>

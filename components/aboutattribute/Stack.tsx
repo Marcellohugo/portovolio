@@ -106,7 +106,6 @@ const skillCards: SkillCard[] = [
 export default function SkillCardStack() {
   const [cards, setCards] = useState(skillCards);
   const sensitivity = 200;
-  const cardDimensions = { width: 320, height: 400 };
   const animationConfig = { stiffness: 260, damping: 20 };
   const randomRotation = false;
 
@@ -142,12 +141,8 @@ export default function SkillCardStack() {
 
   return (
     <div
-      className="relative mx-auto"
-      style={{
-        width: cardDimensions.width,
-        height: cardDimensions.height,
-        perspective: 800,
-      }}
+      className="relative mx-auto w-full max-w-[280px] aspect-[320/400] sm:max-w-[320px] sm:aspect-[320/400]"
+      style={{ perspective: 800 }}
     >
       {cards.map((card, index) => {
         const randomRotate = randomRotation ? Math.random() * 10 - 5 : 0;
@@ -161,29 +156,27 @@ export default function SkillCardStack() {
             <motion.div
               className={clsx(
                 'rounded-3xl p-6 shadow-2xl bg-zinc-900 text-white text-center',
-                'transform-style-3d w-full h-full'
+                'transform-style-3d w-full h-full min-h-[400px] '
               )}
               animate={{
                 rotateZ: (cards.length - index - 1) * 4 + randomRotate,
                 scale: 1 + index * 0.06 - cards.length * 0.06,
-                transformOrigin: '50% 50%', // Sudah disesuaikan agar simetris
+                transformOrigin: '50% 50%',
               }}
               transition={{
                 type: 'spring',
                 stiffness: animationConfig.stiffness,
                 damping: animationConfig.damping,
               }}
-              style={{
-                width: cardDimensions.width,
-                height: cardDimensions.height,
-              }}
             >
-              <h3 className="text-[clamp(1rem,2vw,1.5rem)] font-bold mb-1">{card.title}</h3>
+              <h3 className="text-[clamp(1rem,2vw,1.5rem)] font-bold mb-1">
+                {card.title}
+              </h3>
               <p className="text-xs text-gray-400 mb-4 tracking-widest">
                 DRAG TO INTERACT
               </p>
               <hr className="border-t border-blue-500 w-2/3 mx-auto mb-6" />
-              <div className="hide-scrollbar flex flex-col gap-4 items-start max-h-48 overflow-y-auto px-2 mb-6 text-left">
+              <div className="hide-scrollbar flex flex-col gap-4 items-start min-h-48 overflow-y-auto px-2 mb-6 text-left">
                 {card.skills.map((skill, j) => (
                   <div key={j} className="flex items-center gap-3 text-xl">
                     {skill.icon}
@@ -191,18 +184,20 @@ export default function SkillCardStack() {
                   </div>
                 ))}
               </div>
-              <p className="text-sm text-gray-400">{card.description}</p>
+              <div className="flex items-end">  
+                <p className="text-sm text-gray-400">{card.description}</p>
+              </div>
             </motion.div>
           </CardRotate>
         );
       })}
 
-      {/* Tombol Navigasi Kiri */}
-      <div className="absolute -left-20 top-1/2 -translate-y-1/2 z-10">
+      {/* Left Nav */}
+      <div className="absolute -left-8 sm:-left-20 top-1/2 -translate-y-1/2 z-10">
         <MagneticEffect>
           <Button
             variant="secondary"
-            className="rounded-full py-8 px-6 text-4xl"
+            className="rounded-full py-6 px-4 text-2xl sm:py-8 sm:px-6 sm:text-4xl"
             onClick={moveBackward}
           >
             &laquo;
@@ -210,12 +205,12 @@ export default function SkillCardStack() {
         </MagneticEffect>
       </div>
 
-      {/* Tombol Navigasi Kanan */}
-      <div className="absolute -right-20 top-1/2 -translate-y-1/2 z-10">
+      {/* Right Nav */}
+      <div className="absolute -right-8 sm:-right-20 top-1/2 -translate-y-1/2 z-10">
         <MagneticEffect>
           <Button
             variant="secondary"
-            className="rounded-full py-8 px-6 text-4xl"
+            className="rounded-full py-6 px-4 text-2xl sm:py-8 sm:px-6 sm:text-4xl"
             onClick={moveForward}
           >
             &raquo;
