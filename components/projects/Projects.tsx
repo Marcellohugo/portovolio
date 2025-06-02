@@ -1,8 +1,8 @@
+import GradientText from "../ui/text/AnimateSubtitle"
+import AnimateTitle from "../ui/text/AnimateTitle"
 import { projects } from "@/components/projects/projectData"
 import ProjectCard from "./ProjectCard"
 import ProjectButton from "./ProjectButton"
-import ProjectsTitle from "./ProjectsTittle"
-import ProjectsSubtitle from "./ProjectsSubtittle"
 
 export default function project() {
   return (
@@ -10,11 +10,29 @@ export default function project() {
       id="project"
       className="relative w-full pt-24"
     >
-      <div className="relative z-10 mx-auto flex-col px-4 text-[whitesmoke]">
+      <div className="relative z-10 mx-auto flex-col text-[whitesmoke]">
         {/* First content block: Title, Subtitle, Text, Buttons, Image */}
         <div className="flex flex-col items-start justify-center max-w-[1200px] mx-auto">
-          <ProjectsTitle/>
-          <ProjectsSubtitle/> 
+          <GradientText
+            className="text-[clamp(1.6rem,4vw,3rem)] leading-[1.5] font-semibold"
+            >
+            FEATURED WORKS
+          </GradientText>
+          <AnimateTitle>
+            PROJECTS
+          </AnimateTitle>
+          <div className="w-full flex flex-col items-center justify-center overflow-hidden">
+            <GradientText
+              className="items-center justify-center text-[clamp(1.6rem,4vw,3rem)] leading-[1.5] font-semibold"
+              >
+              OVERVIEW
+            </GradientText>
+            <span
+             className="text-[clamp(1rem,2vw,1.5rem)] leading-[1.4] font-semibold text-center"
+            >
+                LIST OF SELECTED PORTOFOLIO
+            </span>
+          </div>
         </div>
 
         <div className="flex flex-row items-center justify-center min-h-full mx-auto w-[100%]">

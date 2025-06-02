@@ -13,18 +13,18 @@ const Nav: React.FC = () => {
   return (
     <>
       {/* Top Navbar */}
-      <nav className="fixed top-0 w-full z-50 flex items-center justify-between px-8 py-4 backdrop-blur-md bg-black/50 text-white">
+      <nav className="fixed top-0 w-full z-50 flex items-center justify-between px-2 sm:px-8 py-4 backdrop-blur-md bg-black/50 text-white">
         {/* Logo */}
         <div className="flex items-center gap-2">
           <img
             src="/icons/logo.png"
             alt="Logo"
-            width={40}
-            height={40}
+            width={60}
+            height={60}
           /> 
           <div>
             <div className="text-[#A3D8FF] font-bold text-lg">Marcello Hugo</div>
-            <div className="text-xs">Frond-end Developer</div>
+            <div className="text-[0.875rem]">Frond-end Developer</div>
           </div>
         </div>
 
@@ -70,11 +70,11 @@ const Nav: React.FC = () => {
       {/* Bottom Footer-Like Bar */}
       <div className="fixed bottom-0 w-full text-white py-4 flex justify-center items-center text-center z-40">
         {/* Left Icon */}
-        <div className="absolute left-4 bottom-4">
+        {/* <div className="absolute left-4 bottom-4">
           <MagneticEffect>
             <FaGamepad className="w-6 h-6" />
           </MagneticEffect>
-        </div>
+        </div> */}
 
         {/* Right Icons */}
         <div className="absolute right-4 bottom-4 flex flex-col items-center justify-center space-y-2">
@@ -87,11 +87,11 @@ const Nav: React.FC = () => {
               <span className="text-xs mt-1">Scroll Top</span>
             </div>
           </MagneticEffect>
-          <div className="flex flex-row items-center justify-center space-x-4">
+          {/* <div className="flex flex-row items-center justify-center space-x-4">
             <MagneticEffect>
               <FaVolumeMute className="w-6 h-6" />
             </MagneticEffect>
-          </div>
+          </div> */}
           {/* <ThemeSwitcher /> */}
         </div>
       </div>

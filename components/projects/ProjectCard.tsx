@@ -77,12 +77,12 @@ export default function ProjectCard({
 
         {/* Text */}
         <div className="mt-4">
-          <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-foreground">
+          <h3 className="text-[clamp(1.6rem,4vw,3rem)] font-bold leading-tight text-foreground">
             <motion.span variants={projectCardTitleAnimation}>
               {title}
             </motion.span>
           </h3>
-          <p className="mt-2 sm:mt-4 text-[10px] sm:text-xs md:text-sm font-semibold text-foreground/50">
+          <p className="mt-2 sm:mt-4 text-[clamp(0.625rem,2vw,0.875rem)] font-semibold text-foreground/50">
             <motion.span variants={projectCardDescriptionAnimation}>
               {description}
             </motion.span>
@@ -92,7 +92,7 @@ export default function ProjectCard({
             className="mt-4 sm:mt-6 flex flex-wrap gap-2 sm:gap-4"
           >
             {tech.map((t, i) => (
-              <span key={i} className="text-[9px] sm:text-xs md:text-sm font-medium text-foreground/50">
+              <span key={i} className="text-[clamp(0.7rem,2vw,0.9rem)] font-medium text-foreground/50">
                 {t}
               </span>
             ))}

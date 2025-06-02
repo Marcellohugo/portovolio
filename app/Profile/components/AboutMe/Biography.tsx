@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button } from "@/components/ui/button/button";
+import { Button } from "@/components/ui/button/Button";
 import { ArrowRightIcon, MinusIcon } from "lucide-react";
 import MagneticEffect from "@/components/ui/button/MagneticEffect";
 

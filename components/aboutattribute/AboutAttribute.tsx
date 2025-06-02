@@ -18,7 +18,6 @@ export default function AboutAttribute() {
 
           <div className="w-full flex flex-col items-center justify-center text-center">
             <GradientText
-              showBorder={false}
               className="text-[clamp(1.6rem,4vw,3rem)] leading-[1.5] font-semibold"
               >
               PROGRAMMING SKILL

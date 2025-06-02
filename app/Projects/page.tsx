@@ -24,7 +24,6 @@ export default async function Page (){
       <div className="relative z-10 mx-auto flex-col text-[whitesmoke]">
         <div className="flex flex-col items-start justify-center max-w-[1200px] mx-auto">
           <GradientText
-            showBorder={false}
             className="text-[clamp(1.6rem,4vw,3rem)] leading-[1.5] font-semibold"
             >
             LIST OF
@@ -35,7 +34,6 @@ export default async function Page (){
         </div>
         <div className="w-full flex flex-col items-center justify-center overflow-hidden">
           <GradientText
-            showBorder={false}
             className="items-center justify-center text-[clamp(1.6rem,4vw,3rem)] leading-[1.5] font-semibold"
             >
             HIGHLIGHT
@@ -47,7 +45,6 @@ export default async function Page (){
         <HighlightSection/>
         <div className="w-full flex flex-col items-center justify-center text-center">
           <GradientText
-            showBorder={false}
             className="text-[clamp(1.6rem,4vw,3rem)] leading-[1.5] font-semibold"
             >
               OTHER PROJECTS

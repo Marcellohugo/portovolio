@@ -9,7 +9,7 @@ export default function Experience1() {
       <div className="relative z-10 mx-auto flex-col text-[whitesmoke]">
         <div className="flex flex-col items-start justify-center max-w-[1200px] mx-auto">
           <GradientText
-              showBorder={false}
+              
               className="text-[clamp(1.6rem,4vw,3rem)] leading-[1.5] font-semibold"
               >
               BACKGROUND
@@ -20,7 +20,7 @@ export default function Experience1() {
         </div>
         <div className="w-full flex flex-col items-center justify-center text-center">
           <GradientText
-            showBorder={false}
+            
             className="text-[clamp(1.6rem,4vw,3rem)] leading-[1.5] font-semibold"
             >
             WORK
@@ -32,7 +32,7 @@ export default function Experience1() {
         <Experience/>
         <div className="w-full flex flex-col items-center justify-center text-center">
           <GradientText
-            showBorder={false}
+            
             className="text-[clamp(1.6rem,4vw,3rem)] leading-[1.5] font-semibold"
             >
             ORGANIZATION

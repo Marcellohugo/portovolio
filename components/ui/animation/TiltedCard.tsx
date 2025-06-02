@@ -1,17 +1,63 @@
 import type { SpringOptions } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
+
+/**
+ * Hook sederhana untuk mendapatkan ukuran viewport (lebar & tinggi jendela).
+ */
+function useViewport() {
+  const [viewport, setViewport] = useState({ width: 0, height: 0 });
+
+  useEffect(() => {
+    function handleResize() {
+      setViewport({ width: window.innerWidth, height: window.innerHeight });
+    }
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return viewport;
+}
 
 interface TiltedCardProps {
   imageSrc: React.ComponentProps<"img">["src"];
   altText?: string;
   captionText?: string;
-  containerHeight?: React.CSSProperties["height"];
-  containerWidth?: React.CSSProperties["width"];
-  imageHeight?: React.CSSProperties["height"];
-  imageWidth?: React.CSSProperties["width"];
-  scaleOnHover?: number;
-  rotateAmplitude?: number;
+  /** Jika ingin override default responsive sizing, bisa berikan props ini.
+   *  Contoh: { mobile: "150px", tablet: "200px", desktop: "300px" } */
+  customContainerHeights?: {
+    mobile?: React.CSSProperties["height"];
+    tablet?: React.CSSProperties["height"];
+    desktop?: React.CSSProperties["height"];
+  };
+  customContainerWidths?: {
+    mobile?: React.CSSProperties["width"];
+    tablet?: React.CSSProperties["width"];
+    desktop?: React.CSSProperties["width"];
+  };
+  customImageHeights?: {
+    mobile?: React.CSSProperties["height"];
+    tablet?: React.CSSProperties["height"];
+    desktop?: React.CSSProperties["height"];
+  };
+  customImageWidths?: {
+    mobile?: React.CSSProperties["width"];
+    tablet?: React.CSSProperties["width"];
+    desktop?: React.CSSProperties["width"];
+  };
+  /** Jika override amplitude rotate per perangkat */
+  customRotateAmplitude?: {
+    mobile?: number;
+    tablet?: number;
+    desktop?: number;
+  };
+  /** Jika override scaleOnHover per perangkat */
+  customScaleOnHover?: {
+    mobile?: number;
+    tablet?: number;
+    desktop?: number;
+  };
   showMobileWarning?: boolean;
   showTooltip?: boolean;
   overlayContent?: React.ReactNode;
@@ -28,18 +74,89 @@ export default function TiltedCard({
   imageSrc,
   altText = "Tilted card image",
   captionText = "",
-  containerHeight = "300px",
-  containerWidth = "100%",
-  imageHeight = "300px",
-  imageWidth = "300px",
-  scaleOnHover = 1.1,
-  rotateAmplitude = 14,
+  customContainerHeights,
+  customContainerWidths,
+  customImageHeights,
+  customImageWidths,
+  customRotateAmplitude,
+  customScaleOnHover,
   showMobileWarning = true,
   showTooltip = true,
   overlayContent = null,
   displayOverlayContent = false,
 }: TiltedCardProps) {
   const ref = useRef<HTMLElement>(null);
+
+  // 1. Ambil ukuran viewport
+  const { width: viewportWidth } = useViewport();
+
+  // 2. Tentukan kategori perangkat berdasarkan lebar layar
+  const isMobile = viewportWidth < 640;
+  const isTablet = viewportWidth >= 640 && viewportWidth < 1024;
+  const isDesktop = viewportWidth >= 1024;
+
+  // 3. Set nilai default untuk setiap kategori (kan bisa dioverride via props)
+  const defaultContainerHeight = isMobile
+    ? "200px"
+    : isTablet
+    ? "250px"
+    : "300px";
+  const defaultContainerWidth = isMobile
+    ? "90vw"
+    : isTablet
+    ? "400px"
+    : "500px";
+  const defaultImageHeight = isMobile
+    ? "200px"
+    : isTablet
+    ? "250px"
+    : "300px";
+  const defaultImageWidth = isMobile
+    ? "200px"
+    : isTablet
+    ? "250px"
+    : "300px";
+  const defaultRotateAmplitude = isMobile ? 0 : isTablet ? 8 : 14;
+  const defaultScaleOnHover = isMobile ? 1 : isTablet ? 1.05 : 1.1;
+
+  // 4. Gunakan nilai override (jika diberikan) atau default
+  const containerHeight =
+    (isMobile && customContainerHeights?.mobile) ||
+    (isTablet && customContainerHeights?.tablet) ||
+    (isDesktop && customContainerHeights?.desktop) ||
+    defaultContainerHeight;
+
+  const containerWidth =
+    (isMobile && customContainerWidths?.mobile) ||
+    (isTablet && customContainerWidths?.tablet) ||
+    (isDesktop && customContainerWidths?.desktop) ||
+    defaultContainerWidth;
+
+  const imageHeight =
+    (isMobile && customImageHeights?.mobile) ||
+    (isTablet && customImageHeights?.tablet) ||
+    (isDesktop && customImageHeights?.desktop) ||
+    defaultImageHeight;
+
+  const imageWidth =
+    (isMobile && customImageWidths?.mobile) ||
+    (isTablet && customImageWidths?.tablet) ||
+    (isDesktop && customImageWidths?.desktop) ||
+    defaultImageWidth;
+
+  const rotateAmplitude =
+    (isMobile && customRotateAmplitude?.mobile) ||
+    (isTablet && customRotateAmplitude?.tablet) ||
+    (isDesktop && customRotateAmplitude?.desktop) ||
+    defaultRotateAmplitude;
+
+  const scaleOnHover =
+    (isMobile && customScaleOnHover?.mobile) ||
+    (isTablet && customScaleOnHover?.tablet) ||
+    (isDesktop && customScaleOnHover?.desktop) ||
+    defaultScaleOnHover;
+
+  // 5. Inisialisasi motion values
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const rotateX = useSpring(useMotionValue(0), springValues);
@@ -54,7 +171,10 @@ export default function TiltedCard({
 
   const [lastY, setLastY] = useState(0);
 
+  // 6. Handler mouse move
   function handleMouse(e: React.MouseEvent<HTMLElement>) {
+    // Jika amplitude = 0 (biasanya di mobile), langsung return (tidak ada efek tilt)
+    if (rotateAmplitude === 0) return;
     if (!ref.current) return;
 
     const rect = ref.current.getBoundingClientRect();
@@ -76,6 +196,7 @@ export default function TiltedCard({
   }
 
   function handleMouseEnter() {
+    // Jika mobile (scaleOnHover = 1), efek scale tidak akan berpengaruh
     scale.set(scaleOnHover);
     opacity.set(1);
   }
@@ -100,9 +221,9 @@ export default function TiltedCard({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {showMobileWarning && (
-        <div className="absolute top-4 text-center text-sm block sm:hidden">
-          This effect is not optimized for mobile. Check on desktop.
+      {showMobileWarning && isMobile && (
+        <div className="absolute top-4 text-center text-sm block sm:hidden px-2">
+          Efek 3D tidak optimal di ponsel. Coba buka di desktop atau tablet.
         </div>
       )}
 
@@ -133,9 +254,9 @@ export default function TiltedCard({
         )}
       </motion.div>
 
-      {showTooltip && (
+      {showTooltip && !isMobile && (
         <motion.figcaption
-          className="pointer-events-none absolute left-0 top-0 rounded-[4px] bg-white px-[10px] py-[4px] text-[10px] text-[#2d2d2d] opacity-0 z-[3] hidden sm:block"
+          className="pointer-events-none absolute left-0 top-0 rounded-[4px] bg-white px-[10px] py-[4px] text-[10px] text-[#2d2d2d] opacity-0 z-[3]"
           style={{
             x,
             y,

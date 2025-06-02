@@ -3,7 +3,7 @@
 import { motion, useAnimation, useInView } from "framer-motion"
 import { useRouter } from "next/navigation"
 import { useEffect, useRef } from "react"
-import { Button } from "../ui/button/button"
+import { Button } from "../ui/button/Button"
 import { projectCardAnimation } from "./animationCard"
 import MagneticEffect from "../ui/button/MagneticEffect"
 

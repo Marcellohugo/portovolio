@@ -1,9 +1,8 @@
+import GradientText from "../ui/text/AnimateSubtitle";
+import AnimateTitle from "../ui/text/AnimateTitle";
 import dynamic from "next/dynamic";
 import React from "react";
-import ContactTitle from "./ContactTittle";
-import ContactSubtitle from "./ContactSubtittle";
 import MagneticEffect from "../ui/button/MagneticEffect";
-import Lanyard from "../ui/animation/Lanyard";
 import ContactForm from "./ContactForm";
 
 const LanyardNoSSR = dynamic(
@@ -19,11 +18,21 @@ export default function contact() {
       >
       <div className="relative z-10 mx-auto flex-col px-4 text-[whitesmoke]">
         <div className="flex flex-col items-start justify-center max-w-[1200px] mx-auto">
-          <ContactTitle/>
-          <div className="">
-
+          <GradientText
+            className="text-[clamp(1.6rem,4vw,3rem)] leading-[1.5] font-semibold"
+            >
+            CONTACT INFORMATION
+          </GradientText>
+          <AnimateTitle>
+            CONTACT
+          </AnimateTitle>
+          <div className="w-full flex flex-col items-center justify-center overflow-hidden">
+            <GradientText
+              className="items-center justify-center text-[clamp(1.6rem,4vw,3rem)] leading-[1.5] font-semibold"
+              >
+              STAY IN TOUCH
+            </GradientText>
           </div>
-          <ContactSubtitle/>
         </div>
 
         <div className="flex flex-col md:flex-row items-center justify-center mx-auto max-w-[1200px]">

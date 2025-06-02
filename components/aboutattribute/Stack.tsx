@@ -15,7 +15,7 @@ import {
   SiReactrouter,
 } from 'react-icons/si';
 import clsx from 'clsx';
-import { Button } from '../ui/button/button';
+import { Button } from '../ui/button/Button';
 import MagneticEffect from '../ui/button/MagneticEffect';
 
 interface SkillCard {

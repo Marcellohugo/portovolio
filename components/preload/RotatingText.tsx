@@ -68,7 +68,7 @@ const RotatingText = forwardRef<RotatingTextRef, RotatingTextProps>(
       auto = true,
       splitBy = "characters",
       onNext,
-      mainClassName = "text-4xl sm:text-6xl md:text-8xl lg:text-8xl bg-blue-300 font-bold overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg",
+      mainClassName = "text-[clamp(1rem,6vw,10rem)] bg-blue-300 font-bold overflow-hidden justify-center rounded-lg",
       splitLevelClassName,
       elementLevelClassName,
       ...rest

@@ -28,7 +28,7 @@ const tools = [
 const SkillsSection: React.FC = () => {
   return (
     <section className="py-16 px-4 flex flex-col items-center justify-center text-center w-full ">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-[1200px] mb-16">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 grid-rows-2 sm:grid-rows-none gap-8 max-w-[1200px] mb-16">
         {skills.map((skill) => (
           <div key={skill.label} className="flex flex-col items-center">
             <MagneticEffect>
@@ -43,7 +43,7 @@ const SkillsSection: React.FC = () => {
 
       <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
         <div>
-          <h3 className="text-[clamp(1rem,2vw,1.5rem)] font-bold tracking-widest mb-4">LANGUAGES & FRAMEWORKS</h3>
+          <h3 className="text-lg font-bold tracking-widest mb-4">LANGUAGES & FRAMEWORKS</h3>
           <p className="text-lg text-[#A3D8FF]">
             {languages.map((lang, idx) => (
               <span key={lang}>
@@ -53,7 +53,7 @@ const SkillsSection: React.FC = () => {
           </p>
         </div>
         <div>
-          <h3 className="text-[clamp(1rem,2vw,1.5rem)] font-bold tracking-widest mb-4">TOOLS</h3>
+          <h3 className="text-lg font-bold tracking-widest mb-4">TOOLS</h3>
           <p className="text-lg text-[#A3D8FF]">
             {tools.map((tool, idx) => (
               <span key={tool}>

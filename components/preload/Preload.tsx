@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import RotatingText from "./RotatingText";
 import { motion, AnimatePresence } from "framer-motion";
-import { Button } from "../ui/button/button";
+import { Button } from "../ui/button/Button";
 import MagneticEffect from "../ui/button/MagneticEffect";
 import GradientText from "../ui/text/AnimateSubtitle";
 
@@ -32,12 +32,24 @@ export default function Preload({ onStart }: PreloadProps) {
             transition={{ duration: 0.5 }}
             className="relative z-10 flex items-center justify-center w-full"
           >
-            <span className="text-4xl sm:text-6xl md:text-8xl font-bold mr-4 text-white">
-              I am
-            </span>
-            <RotatingText
-              texts={['Front-End Dev', 'Full-Stack Dev', 'Funny Guy', 'Marco Marcello Hugo']}
-            />
+            <div className="flex items-center justify-center flex-wrap">
+              {/* "I am" */}
+              <span className="text-[clamp(1rem,6vw,10rem)] font-bold mr-4 text-white">
+                I am
+              </span>
+
+              {/* RotatingText */}
+              <span className="text-[clamp(1rem,6vw,10rem)] font-bold text-white">
+                <RotatingText
+                  texts={[
+                    "Front-End Dev",
+                    "Full-Stack Dev",
+                    "Funny Guy",
+                    "Marco Marcello Hugo",
+                  ]}
+                />
+              </span>
+            </div>
           </motion.div>
         )}
   
@@ -51,12 +63,11 @@ export default function Preload({ onStart }: PreloadProps) {
             className="relative z-10 flex flex-col items-center justify-center gap-6"
           >
             <GradientText
-              showBorder={false}
-              className="items-center justify-center text-2xl font-black"
+              className="items-center justify-center text-[clamp(1.6rem,4vw,3rem)] font-black"
               >
               LOADING STATUS!
             </GradientText>
-            <h1 className="text-2xl font-black text-white text-center">READY</h1>
+            <h1 className="text-[clamp(1.6rem,4vw,3rem)] font-black text-white text-center">READY</h1>
             <MagneticEffect>
               <Button
                 variant = "outline"

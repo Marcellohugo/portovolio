@@ -1,5 +1,6 @@
 "use client"
 import React, { useState } from 'react';
+import { Button } from '@/components/ui/button/Button';
 
 // Define project interface
 interface Project {
@@ -64,7 +65,7 @@ const projects: Project[] = [
     description: '“CountLories” app to help users achieve fitness goals by scanning food—the main screen contains food category icons and logos, and a camera scanner screen to recognize dishes and count calories in real-time.',
     tags: ['Figma'],
     category: 'UI/UX',
-    imageUrl: '/images/Countlories.png',
+    imageUrl: '/images/Countlories.jpg',
   },
   // Add more projects here
 ];
@@ -78,53 +79,60 @@ const OtherProjectsSection: React.FC = () => {
       : projects.filter((p) => p.category === activeFilter);
 
   return (
-    <section>
+    <section className="py-8">
       <div className="container mx-auto max-w-[1200px] px-4">
         
-        <div className="flex item-center justify-center space-x-4 mt-8 mb-8">
+        {/* Filter Buttons */}
+        <div className="flex flex-wrap justify-center gap-2 mt-8 mb-8">
           {filters.map((f) => (
-            <button
+            <Button
               key={f.value}
               onClick={() => setActiveFilter(f.value)}
-              className={`px-4 py-2 rounded-lg font-medium transition 
-                ${activeFilter === f.value ? 'bg-blue-700 text-white' : 'bg-white text-gray-700 border'} `}
+              className={`
+                px-4 py-2 rounded-lg font-medium transition
+                ${activeFilter === f.value
+                  ? 'bg-blue-900 text-white'
+                  : 'bg-white text-gray-700 border border-gray-300'}
+              `}
             >
               {f.label}
-            </button>
+            </Button>
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 grid-rows-1 md:grid-rows-2 gap-6">
+        {/* Project Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {filtered.map((proj) => (
             <div
               key={proj.id}
-              className="relative bg-white rounded-lg overflow-hidden shadow hover:shadow-lg transition"
+              className="relative bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition h-64 sm:h-72 md:h-80 group"
             >
-              {/* Thumbnail background */}
+              {/* Background Thumbnail */}
               {proj.imageUrl && (
                 <img
                   src={proj.imageUrl}
                   alt={proj.title}
-                  className="max-w-[640px] max-h-[360px] object-cover opacity-30"
+                  className="absolute inset-0 w-full h-full object-fill
+                   opacity-30 z-0 transition duration-300 ease-in-out group-hover:opacity-100 group-hover:z-20"
                 />
               )}
 
-              {/* Overlay content */}
-              <div className="absolute inset-0 flex flex-col justify-center items-center px-6 text-center">
-                <span className="absolute top-4 left-4 bg-gray-800 text-white text-sm px-2 py-1 rounded">
+              {/* Overlay Content */}
+              <div className="absolute inset-0 flex flex-col justify-center items-center px-4 text-center">
+                <span className="absolute top-3 left-3 bg-gray-800 text-white text-xs sm:text-sm px-2 py-1 rounded">
                   {proj.year}
                 </span>
-                <h3 className="text-2xl font-semibold mb-2 text-gray-900">
+                <h3 className="text-lg sm:text-xl font-semibold mb-1 text-gray-900">
                   {proj.title}
                 </h3>
-                <p className="text-gray-700 mb-4 text-sm">
+                <p className="text-gray-700 mb-3 text-xs sm:text-sm">
                   {proj.description}
                 </p>
-                <div className="flex flex-wrap justify-center gap-2">
+                <div className="flex flex-wrap justify-center gap-1 sm:gap-2">
                   {proj.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-xs font-medium bg-gray-800 text-white px-3 py-1 rounded-full"
+                      className="text-[10px] sm:text-xs font-medium bg-gray-800 text-white px-2 py-1 rounded-full"
                     >
                       {tag}
                     </span>

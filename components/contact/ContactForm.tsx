@@ -7,7 +7,7 @@ import { Loader, Mail } from "lucide-react"
 import { useRef } from "react"
 import { useFormState, useFormStatus } from "react-dom"
 import MagneticEffect from "../ui/button/MagneticEffect"
-import { Button } from "../ui/button/button"
+import { Button } from "../ui/button/Button"
 import ContactFormLine from "./ContactFormLine"
 import useIsomorphicLayoutEffect from "../../hooks/UseIsomorphicLayoutEffect"
 
