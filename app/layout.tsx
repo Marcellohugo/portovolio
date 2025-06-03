@@ -4,6 +4,7 @@ import type { Metadata } from "next"
 import { Work_Sans } from "next/font/google"
 import "./globals.css"
 import PreloadWrapper from "@/components/preload/PreloadWrapper"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const font = Work_Sans({ subsets: ["latin"] })
 
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
   },
   description:
     "A seasoned frontend web developer with a passion for creating engaging and interactive websites.",
-  metadataBase: new URL("https://aafrzl.my.id"),
+  metadataBase: new URL("https://marcello.web.id/"),
   openGraph: {
     title: {
       template: "Marcello Hugo | %s",
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
     },
     description:
       "A seasoned frontend web developer with a passion for creating engaging and interactive websites.",
-    url: "https://aafrzl.my.id",
+    url: "https://marcello.web.id/",
     siteName: "Marcello Hugo",
     images: [
       {
@@ -76,7 +77,7 @@ export const metadata: Metadata = {
     creator: "@marcellohugo__",
     images: [
       {
-        url: "/public/images/Profile.png",
+        url: "/icons/logo.png",
         width: 1000,
         height: 1200,
       },
@@ -91,6 +92,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={cn(font.className)}>
         <PreloadWrapper>
           {children}
+          <SpeedInsights />
         </PreloadWrapper>
       </body>
     </html>
