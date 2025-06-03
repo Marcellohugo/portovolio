@@ -1,7 +1,8 @@
+'use client'
+
 import dynamic from "next/dynamic";
 import React from "react";
 import { motion } from "framer-motion";
-import ComputerCanvas from "./Computers";
 import Particles from "../ui/background/Particles";
 
 const ComputersCanvasNoSSR = dynamic(
@@ -32,7 +33,7 @@ export default function Hero() {
 
         <div>
           <h1 className={`font-black text-white text-[4rem] md:text-[4rem] lg:text-[6rem] lg:leading-[98px] mt-2`}>
-            Hi, I'm <span className="text-[#A3D8FF]">Marcello</span>
+            Hi, I&apos;m <span className="text-[#A3D8FF]">Marcello</span>
           </h1>
           <p className={`text-white font-semibold text-[clamp(1rem,2vw,1.5rem)] leading-[1.4] text-white-100 mt-2`}>
             I Develop attractive and interactive <br className="hidden sm:block" />

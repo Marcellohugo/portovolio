@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
@@ -10,21 +10,21 @@ interface ComputersProps {
 }
 
 const Computers: React.FC<ComputersProps> = ({ isMobile, isTablet }) => {
+  // Load model GLTF
   const computer = useGLTF("/assets/desktop_pc/gaming_desktop_pc.glb");
 
-  // Default untuk desktop
+  // Tentukan skala dan posisi berdasarkan jenis device
+  // - Mobile: ukuran paling kecil (tetap return null di Canvas, jadi sebenarnya tidak ditampilkan)
+  // - Tablet: gunakan skala sedang, posisi sedikit diubah
+  // - Desktop: skala default seperti sebelumnya
   let scaleValue = 0.75;
   let positionValue: [number, number, number] = [0, -3.0, -1.5];
 
-  // Jika tablet
   if (isTablet) {
-    scaleValue = 0.8;
+    scaleValue = 0.5;
     positionValue = [0, -2.5, -2.0];
-  }
-  // Jika mobile—(portrait atau landscape)—tetap pakai nilai mobile,
-  // meski sebenarnya di render guard kita akan return null.
-  else if (isMobile) {
-    scaleValue = 0.7;
+  } else if (isMobile) {
+    scaleValue = 0.4;
     positionValue = [0, -2.0, -2.2];
   }
 
@@ -52,7 +52,6 @@ const Computers: React.FC<ComputersProps> = ({ isMobile, isTablet }) => {
 
 const ComputersCanvas: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
-  const [isMobileLandscape, setIsMobileLandscape] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
 
@@ -61,51 +60,38 @@ const ComputersCanvas: React.FC = () => {
     setHasMounted(true);
   }, []);
 
-  // 2. Media query untuk mobile (portrait), mobile (landscape), dan tablet
+  // 2. Media query untuk mobile dan tablet
   useEffect(() => {
-    // HP potret/landscape: lebar layar ≤ 500px
+    // Mobile: max-width 500px
     const mobileQuery = window.matchMedia("(max-width: 500px)");
-    // HP landscape: lebar layar ≤ 500px + orientation landscape
-    const mobileLandscapeQuery = window.matchMedia(
-      "(max-width: 500px) and (orientation: landscape)"
-    );
-    // Tablet: lebar 501px – 1024px (baik portrait maupun landscape)
+    // Tablet: antara 501px hingga 1024px
     const tabletQuery = window.matchMedia(
       "(min-width: 501px) and (max-width: 1024px)"
     );
 
     // Set keadaan awal
     setIsMobile(mobileQuery.matches);
-    setIsMobileLandscape(mobileLandscapeQuery.matches);
     setIsTablet(tabletQuery.matches);
 
-    // Handler
+    // Handler perubahan ukuran
     const handleMobileChange = (e: MediaQueryListEvent) => {
       setIsMobile(e.matches);
-    };
-    const handleMobileLandscapeChange = (e: MediaQueryListEvent) => {
-      setIsMobileLandscape(e.matches);
     };
     const handleTabletChange = (e: MediaQueryListEvent) => {
       setIsTablet(e.matches);
     };
 
     mobileQuery.addEventListener("change", handleMobileChange);
-    mobileLandscapeQuery.addEventListener("change", handleMobileLandscapeChange);
     tabletQuery.addEventListener("change", handleTabletChange);
 
     return () => {
       mobileQuery.removeEventListener("change", handleMobileChange);
-      mobileLandscapeQuery.removeEventListener(
-        "change",
-        handleMobileLandscapeChange
-      );
       tabletQuery.removeEventListener("change", handleTabletChange);
     };
   }, []);
 
-  // Jika belum mount, atau mobile (portrait), atau mobile dalam mode landscape → jangan render
-  if (!hasMounted || isMobileLandscape || isMobile) {
+  // Jika belum di-mount atau sedang di mobile, jangan render Canvas
+  if (!hasMounted || isMobile) {
     return null;
   }
 

@@ -5,7 +5,8 @@ import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Loader, Mail } from "lucide-react"
 import { useRef } from "react"
-import { useFormState, useFormStatus } from "react-dom"
+import { useActionState } from "react"
+import { useFormStatus } from "react-dom"
 import MagneticEffect from "../ui/button/MagneticEffect"
 import { Button } from "../ui/button/Button"
 import ContactFormLine from "./ContactFormLine"
@@ -15,7 +16,9 @@ export default function ContactForm() {
   const el = useRef<HTMLDivElement | null>(null)
   const formEl = useRef<HTMLFormElement | null>(null)
   const { pending } = useFormStatus()
-  const [state, formAction] = useFormState(formSubmission, {
+
+  // Swap useFormState → useActionState
+  const [state, formAction] = useActionState(formSubmission, {
     errors: {
       email: false,
       name: false,
@@ -128,7 +131,7 @@ export default function ContactForm() {
             />
             <ContactFormLine inputId={3} hasError={errors.subject} />
           </div>
-          {errors.email && (
+          {errors.subject && (
             <span className="block text-sm font-light text-red-500 lg:text-base">
               Please enter a valid subject
             </span>
@@ -146,7 +149,7 @@ export default function ContactForm() {
           </div>
           {errors.message && (
             <span className="block text-sm font-light text-red-500 lg:text-base">
-              Please enter a message atleast 3 characters long
+              Please enter a message at least 3 characters long
             </span>
           )}
         </div>
@@ -158,19 +161,17 @@ export default function ContactForm() {
               size="lg"
               className="mt-6"
             >
-              
-                {pending === true ? (
-                  <div className="inline-flex items-center gap-x-2">
-                    <Loader className="h-6 w-6 animate-spin" />
-                    <span>Sending ...</span>
-                  </div>
-                ) : (
-                  <div className="inline-flex items-center gap-x-2">
-                    <Mail className="h-6 w-6" />
-                    <span>Send</span>
-                  </div>
-                )}
-              
+              {pending === true ? (
+                <div className="inline-flex items-center gap-x-2">
+                  <Loader className="h-6 w-6 animate-spin" />
+                  <span>Sending ...</span>
+                </div>
+              ) : (
+                <div className="inline-flex items-center gap-x-2">
+                  <Mail className="h-6 w-6" />
+                  <span>Send</span>
+                </div>
+              )}
             </Button>
           </MagneticEffect>
         </div>

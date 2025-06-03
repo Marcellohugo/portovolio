@@ -89,7 +89,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={cn(font.className)}>
+      <body className={cn(font.className)} suppressHydrationWarning>
         <PreloadWrapper>
           {children}
           <SpeedInsights />

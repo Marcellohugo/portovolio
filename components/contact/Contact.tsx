@@ -1,3 +1,5 @@
+"use client"
+
 import GradientText from "../ui/text/AnimateSubtitle";
 import AnimateTitle from "../ui/text/AnimateTitle";
 import dynamic from "next/dynamic";

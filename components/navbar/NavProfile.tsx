@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { FaGamepad, FaVolumeMute, FaArrowUp, FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaArrowUp, FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 import MagneticEffect from "../ui/button/MagneticEffect";
 import { Button } from "../ui/button/Button";
 // import ThemeSwitcher from "../ui/ThemeSwitcher";

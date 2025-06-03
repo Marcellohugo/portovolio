@@ -43,7 +43,7 @@ export default function AboutMe() {
           />
           {/* Overlay Text */}
           <div className="absolute inset-0 flex flex-col justify-center items-center text-white z-10 text-center">
-            <h2 className="text-[clamp(1rem,2vw,1.5rem)] font-bold">IT'S ALL ABOUT</h2>
+            <h2 className="text-[clamp(1rem,2vw,1.5rem)] font-bold">IT&apos;S ALL ABOUT</h2>
             <GradientText
               className="text-[clamp(1.6rem,4vw,3rem)] leading-[1.5] font-semibold"
               >
@@ -58,7 +58,7 @@ export default function AboutMe() {
             SKILLS AND EXPERTISE
           </GradientText>
           <span className="text-[clamp(1rem,2vw,1.5rem)] leading-[1.4] font-semibold">
-            Explore some skills I'm proficient in to deliver high-quality solutions.
+            Explore some skills I&apos;m proficient in to deliver high-quality solutions.
           </span> 
         </div>
         <SkillsSection/>
