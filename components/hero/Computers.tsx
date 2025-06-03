@@ -4,8 +4,29 @@ import React, { useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 
-const Computers: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
+interface ComputersProps {
+  isMobile: boolean;
+  isTablet: boolean;
+}
+
+const Computers: React.FC<ComputersProps> = ({ isMobile, isTablet }) => {
   const computer = useGLTF("/assets/desktop_pc/gaming_desktop_pc.glb");
+
+  // Default untuk desktop
+  let scaleValue = 0.75;
+  let positionValue: [number, number, number] = [0, -3.0, -1.5];
+
+  // Jika tablet
+  if (isTablet) {
+    scaleValue = 0.8;
+    positionValue = [0, -2.5, -2.0];
+  }
+  // Jika mobile—(portrait atau landscape)—tetap pakai nilai mobile,
+  // meski sebenarnya di render guard kita akan return null.
+  else if (isMobile) {
+    scaleValue = 0.7;
+    positionValue = [0, -2.0, -2.2];
+  }
 
   return (
     <mesh>
@@ -21,8 +42,8 @@ const Computers: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
       <pointLight intensity={2} />
       <primitive
         object={computer.scene}
-        scale={isMobile ? 0.7 : 0.75}
-        position={isMobile ? [0, -2.0, -2.2] : [0, -3.0, -1.5]}
+        scale={scaleValue}
+        position={positionValue}
         rotation={[-0.01, -0.2, -0.1]}
       />
     </mesh>
@@ -31,6 +52,8 @@ const Computers: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
 
 const ComputersCanvas: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [isMobileLandscape, setIsMobileLandscape] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
 
   // 1. Mount guard
@@ -38,23 +61,51 @@ const ComputersCanvas: React.FC = () => {
     setHasMounted(true);
   }, []);
 
-  // 2. Media query
+  // 2. Media query untuk mobile (portrait), mobile (landscape), dan tablet
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 500px)");
-    setIsMobile(mediaQuery.matches);
+    // HP potret/landscape: lebar layar ≤ 500px
+    const mobileQuery = window.matchMedia("(max-width: 500px)");
+    // HP landscape: lebar layar ≤ 500px + orientation landscape
+    const mobileLandscapeQuery = window.matchMedia(
+      "(max-width: 500px) and (orientation: landscape)"
+    );
+    // Tablet: lebar 501px – 1024px (baik portrait maupun landscape)
+    const tabletQuery = window.matchMedia(
+      "(min-width: 501px) and (max-width: 1024px)"
+    );
 
-    const handleMediaQueryChange = (event: MediaQueryListEvent) => {
-      setIsMobile(event.matches);
+    // Set keadaan awal
+    setIsMobile(mobileQuery.matches);
+    setIsMobileLandscape(mobileLandscapeQuery.matches);
+    setIsTablet(tabletQuery.matches);
+
+    // Handler
+    const handleMobileChange = (e: MediaQueryListEvent) => {
+      setIsMobile(e.matches);
+    };
+    const handleMobileLandscapeChange = (e: MediaQueryListEvent) => {
+      setIsMobileLandscape(e.matches);
+    };
+    const handleTabletChange = (e: MediaQueryListEvent) => {
+      setIsTablet(e.matches);
     };
 
-    mediaQuery.addEventListener("change", handleMediaQueryChange);
+    mobileQuery.addEventListener("change", handleMobileChange);
+    mobileLandscapeQuery.addEventListener("change", handleMobileLandscapeChange);
+    tabletQuery.addEventListener("change", handleTabletChange);
+
     return () => {
-      mediaQuery.removeEventListener("change", handleMediaQueryChange);
+      mobileQuery.removeEventListener("change", handleMobileChange);
+      mobileLandscapeQuery.removeEventListener(
+        "change",
+        handleMobileLandscapeChange
+      );
+      tabletQuery.removeEventListener("change", handleTabletChange);
     };
   }, []);
 
-  // Jika belum di-mount, atau di mobile, jangan render Canvas
-  if (!hasMounted || isMobile) {
+  // Jika belum mount, atau mobile (portrait), atau mobile dalam mode landscape → jangan render
+  if (!hasMounted || isMobileLandscape || isMobile) {
     return null;
   }
 
@@ -72,7 +123,7 @@ const ComputersCanvas: React.FC = () => {
         maxPolarAngle={Math.PI / 2}
         minPolarAngle={Math.PI / 2}
       />
-      <Computers isMobile={isMobile} />
+      <Computers isMobile={isMobile} isTablet={isTablet} />
       <Preload all />
     </Canvas>
   );

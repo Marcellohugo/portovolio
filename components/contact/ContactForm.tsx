@@ -151,26 +151,28 @@ export default function ContactForm() {
           )}
         </div>
         <div className="w-full flex justify-center md:justify-start mt-4">
-          <Button
-            aria-disabled={pending}
-            variant="outline"
-            size="lg"
-            className="mt-6"
-          >
-            <MagneticEffect>
-              {pending === true ? (
-                <div className="inline-flex items-center gap-x-2">
-                  <Loader className="h-6 w-6 animate-spin" />
-                  <span>Sending ...</span>
-                </div>
-              ) : (
-                <div className="inline-flex items-center gap-x-2">
-                  <Mail className="h-6 w-6" />
-                  <span>Send</span>
-                </div>
-              )}
-            </MagneticEffect>
-          </Button>
+          <MagneticEffect>
+            <Button
+              aria-disabled={pending}
+              variant="secondary"
+              size="lg"
+              className="mt-6"
+            >
+              
+                {pending === true ? (
+                  <div className="inline-flex items-center gap-x-2">
+                    <Loader className="h-6 w-6 animate-spin" />
+                    <span>Sending ...</span>
+                  </div>
+                ) : (
+                  <div className="inline-flex items-center gap-x-2">
+                    <Mail className="h-6 w-6" />
+                    <span>Send</span>
+                  </div>
+                )}
+              
+            </Button>
+          </MagneticEffect>
         </div>
       </form>
     </div>

@@ -13,7 +13,7 @@ const Nav: React.FC = () => {
   return (
     <>
       {/* Top Navbar */}
-      <nav className="fixed top-0 w-full z-50 flex items-center justify-between px-2 sm:px-8 py-4 backdrop-blur-md bg-black/50 text-white">
+      <nav className="fixed top-0 w-full z-50 flex items-center justify-between px-1 sm:px-8 py-4 backdrop-blur-md bg-black/50 text-white">
         {/* Logo */}
         <div className="flex items-center gap-2">
           <img
@@ -84,7 +84,7 @@ const Nav: React.FC = () => {
               onClick={handleScrollTop}
             >
               <FaArrowUp />
-              <span className="text-xs mt-1">Scroll Top</span>
+              <span className="text-xs font-bold mt-1">Scroll Top</span>
             </div>
           </MagneticEffect>
           {/* <div className="flex flex-row items-center justify-center space-x-4">

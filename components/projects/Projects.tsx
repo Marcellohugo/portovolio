@@ -12,7 +12,7 @@ export default function project() {
     >
       <div className="relative z-10 mx-auto flex-col text-[whitesmoke]">
         {/* First content block: Title, Subtitle, Text, Buttons, Image */}
-        <div className="flex flex-col items-start justify-center max-w-[1200px] mx-auto">
+        <div className="flex flex-col items-start justify-center px-4 sm:px-0 max-w-[1200px] mx-auto">
           <GradientText
             className="text-[clamp(1.6rem,4vw,3rem)] leading-[1.5] font-semibold"
             >

@@ -34,7 +34,7 @@ export default function Preload({ onStart }: PreloadProps) {
           >
             <div className="flex items-center justify-center flex-wrap">
               {/* "I am" */}
-              <span className="text-[clamp(1rem,6vw,10rem)] font-bold mr-4 text-white">
+              <span className="text-[clamp(1rem,6vw,10rem)] font-bold mr-2 sm:mr-4 text-white">
                 I am
               </span>
 
