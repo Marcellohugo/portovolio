@@ -11,7 +11,7 @@ export default async function Page() {
   await new Promise((resolve) => setTimeout(resolve, 1000));
   return (
     <section 
-        className="relative w-full"
+      className="relative w-full"
     >
       <Nav/>
       <div className="fixed inset-0 -z-10">

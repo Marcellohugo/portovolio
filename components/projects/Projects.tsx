@@ -28,7 +28,7 @@ export default function project() {
               OVERVIEW
             </GradientText>
             <span
-             className="text-[clamp(1rem,2vw,1.5rem)] leading-[1.4] font-semibold text-center"
+             className="text-[clamp(1rem,2vw,1.5rem)] leading-[1.4] font-semibold text-center mb-4"
             >
                 LIST OF SELECTED PORTOFOLIO
             </span>

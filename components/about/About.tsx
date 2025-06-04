@@ -47,7 +47,7 @@ export default function About() {
           {/* Sedikit jarak sebelum paragraf */}
           <div className="mt-8 w-full flex flex-col items-center justify-center">
             <ScrollReveal baseRotation={0} enableBlur={false}>
-              Saya Marco Marcello Hugo. Selama perjalanan karir saya, saya senang berkecimpung di bidang Front-end Development dan Mobile Development. Dalam mengisi pengalaman di ranah dunia pekerjaan, saya juga aktif terlibat dalam berbagai kegiatan yang berkaitan dengan logistik dan persiapan peralatan.
+              Saya Marco Marcello Hugo. Selama perjalanan karir saya, saya senang berkecimpung di bidang Front-end Web Development dan Mobile Development. Dalam mengisi pengalaman di ranah perkuliahan, saya juga aktif terlibat dalam berbagai organisasi serta kegiatan yang berkaitan dengan logistik dan peralatan.
             </ScrollReveal>
             <div className="flex flex-row w-full items-center justify-center space-x-6 mt-4">
               <Link href="/Profile">
@@ -62,9 +62,9 @@ export default function About() {
         {/* === VERSI TABLET/DESKTOP: Teks dan Gambar berdampingan === */}
         <div className="hidden sm:flex flex-row items-center justify-center mx-auto max-w-[1200px] px-4 mb-20">
           {/* Paragraf + Tombol (kiri) */}
-          <div className="w-full sm:w-1/2 flex flex-col items-start justify-center pr-8">
+          <div className="w-full sm:w-1/2 flex flex-col items-start justify-center">
             <ScrollReveal baseRotation={0} enableBlur={false}>
-              Saya Marco Marcello Hugo. Selama perjalanan karir saya, saya senang berkecimpung di bidang Front-end Development dan Mobile Development. Dalam mengisi pengalaman di ranah dunia pekerjaan, saya juga aktif terlibat dalam berbagai kegiatan yang berkaitan dengan logistik dan persiapan peralatan.
+              Saya Marco Marcello Hugo. Selama perjalanan karir saya, saya senang berkecimpung di bidang Front-end Web Development dan Mobile Development. Dalam mengisi pengalaman di ranah perkuliahan, saya juga aktif terlibat dalam berbagai organisasi serta kegiatan yang berkaitan dengan logistik dan peralatan.
             </ScrollReveal>
             <div className="flex flex-row w-full items-start justify-start space-x-6 mt-4">
               <Link href="/Profile">

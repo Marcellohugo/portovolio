@@ -24,7 +24,7 @@ const Nav: React.FC = () => {
           /> 
           <div>
             <div className="text-[#A3D8FF] font-bold text-lg">Marcello Hugo</div>
-            <div className="text-[0.875rem]">Frond-end Developer</div>
+            <div className="text-[0.875rem]">Front-end Developer</div>
           </div>
         </div>
 
@@ -71,9 +71,7 @@ const Nav: React.FC = () => {
       <div className="fixed bottom-0 w-full text-white py-4 flex justify-center items-center text-center z-40">
         {/* Left Icon */}
         {/* <div className="absolute left-4 bottom-4">
-          <MagneticEffect>
-            <FaGamepad className="w-6 h-6" />
-          </MagneticEffect>
+          <ThemeSwitcher />
         </div> */}
 
         {/* Right Icons */}

@@ -3,17 +3,30 @@
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { useState } from 'react';
 import {
-  SiExpress,
-  SiGraphql,
-  SiHasura,
-  SiPrisma,
   SiMysql,
   SiNextdotjs,
-  SiRedux,
   SiTailwindcss,
   SiReact,
-  SiReactrouter,
+  SiJavascript,
+  SiTypescript,
+  SiNodedotjs,
+  SiLaravel,
+  SiPostgresql,
+  SiMongodb,
+  SiVercel,
+  SiGithubactions,
+  SiXml,
+  SiKotlin,
+  SiSwift,
+  SiGithub,
+  SiJira,
+  SiNotion,
+  SiMiro,
+  SiFigma,
+  SiAndroidstudio,
+  SiProgress
 } from 'react-icons/si';
+import { FaJava } from "react-icons/fa";
 import clsx from 'clsx';
 import { Button } from '../ui/button/Button';
 import MagneticEffect from '../ui/button/MagneticEffect';
@@ -70,9 +83,11 @@ const skillCards: SkillCard[] = [
     title: 'Frontend',
     skills: [
       { icon: <SiNextdotjs />, name: 'Next' },
+      { icon: <SiReact />, name: 'React' },
       { icon: <SiReact />, name: 'React Native' },
       { icon: <SiTailwindcss />, name: 'Tailwind' },
-      { icon: <SiRedux />, name: 'Redux' },
+      { icon: <SiJavascript />, name: 'Javascript' },
+      { icon: <SiTypescript />, name: 'Typescript' },
     ],
     description:
       'I blend artwork with technology, designing immersive and functional interfaces.',
@@ -81,25 +96,51 @@ const skillCards: SkillCard[] = [
     id: 2,
     title: 'Backend',
     skills: [
-      { icon: <SiExpress />, name: 'Express' },
-      { icon: <SiGraphql />, name: 'GraphQL' },
-      { icon: <SiHasura />, name: 'Hasura' },
-      { icon: <SiPrisma />, name: 'Prisma' },
+      { icon: <SiNodedotjs />, name: 'Node' },
+      { icon: <SiLaravel />, name: 'laravel' },
       { icon: <SiMysql />, name: 'MySQL' },
+      { icon: <SiPostgresql />, name: 'PostgreeSql' },
+      { icon: <SiMongodb />, name: 'Mongodb' },
     ],
     description:
       'I have foundational knowledge and minimal experience in developing APIs.',
   },
   {
     id: 3,
-    title: 'Routing & State',
+    title: 'Mobile',
     skills: [
-      { icon: <SiReactrouter />, name: 'React Router' },
-      { icon: <SiRedux />, name: 'Redux Toolkit' },
-      { icon: <SiPrisma />, name: 'Prisma' },
+      { icon: <SiXml />, name: 'XML' },
+      { icon: <FaJava />, name: 'Java' },
+      { icon: <SiKotlin />, name: 'Kotlin' },
+      { icon: <SiSwift />, name: 'Swift' },
     ],
     description:
       'Capable of integrating modern routing & state management libraries into React-based applications.',
+  },
+  {
+    id: 4,
+    title: 'Cloud',
+    skills: [
+      { icon: <SiVercel />, name: 'Vercel' },
+      { icon: <SiGithubactions />, name: 'Github Action' },
+    ],
+    description:
+      'Experienced in deploying and automating workflows using modern cloud tools.',
+  },
+  {
+    id: 5,
+    title: 'Utilities',
+    skills: [
+      { icon: <SiGithub />, name: 'Github' },
+      { icon: <SiProgress />, name: 'Vscode' },
+      { icon: <SiAndroidstudio />, name: 'Android Studio' },
+      { icon: <SiJira />, name: 'Jira' },
+      { icon: <SiNotion />, name: 'Notion' },
+      { icon: <SiMiro />, name: 'Miro' },
+      { icon: <SiFigma />, name: 'Figma' },
+    ],
+    description:
+      'Proficient with tools that streamline collaboration and productivity.',
   },
 ];
 
@@ -176,7 +217,7 @@ export default function SkillCardStack() {
                 DRAG TO INTERACT
               </p>
               <hr className="border-t border-blue-500 w-2/3 mx-auto mb-6" />
-              <div className="hide-scrollbar flex flex-col gap-4 items-start min-h-48 overflow-y-auto px-2 mb-6 text-left">
+              <div className="hide-scrollbar flex flex-col gap-4 items-start h-[200px] overflow-y-auto px-2 mb-6 text-left ">
                 {card.skills.map((skill, j) => (
                   <div key={j} className="flex items-center gap-3 text-xl">
                     {skill.icon}

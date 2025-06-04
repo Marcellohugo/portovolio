@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const words = ["Halo", "Dunia", "Ini", "React", "TypeScript"];
+const words = ["Wise", "Independent", "Sociable", "Patient", "Humorous", "Creative","Integrity","Critical"];
 
 export default function RotatingWords() {
   const [index, setIndex] = useState(0);

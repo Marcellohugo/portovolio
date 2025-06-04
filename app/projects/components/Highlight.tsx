@@ -62,12 +62,7 @@ export default function HighlightSection() {
 
         <div className="w-full lg:pl-80 text-white mt-6 md:mt-0">
           <p className="text-base md:text-lg text-justify leading-relaxed mb-6 md:mb-8">
-            A generative trivia website built with Next.js, Firebase, NextAuth, Google OAuth,
-            and TypeScript. Users can generate trivia questions for predefined school
-            subjects and answer them with a unique interactive input style. The application
-            supports user authentication with Google and stores data in Firestore. You can
-            see the source code of this project on my GitHub account or preview the project
-            by clicking the button below.
+            Personal website built with Next.js, NextAuth, and TypeScript. This application has a Real Experience Score of 97 and is presented attractively through appearance and color and supports direct interaction by sending messages via email. Users can see my background, experience, and projects that I have created. You can see my other projects below.
           </p>
         </div>
       </div>
