@@ -9,6 +9,7 @@ interface ComputersProps {
   isTablet: boolean;
 }
 
+
 const Computers: React.FC<ComputersProps> = ({ isMobile, isTablet }) => {
   // Load model GLTF
   const computer = useGLTF("/assets/desktop_pc/gaming_desktop_pc.glb");

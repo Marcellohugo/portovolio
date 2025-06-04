@@ -5,6 +5,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Particles from "../ui/background/Particles";
 
+
 const ComputersCanvasNoSSR = dynamic(
   () => import("./Computers"), 
   { ssr: false }

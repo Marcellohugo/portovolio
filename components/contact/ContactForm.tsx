@@ -5,8 +5,7 @@ import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Loader, Mail } from "lucide-react"
 import { useRef } from "react"
-import { useActionState } from "react"
-import { useFormStatus } from "react-dom"
+import { useFormState, useFormStatus } from "react-dom"
 import MagneticEffect from "../ui/button/MagneticEffect"
 import { Button } from "../ui/button/Button"
 import ContactFormLine from "./ContactFormLine"
@@ -18,7 +17,7 @@ export default function ContactForm() {
   const { pending } = useFormStatus()
 
   // Swap useFormState → useActionState
-  const [state, formAction] = useActionState(formSubmission, {
+  const [state, formAction] = useFormState(formSubmission, {
     errors: {
       email: false,
       name: false,
