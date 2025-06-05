@@ -50,7 +50,7 @@ export default function About() {
               Saya Marco Marcello Hugo. Selama perjalanan karir saya, saya senang berkecimpung di bidang Front-end Web Development dan Mobile Development. Dalam mengisi pengalaman di ranah perkuliahan, saya juga aktif terlibat dalam berbagai organisasi serta kegiatan yang berkaitan dengan logistik dan peralatan.
             </ScrollReveal>
             <div className="flex flex-row w-full items-center justify-center space-x-6 mt-4">
-              <Link href="/Profile">
+              <Link href="/profile">
                 <MagneticEffect>
                   <Button variant="secondary">Get to know me</Button>
                 </MagneticEffect>

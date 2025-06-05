@@ -35,7 +35,7 @@ export default function ProjectButton() {
         <Button
           size="lg"
           variant="outline"
-          onClick={() => router.push("/Projects")}
+          onClick={() => router.push("/projects")}
         >
           Load More
         </Button>

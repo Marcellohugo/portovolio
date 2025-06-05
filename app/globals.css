@@ -32,6 +32,19 @@ body {
   scrollbar-width: none;     /* Firefox */
 }
 
+* {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Supaya <img> juga tidak bisa “drag” */
+img {
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+
 /* =================== Stars animation =================== */
 @keyframes twinkle {
   0%,
