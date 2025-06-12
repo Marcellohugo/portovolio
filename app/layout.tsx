@@ -6,6 +6,8 @@ import "./globals.css"
 import PreloadWrapper from "@/components/preload/PreloadWrapper"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import ProtectClient from "@/components/ProtectClient"
+import { Analytics } from "@vercel/analytics/next"
+
 
 const font = Work_Sans({ subsets: ["latin"] })
 
@@ -94,6 +96,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <PreloadWrapper>
           {children}
           <SpeedInsights />
+          <Analytics />
         </PreloadWrapper>
         <ProtectClient />
       </body>
