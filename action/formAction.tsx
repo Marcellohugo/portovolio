@@ -40,7 +40,7 @@ export const formSubmission = async (
   try {
     await resend.emails.send({
       from: "Contact Form <onboarding@resend.dev>", 
-      to: "email-pribadi-anda@gmail.com",
+      to: "marco.marcello15@gmail.com",
       subject: `New message from ${name}: ${subject}`,
       replyTo: email, // <-- PERBAIKAN DI SINI: dari reply_to menjadi replyTo
       html: `<p>You have received a new message from your website's contact form.</p>

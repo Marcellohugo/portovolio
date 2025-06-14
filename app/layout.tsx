@@ -97,6 +97,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
           <SpeedInsights />
           <Analytics />
+          
         </PreloadWrapper>
         <ProtectClient />
       </body>
