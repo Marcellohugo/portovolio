@@ -48,22 +48,7 @@ export default function contact() {
             <LanyardNoSSR />
           </div>
         </div>
-
-        <div className="relative bottom-0 w-full text-white py-4 flex justify-center items-center text-center">
-          <div className="text-sm">
-            <MagneticEffect>
-              <div className="font-signature text-xl">Marcello Hugo</div>
-            </MagneticEffect>
-            <MagneticEffect>
-              <div className="text-xs">Frond-end Developer</div>
-            </MagneticEffect>
-            <MagneticEffect>
-              <div className="text-[10px] text-gray-400">
-                  Copyright © 2025 by Marcello Hugo
-              </div>
-            </MagneticEffect>
-          </div>
-        </div>
+        
       </div>
       </section>
     )

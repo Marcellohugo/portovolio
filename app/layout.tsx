@@ -1,15 +1,14 @@
-import React from "react"
-import { cn } from "../lib/utils"
-import type { Metadata } from "next"
-import { Work_Sans } from "next/font/google"
-import "./globals.css"
-import PreloadWrapper from "@/components/preload/PreloadWrapper"
-import { SpeedInsights } from "@vercel/speed-insights/next"
-import ProtectClient from "@/components/ProtectClient"
-import { Analytics } from "@vercel/analytics/next"
+import React from "react";
+import { cn } from "../lib/utils";
+import type { Metadata } from "next";
+import { Work_Sans } from "next/font/google";
+import "./globals.css";
+import PreloadWrapper from "@/components/preload/PreloadWrapper";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import ProtectClient from "@/components/ProtectClient";
+import { Analytics } from "@vercel/analytics/next";
 
-
-const font = Work_Sans({ subsets: ["latin"] })
+const font = Work_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
@@ -30,7 +29,7 @@ export const metadata: Metadata = {
     siteName: "Marcello Hugo",
     images: [
       {
-        url: "/public/images/Profile.png",
+        url: "/images/Profile.png",
         width: 1000,
         height: 1200,
       },
@@ -92,15 +91,14 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={cn(font.className)} suppressHydrationWarning>
+      <body className={cn(font.className, "bg-background text-foreground")} suppressHydrationWarning>
         <PreloadWrapper>
           {children}
           <SpeedInsights />
           <Analytics />
-          
         </PreloadWrapper>
         <ProtectClient />
       </body>
     </html>
-  )
+  );
 }

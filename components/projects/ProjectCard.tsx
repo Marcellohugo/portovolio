@@ -1,44 +1,29 @@
-import { FaGithub, FaLinkedin } from "react-icons/fa"
-import Image from "next/image"
-import Link from "next/link"
-
-import { motion, useAnimation, useInView } from "framer-motion"
-import { useEffect, useRef } from "react"
-import {
-  projectCardAnimation,
-  projectCardDescriptionAnimation,
-  projectCardImageAnimation,
-  projectCardLinksAnimation,
-  projectCardTechAnimation,
-  projectCardTitleAnimation,
-} from "./animationCard"
+import { FaGithub, FaLink } from "react-icons/fa";
+import Image from "next/image";
+import Link from "next/link";
+import { motion, useAnimation, useInView } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { projectCardAnimation, projectCardDescriptionAnimation, projectCardImageAnimation, projectCardLinksAnimation, projectCardTechAnimation, projectCardTitleAnimation } from "./animationCard";
 
 interface ProjectCardProps {
-  title: string
-  description: string
-  image: string
-  tech: string[]
-  repo: string
-  projectLink: string
+  title: string;
+  description: string;
+  image: string;
+  tech: string[];
+  repo: string;
+  projectLink: string;
 }
 
-export default function ProjectCard({
-  title,
-  description,
-  image,
-  tech,
-  repo,
-  projectLink,
-}: ProjectCardProps) {
-  const ref = useRef(null)
-  const isInView = useInView(ref)
-  const ctrls = useAnimation()
+export default function ProjectCard({ title, description, image, tech, repo, projectLink }: ProjectCardProps) {
+  const ref = useRef(null);
+  const isInView = useInView(ref);
+  const ctrls = useAnimation();
 
   useEffect(() => {
     if (isInView) {
-      ctrls.start("visible")
+      ctrls.start("visible");
     }
-  }, [ctrls, isInView])
+  }, [ctrls, isInView]);
 
   return (
     <motion.div
@@ -46,61 +31,39 @@ export default function ProjectCard({
       animate={ctrls}
       initial="hidden"
       variants={projectCardAnimation}
-      className="relative z-10 w-full overflow-hidden rounded-3xl border border-foreground/20 bg-zinc-900 p-6 flex flex-col md:grid md:grid-cols-2 gap-6"
+      className="relative z-10 w-full overflow-hidden rounded-3xl border border-foreground/20 bg-card p-4 sm:p-6 grid grid-cols-1 md:grid-cols-2 gap-6"
     >
-      {/* Left Content: Text & Links */}
+      {/* Kolom Teks */}
       <div className="flex flex-col justify-between">
-        {/* Links */}
-        <motion.div
-          animate={ctrls}
-          initial="hidden"
-          variants={projectCardLinksAnimation}
-          className="flex items-center gap-3 sm:gap-4"
-        >
-          <Link
-            href={repo}
-            target="_blank"
-            className="rounded-full bg-foreground p-2 transition-all duration-300 ease-in-out hover:bg-foreground/50"
-            aria-label="Open Github Repo"
-          >
-            <FaGithub className="h-6 w-6 text-zinc-100 md:h-8 md:w-8 lg:h-10 lg:w-10" />
-          </Link>
-          <Link
-            href={projectLink}
-            target="_blank"
-            className="rounded-full bg-foreground p-2 transition-all duration-300 ease-in-out hover:bg-foreground/50"
-            aria-label="Open Live Demo"
-          >
-            <FaLinkedin className="h-6 w-6 text-zinc-100 md:h-8 md:w-8 lg:h-10 lg:w-10" />
-          </Link>
+        <motion.div variants={projectCardTitleAnimation}>
+          <h3 className="text-heading-lg font-bold text-foreground">
+            {title}
+          </h3>
+        </motion.div>
+        
+        <motion.p variants={projectCardDescriptionAnimation} className="mt-2 text-body-base text-muted-foreground">
+          {description}
+        </motion.p>
+        
+        <motion.div variants={projectCardTechAnimation} className="mt-4 flex flex-wrap gap-2">
+          {tech.map((t, i) => (
+            <span key={i} className="text-caption font-medium bg-primary-dark/50 text-primary px-2 py-1 rounded-full">
+              {t}
+            </span>
+          ))}
         </motion.div>
 
-        {/* Text */}
-        <div className="mt-4">
-          <h3 className="text-[clamp(1.6rem,4vw,3rem)] font-bold leading-tight text-foreground">
-            <motion.span variants={projectCardTitleAnimation}>
-              {title}
-            </motion.span>
-          </h3>
-          <p className="mt-2 sm:mt-4 text-[clamp(0.625rem,2vw,0.875rem)] font-semibold text-foreground/50">
-            <motion.span variants={projectCardDescriptionAnimation}>
-              {description}
-            </motion.span>
-          </p>
-          <motion.div
-            variants={projectCardTechAnimation}
-            className="mt-4 sm:mt-6 flex flex-wrap gap-2 sm:gap-4"
-          >
-            {tech.map((t, i) => (
-              <span key={i} className="text-[clamp(0.7rem,2vw,0.9rem)] font-medium text-foreground/50">
-                {t}
-              </span>
-            ))}
-          </motion.div>
-        </div>
+        <motion.div variants={projectCardLinksAnimation} className="flex items-center gap-4 mt-6">
+          <Link href={repo} target="_blank" className="rounded-full bg-foreground/10 p-3 transition-all hover:bg-primary hover:text-primary-dark" aria-label="Open Github Repo">
+            <FaGithub className="h-5 w-5 text-foreground" />
+          </Link>
+          <Link href={projectLink} target="_blank" className="rounded-full bg-foreground/10 p-3 transition-all hover:bg-primary hover:text-primary-dark" aria-label="Open Live Demo">
+            <FaLink className="h-5 w-5 text-foreground" />
+          </Link>
+        </motion.div>
       </div>
 
-      {/* Right Content: Image */}
+      {/* Kolom Gambar */}
       <motion.div
         animate={ctrls}
         initial="hidden"
@@ -116,5 +79,5 @@ export default function ProjectCard({
         />
       </motion.div>
     </motion.div>
-  )
+  );
 }

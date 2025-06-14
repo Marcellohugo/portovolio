@@ -5,7 +5,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Particles from "../ui/background/Particles";
 
-
+// Dinamic import untuk komponen 3D, ssr: false penting untuk menghindari error di server
 const ComputersCanvasNoSSR = dynamic(
   () => import("./Computers"), 
   { ssr: false }
@@ -28,25 +28,26 @@ export default function Hero() {
       </div>
       <div className="absolute inset-0 top-[120px] mx-auto max-w-[1200px] sm:px-16 px-6 flex flex-row items-start gap-5">
         <div className="mt-5 flex flex-col items-center justify-center">
-          <div className="h-5 w-5 rounded-full bg-[#A3D8FF]" />
+          <div className="h-5 w-5 rounded-full bg-primary" />
           <div className="violet-gradient h-40 w-1 sm:h-80" />
         </div>
 
         <div>
-          <h1 className={`font-black text-white text-[4rem] md:text-[4rem] lg:text-[6rem] lg:leading-[98px] mt-2`}>
-            Hi, I&apos;m <span className="text-[#A3D8FF]">Marcello</span>
+          <h1 className="text-heading-2xl">
+            Hi, I&apos;m <span className="text-primary">Marcello</span>
           </h1>
-          <p className={`text-white font-semibold text-[clamp(1rem,2vw,1.5rem)] leading-[1.4] text-white-100 mt-2`}>
-            I Develop attractive and interactive <br className="hidden sm:block" />
+          <p className="text-body-lg text-foreground mt-2">
+            I develop attractive and interactive <br className="hidden sm:block" />
             websites applications
           </p>
         </div>
       </div>
+      
       <ComputersCanvasNoSSR />
 
-      <div className="xs:bottom-10 absolute bottom-32 flex w-full items-center justify-center">
+      <div className="absolute bottom-12 w-full flex items-center justify-center">
         <a href="#about">
-          <div className="border-secondary flex h-[64px] w-[35px] items-start justify-center rounded-3xl border-4 p-2">
+          <div className="w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2">
             <motion.div
               animate={{
                 y: [0, 24, 0],
@@ -56,7 +57,7 @@ export default function Hero() {
                 repeat: Infinity,
                 repeatType: "loop",
               }}
-              className="bg-white mb-1 h-3 w-3 rounded-full"
+              className="w-3 h-3 rounded-full bg-white mb-1"
             />
           </div>
         </a>

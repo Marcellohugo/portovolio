@@ -42,7 +42,7 @@ export const formSubmission = async (
       from: "Contact Form <onboarding@resend.dev>", 
       to: "marco.marcello15@gmail.com",
       subject: `New message from ${name}: ${subject}`,
-      replyTo: email, // <-- PERBAIKAN DI SINI: dari reply_to menjadi replyTo
+      replyTo: email, 
       html: `<p>You have received a new message from your website's contact form.</p>
              <p><strong>Name:</strong> ${name}</p>
              <p><strong>Email:</strong> ${email}</p>
