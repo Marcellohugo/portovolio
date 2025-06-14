@@ -67,11 +67,11 @@ export const Experience: React.FC = () => {
                       <img src={item.logoUrl} alt={`${item.company} logo`} className="w-8 h-8 mr-3" />
                       <div>
                         <h3 className="text-xl font-bold">{item.title}</h3>
-                        <p className="text-sm text-gray-400">{item.company}</p>
+                        <p className="text-body-base">{item.company}</p>
                       </div>
                     </div>
-                    <p className="text-sm text-gray-400 mb-4 italic">{item.date}</p>
-                    <ul className="list-disc list-inside space-y-2 text-sm">
+                    <p className="text-body-sm mb-4 italic">{item.date}</p>
+                    <ul className="list-disc list-inside space-y-2 text-body-base">
                       {item.description.map((point, i) => (
                         <li key={i}>{point}</li>
                       ))}
@@ -87,11 +87,11 @@ export const Experience: React.FC = () => {
                         <img src={item.logoUrl} alt={`${item.company} logo`} className="w-8 h-8 mr-3" />
                         <div>
                           <h3 className="text-xl font-bold">{item.title}</h3>
-                          <p className="text-sm text-gray-400">{item.company}</p>
+                          <p className="text-body-base">{item.company}</p>
                         </div>
                       </div>
-                      <p className="text-sm text-gray-400 mb-4 italic">{item.date}</p>
-                      <ul className="list-disc list-inside space-y-2 text-sm">
+                      <p className="text-body-sm mb-4 italic">{item.date}</p>
+                      <ul className="list-disc list-inside space-y-2 text-body-base">
                         {item.description.map((point, i) => (
                           <li key={i}>{point}</li>
                         ))}
@@ -111,12 +111,12 @@ export const Experience: React.FC = () => {
                       <div className="flex items-center mb-4 justify-end">
                         <div>
                           <h3 className="text-xl font-bold">{item.title}</h3>
-                          <p className="text-sm text-gray-400">{item.company}</p>
+                          <p className="text-body-base">{item.company}</p>
                         </div>
                         <img src={item.logoUrl} alt={`${item.company} logo`} className="w-8 h-8 ml-3" />
                       </div>
-                      <p className="text-sm text-gray-400 mb-4 italic">{item.date}</p>
-                      <ul className="list-disc list-inside space-y-2 text-sm">
+                      <p className="text-body-sm mb-4 italic">{item.date}</p>
+                      <ul className="list-disc list-inside space-y-2 text-body-base">
                         {item.description.map((point, i) => (
                           <li key={i}>{point}</li>
                         ))}
