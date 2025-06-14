@@ -33,7 +33,7 @@ export default function Hero() {
         </div>
 
         <div>
-          <h1 className="text-heading-2xl">
+          <h1 className="font-black lg:text-[110px] sm:text-[90px] xs:text-80px] text-[70px] lg:leading-[98px]">
             Hi, I&apos;m <span className="text-primary">Marcello</span>
           </h1>
           <p className="text-body-lg text-foreground mt-2">

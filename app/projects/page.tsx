@@ -6,7 +6,8 @@ import HighlightSection from "./components/Highlight";
 import OtherProjectsSection from "./components/Project";
 import GradientText from "@/components/ui/text/AnimateSubtitle";
 
-export default function ProjectsPage() {
+export default async function ProjectPage() {
+  await new Promise((resolve) => setTimeout(resolve, 700));
   return (
     <PageLayout>
       <div className="text-foreground">

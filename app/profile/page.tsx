@@ -5,7 +5,9 @@ import AboutMe from "./components/AboutMe/AboutMe";
 import Experience from "./components/Experience/Experience";
 import TypingText from "@/components/ui/text/TypingText";
 
-export default function ProfilePage() {
+export default async function ProfilePage() {
+  await new Promise((resolve) => setTimeout(resolve, 700));
+  
   return (
     <PageLayout>
       <AboutMe />

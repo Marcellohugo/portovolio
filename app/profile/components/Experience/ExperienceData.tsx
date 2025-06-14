@@ -2,8 +2,16 @@
 import React from "react";
 import Image from "next/image";
 
-// Data bisa dipindahkan ke file terpisah (e.g., data/experience.ts) untuk kebersihan
-const ExperienceData = [
+interface ExperienceItem {
+  id: number;
+  title: string;
+  company: string;
+  date: string;
+  description: string[];
+  logoUrl: string;
+}
+
+const ExperienceData: ExperienceItem[] = [
   {
     id: 1,
     title: "Website Maker",
@@ -41,34 +49,80 @@ const ExperienceData = [
 
 export const Experience: React.FC = () => {
   return (
-    <div className="py-10">
-      <div className="max-w-[1200px] mx-auto relative px-4 sm:px-6 lg:px-8">
-        {/* Garis tengah hanya untuk desktop */}
-        <div className="hidden md:block absolute left-1/2 top-0 h-full w-px bg-foreground/30" />
-
-        <div className="space-y-12">
+    <div className="text-white py-10 overflow-x-hidden">
+      <div className="max-w-[1200px] mx-auto relative px-0 sm:px-6 lg:px-8">
+        <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full border-l-4 border-white"></div>
+        <div className="md:space-y-0 space-y-12">
           {ExperienceData.map((item, idx) => {
             const isLeft = idx % 2 === 0;
             return (
               <div
                 key={item.id}
-                className="md:grid md:grid-cols-[1fr_auto_1fr] md:gap-8 items-center"
+                className="mb-8 md:mb-12 flex md:flex-row flex-col md:items-center w-full justify-between"
               >
-                {/* Konten Kiri (atau atas di mobile) */}
-                <div className={`md:text-right ${isLeft ? 'order-1' : 'order-3'}`}>
-                  {isLeft && <ExperienceCard {...item} />}
-                </div>
-
-                {/* Ikon di tengah (hanya di desktop) */}
-                <div className="hidden md:flex order-2 items-center justify-center">
-                  <div className="w-16 h-16 rounded-full border border-foreground/30 bg-card flex items-center justify-center z-10">
-                    <img src={item.logoUrl} alt="logo" className="w-10 h-10" />
+                {/* Mobile layout */}
+                <div className="md:hidden flex items-start gap-0 w-screen">
+                  <div className="flex-1 border border-gray-600 bg-zinc-900 p-6 rounded-xl shadow-lg w-full">
+                    <div className="flex items-center mb-4">
+                      <img src={item.logoUrl} alt={`${item.company} logo`} className="w-8 h-8 mr-3" />
+                      <div>
+                        <h3 className="text-xl font-bold">{item.title}</h3>
+                        <p className="text-sm text-gray-400">{item.company}</p>
+                      </div>
+                    </div>
+                    <p className="text-sm text-gray-400 mb-4 italic">{item.date}</p>
+                    <ul className="list-disc list-inside space-y-2 text-sm">
+                      {item.description.map((point, i) => (
+                        <li key={i}>{point}</li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
 
-                {/* Konten Kanan (atau bawah di mobile) */}
-                <div className={`md:text-left ${isLeft ? 'order-3' : 'order-1'}`}>
-                  {!isLeft && <ExperienceCard {...item} />}
+                {/* Desktop layout left */}
+                <div className={`hidden md:block w-1/2 px-4 ${!isLeft ? "opacity-0" : "opacity-100"}`}>
+                  {isLeft && (
+                    <div className="border border-gray-600 bg-zinc-900 p-6 rounded-2xl shadow-lg">
+                      <div className="flex items-center mb-4">
+                        <img src={item.logoUrl} alt={`${item.company} logo`} className="w-8 h-8 mr-3" />
+                        <div>
+                          <h3 className="text-xl font-bold">{item.title}</h3>
+                          <p className="text-sm text-gray-400">{item.company}</p>
+                        </div>
+                      </div>
+                      <p className="text-sm text-gray-400 mb-4 italic">{item.date}</p>
+                      <ul className="list-disc list-inside space-y-2 text-sm">
+                        {item.description.map((point, i) => (
+                          <li key={i}>{point}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+
+                <div className="hidden md:flex w-24 h-20 rounded-full border border-gray-600 bg-zinc-900 items-center justify-center z-10">
+                  <img src={item.logoUrl} alt="logo" className="w-12 h-12" />
+                </div>
+
+                {/* Desktop layout right */}
+                <div className={`hidden md:block w-1/2 px-4 ${isLeft ? "opacity-0" : "opacity-100"}`}>
+                  {!isLeft && (
+                    <div className="border border-gray-600 bg-zinc-900 p-6 rounded-2xl shadow-lg text-right">
+                      <div className="flex items-center mb-4 justify-end">
+                        <div>
+                          <h3 className="text-xl font-bold">{item.title}</h3>
+                          <p className="text-sm text-gray-400">{item.company}</p>
+                        </div>
+                        <img src={item.logoUrl} alt={`${item.company} logo`} className="w-8 h-8 ml-3" />
+                      </div>
+                      <p className="text-sm text-gray-400 mb-4 italic">{item.date}</p>
+                      <ul className="list-disc list-inside space-y-2 text-sm">
+                        {item.description.map((point, i) => (
+                          <li key={i}>{point}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
               </div>
             );
@@ -78,22 +132,3 @@ export const Experience: React.FC = () => {
     </div>
   );
 };
-
-// Komponen Card terpisah agar tidak duplikasi
-const ExperienceCard = (item: typeof ExperienceData[0]) => (
-  <div className="border border-foreground/20 bg-card p-6 rounded-2xl shadow-lg">
-    <div className="flex items-center mb-4">
-      <img src={item.logoUrl} alt={`${item.company} logo`} className="w-8 h-8 mr-3" />
-      <div>
-        <h3 className="text-body-lg font-bold">{item.title}</h3>
-        <p className="text-body-sm text-muted-foreground">{item.company}</p>
-      </div>
-    </div>
-    <p className="text-caption text-muted-foreground mb-4 italic">{item.date}</p>
-    <ul className="list-disc list-inside space-y-2 text-body-sm text-left">
-      {item.description.map((point, i) => (
-        <li key={i}>{point}</li>
-      ))}
-    </ul>
-  </div>
-);

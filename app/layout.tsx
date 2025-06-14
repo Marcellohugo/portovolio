@@ -3,7 +3,7 @@ import { cn } from "../lib/utils";
 import type { Metadata } from "next";
 import { Work_Sans } from "next/font/google";
 import "./globals.css";
-import PreloadWrapper from "@/components/preload/PreloadWrapper";
+import PreloadWrapper from "@/components/preload/PreloadWrapper"; // Pastikan impor ini ada
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import ProtectClient from "@/components/ProtectClient";
 import { Analytics } from "@vercel/analytics/next";
