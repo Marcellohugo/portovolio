@@ -1,3 +1,5 @@
+"use client";
+
 import SectionHeader from "@/components/shared/SectionHeader";
 import GradientText from "@/components/ui/text/AnimateSubtitle";
 import Image from "next/image";

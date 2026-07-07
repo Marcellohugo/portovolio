@@ -1,7 +1,7 @@
-import ParallaxText from "./ParallaxText"
-import ParallaxPhotoGallery from "./ParallaxPhotoGallery"
-import SkillCardStack from "./Stack"
-import GradientText from "../ui/text/AnimateSubtitle"
+import ParallaxText from "@/components/about-attribute/ParallaxText"
+import ParallaxPhotoGallery from "@/components/about-attribute/ParallaxPhotoGallery"
+import SkillCardStack from "@/components/about-attribute/Stack"
+import GradientText from "@/components/ui/text/AnimateSubtitle"
 
 export default function AboutAttribute() {
     return(

@@ -1,6 +1,7 @@
 "use client"
 
 import React from 'react';
+import Image from 'next/image';
 import { FaGithub, FaInstagram, FaLinkedin, FaEnvelope, FaLaptopMedical } from 'react-icons/fa';
 import Aurora from '@/components/ui/background/Aurora';
 
@@ -23,10 +24,12 @@ const LinkPage: React.FC = () => {
       </div>
 
       <div className="flex flex-col max-w-md w-full items-center justify-center text-center">
-        <img
+        <Image
           src="/images/Profile.png"
           alt="Marcello"
-          className="w-32 h-32 rounded-full object-cover border-4 border-primary"
+          width={128}
+          height={128}
+          className="rounded-full object-cover border-4 border-primary"
         />
 
         <h1 className="mt-4 text-heading-lg font-semibold">

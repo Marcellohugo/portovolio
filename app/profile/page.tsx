@@ -1,5 +1,3 @@
-"use client"
-
 import PageLayout from "@/components/layout/PageLayout";
 import AboutMe from "./components/AboutMe/AboutMe";
 import Experience from "./components/Experience/Experience";

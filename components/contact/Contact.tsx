@@ -3,7 +3,7 @@
 import GradientText from "../ui/text/AnimateSubtitle";
 import AnimateTitle from "../ui/text/AnimateTitle";
 import dynamic from "next/dynamic";
-import React from "react";
+import React, { Suspense } from "react";
 import MagneticEffect from "../ui/button/MagneticEffect";
 import ContactForm from "./ContactForm";
 
@@ -12,7 +12,7 @@ const LanyardNoSSR = dynamic(
   { ssr: false }
 );
 
-export default function contact() {
+export default function Contact() {
     return (
       <section
         id="contact"
@@ -45,7 +45,9 @@ export default function contact() {
 
           {/* LanyardNoSSR tampil kedua di mobile, tapi di desktop tetap di kiri */}
           <div className="order-1 md:order-1 w-full md:w-1/2 px-4">
-            <LanyardNoSSR />
+            <Suspense fallback={null}>
+              <LanyardNoSSR />
+            </Suspense>
           </div>
         </div>
         

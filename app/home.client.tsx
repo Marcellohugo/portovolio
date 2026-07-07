@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Nav from "@/components/navbar/Nav";
 import Hero from "@/components/hero/Hero";
 import About from "@/components/about/About";
-import AboutAttribute from "@/components/aboutattribute/AboutAttribute";
+import AboutAttribute from "@/components/about-attribute/AboutAttribute";
 import Project from "@/components/projects/Projects";
 import Contact from "@/components/contact/Contact";
 import Footer from "@/components/shared/Footer";

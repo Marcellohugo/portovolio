@@ -64,7 +64,7 @@ export const Experience: React.FC = () => {
                 <div className="md:hidden flex items-start gap-0 w-screen">
                   <div className="flex-1 border border-gray-600 bg-zinc-900 p-6 rounded-xl shadow-lg w-full">
                     <div className="flex items-center mb-4">
-                      <img src={item.logoUrl} alt={`${item.company} logo`} className="w-8 h-8 mr-3" />
+                      <Image src={item.logoUrl} alt={`${item.company} logo`} width={32} height={32} className="mr-3" />
                       <div>
                         <h3 className="text-xl font-bold">{item.title}</h3>
                         <p className="text-body-base">{item.company}</p>
@@ -84,7 +84,7 @@ export const Experience: React.FC = () => {
                   {isLeft && (
                     <div className="border border-gray-600 bg-zinc-900 p-6 rounded-2xl shadow-lg">
                       <div className="flex items-center mb-4">
-                        <img src={item.logoUrl} alt={`${item.company} logo`} className="w-8 h-8 mr-3" />
+                        <Image src={item.logoUrl} alt={`${item.company} logo`} width={32} height={32} className="mr-3" />
                         <div>
                           <h3 className="text-xl font-bold">{item.title}</h3>
                           <p className="text-body-base">{item.company}</p>
@@ -101,7 +101,7 @@ export const Experience: React.FC = () => {
                 </div>
 
                 <div className="hidden md:flex w-24 h-20 rounded-full border border-gray-600 bg-zinc-900 items-center justify-center z-10">
-                  <img src={item.logoUrl} alt="logo" className="w-12 h-12" />
+                  <Image src={item.logoUrl} alt="logo" width={48} height={48} />
                 </div>
 
                 {/* Desktop layout right */}
@@ -113,7 +113,7 @@ export const Experience: React.FC = () => {
                           <h3 className="text-xl font-bold">{item.title}</h3>
                           <p className="text-body-base">{item.company}</p>
                         </div>
-                        <img src={item.logoUrl} alt={`${item.company} logo`} className="w-8 h-8 ml-3" />
+                        <Image src={item.logoUrl} alt={`${item.company} logo`} width={32} height={32} className="ml-3" />
                       </div>
                       <p className="text-body-sm mb-4 italic">{item.date}</p>
                       <ul className="list-disc list-inside space-y-2 text-body-base">

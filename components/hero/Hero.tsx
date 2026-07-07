@@ -1,7 +1,7 @@
 'use client'
 
 import dynamic from "next/dynamic";
-import React from "react";
+import React, { Suspense } from "react";
 import { motion } from "framer-motion";
 import Particles from "../ui/background/Particles";
 
@@ -43,7 +43,9 @@ export default function Hero() {
         </div>
       </div>
       
-      <ComputersCanvasNoSSR />
+      <Suspense fallback={null}>
+        <ComputersCanvasNoSSR />
+      </Suspense>
 
       <div className="absolute bottom-12 w-full flex items-center justify-center">
         <a href="#about">

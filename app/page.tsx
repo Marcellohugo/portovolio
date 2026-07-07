@@ -1,4 +1,4 @@
-import HomeClient from "./home.ciient";
+import HomeClient from "./home.client";
 
 // Fungsi ini sekarang async untuk menggunakan 'await'
 export default async function Home() {

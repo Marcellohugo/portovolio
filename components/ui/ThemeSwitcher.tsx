@@ -1,7 +1,7 @@
 "use client"
 import { useTheme } from "next-themes"
 import React, { useEffect, useState } from "react"
-import { Tabs, TabsList, TabsTrigger } from "../ui/tabs"
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/Tabs"
 import { Monitor, MoonIcon, SunIcon } from "lucide-react"
 
 function ThemeSwitcher() {

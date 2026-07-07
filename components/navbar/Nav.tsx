@@ -1,8 +1,9 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { FaArrowUp, FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
-import MagneticEffect from "../ui/button/MagneticEffect";
+import MagneticEffect from "@/components/ui/button/MagneticEffect";
 // import ThemeSwitcher from "../ui/ThemeSwitcher";
 
 const Nav: React.FC = () => {
@@ -16,7 +17,7 @@ const Nav: React.FC = () => {
       <nav className="fixed top-0 w-full z-50 flex items-center justify-between px-1 sm:px-8 py-4 backdrop-blur-md bg-black/50 text-white">
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <img
+          <Image
             src="/icons/logo.png"
             alt="Logo"
             width={60}

@@ -2,16 +2,16 @@
 
 "use client"
 
-import { formSubmission } from "../../action/formAction"
+import { formSubmission } from "@/actions/formAction"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Loader, Mail } from "lucide-react"
 import { useEffect, useRef, useState } from "react" // Import useEffect & useState
 import { useFormState, useFormStatus } from "react-dom"
-import MagneticEffect from "../ui/button/MagneticEffect"
-import { Button } from "../ui/button/Button"
-import ContactFormLine from "./ContactFormLine"
-import useIsomorphicLayoutEffect from "../../hooks/UseIsomorphicLayoutEffect"
+import MagneticEffect from "@/components/ui/button/MagneticEffect"
+import { Button } from "@/components/ui/button/Button"
+import ContactFormLine from "@/components/contact/ContactFormLine"
+import useIsomorphicLayoutEffect from "@/hooks/useIsomorphicLayoutEffect"
 
 export default function ContactForm() {
   const el = useRef<HTMLDivElement | null>(null)

@@ -117,3 +117,5 @@ const ComputersCanvas: React.FC = () => {
 };
 
 export default ComputersCanvas;
+
+useGLTF.preload("/assets/desktop_pc/gaming_desktop_pc.glb");

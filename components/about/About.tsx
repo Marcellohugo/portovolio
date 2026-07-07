@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { Button } from "../ui/button/Button";
-import MagneticEffect from "../ui/button/MagneticEffect";
-import ScrollReveal from "./ScrollReveal";
-import TiltedCard from "../ui/animation/TiltedCard";
-import SectionHeader from "../shared/SectionHeader";
-import GradientText from "../ui/text/AnimateSubtitle";
+import { Button } from "@/components/ui/button/Button";
+import MagneticEffect from "@/components/ui/button/MagneticEffect";
+import ScrollReveal from "@/components/about/ScrollReveal";
+import TiltedCard from "@/components/ui/animation/TiltedCard";
+import SectionHeader from "@/components/shared/SectionHeader";
+import GradientText from "@/components/ui/text/AnimateSubtitle";
 
 export default function About() {
   return (

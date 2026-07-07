@@ -1,5 +1,6 @@
 "use client"
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button/Button';
 
 // Define project interface
@@ -109,10 +110,11 @@ const OtherProjectsSection: React.FC = () => {
             >
               {/* Background Thumbnail */}
               {proj.imageUrl && (
-                <img
+                <Image
                   src={proj.imageUrl}
                   alt={proj.title}
-                  className="absolute inset-0 w-full h-full object-fill
+                  fill
+                  className="absolute inset-0 w-full h-full object-cover
                    opacity-30 z-0 transition duration-300 ease-in-out group-hover:opacity-100 group-hover:z-20"
                 />
               )}

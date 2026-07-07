@@ -4,7 +4,7 @@ import { projects } from "@/components/projects/projectData"
 import ProjectCard from "./ProjectCard"
 import ProjectButton from "./ProjectButton"
 
-export default function project() {
+export default function Projects() {
   return (
     <section
       id="project"

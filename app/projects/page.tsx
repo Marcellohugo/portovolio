@@ -1,5 +1,3 @@
-"use client"
-
 import PageLayout from "@/components/layout/PageLayout";
 import SectionHeader from "@/components/shared/SectionHeader";
 import HighlightSection from "./components/Highlight";

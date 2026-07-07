@@ -299,3 +299,6 @@ function Band({ maxSpeed = 100, minSpeed = 50 }: BandProps) {
     </>
   );
 }
+
+useGLTF.preload(cardGLB);
+useTexture.preload(lanyard);

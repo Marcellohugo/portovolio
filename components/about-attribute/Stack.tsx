@@ -28,8 +28,8 @@ import {
 } from 'react-icons/si';
 import { FaJava } from "react-icons/fa";
 import clsx from 'clsx';
-import { Button } from '../ui/button/Button';
-import MagneticEffect from '../ui/button/MagneticEffect';
+import { Button } from '@/components/ui/button/Button';
+import MagneticEffect from '@/components/ui/button/MagneticEffect';
 
 interface SkillCard {
   id: number;

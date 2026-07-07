@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 import RotatingText from "./RotatingText";
 import { motion, AnimatePresence } from "framer-motion";
-import { Button } from "../ui/button/Button";
-import MagneticEffect from "../ui/button/MagneticEffect";
-import GradientText from "../ui/text/AnimateSubtitle";
+import { Button } from "@/components/ui/button/Button";
+import MagneticEffect from "@/components/ui/button/MagneticEffect";
+import GradientText from "@/components/ui/text/AnimateSubtitle";
 
 type PreloadProps = {
   onStart: () => void;
