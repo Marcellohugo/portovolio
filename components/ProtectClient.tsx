@@ -44,6 +44,6 @@ export default function ProtectClient() {
     };
   }, []);
 
-  // Component ini tidak perlu render apa‐apa di UI
+  // Component ini tidak perlu render apa-apa di UI
   return null;
 }
