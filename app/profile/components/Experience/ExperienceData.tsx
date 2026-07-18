@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import { Check } from "lucide-react";
 
 interface ExperienceItem {
   id: number;
@@ -49,84 +50,60 @@ const ExperienceData: ExperienceItem[] = [
 
 export const Experience: React.FC = () => {
   return (
-    <div className="text-white py-10 overflow-x-hidden">
-      <div className="max-w-[1200px] mx-auto relative px-0 sm:px-6 lg:px-8">
-        <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full border-l-4 border-white"></div>
-        <div className="md:space-y-0 space-y-12">
-          {ExperienceData.map((item, idx) => {
-            const isLeft = idx % 2 === 0;
-            return (
-              <div
-                key={item.id}
-                className="mb-8 md:mb-12 flex md:flex-row flex-col md:items-center w-full justify-between"
-              >
-                {/* Mobile layout */}
-                <div className="md:hidden flex items-start gap-0 w-screen">
-                  <div className="flex-1 border border-gray-600 bg-zinc-900 p-6 rounded-xl shadow-lg w-full">
-                    <div className="flex items-center mb-4">
-                      <Image src={item.logoUrl} alt={`${item.company} logo`} width={32} height={32} className="mr-3" />
-                      <div>
-                        <h3 className="text-xl font-bold">{item.title}</h3>
-                        <p className="text-body-base">{item.company}</p>
+    <div className="w-full overflow-hidden py-10 text-foreground">
+      <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
+        <div className="relative">
+          <div className="absolute bottom-0 left-1/2 top-0 hidden w-px -translate-x-1/2 bg-primary/40 md:block" />
+
+          <div className="space-y-4 md:space-y-6">
+            {ExperienceData.map((item, index) => {
+              const isLeft = index % 2 === 0;
+
+              return (
+                <div
+                  key={item.id}
+                  className="grid items-center gap-3 md:grid-cols-[minmax(0,1fr)_4rem_minmax(0,1fr)] md:gap-3"
+                >
+                  <article
+                    className={`group overflow-hidden rounded-[2rem] border border-white/50 bg-gradient-to-br from-background/95 via-background/80 to-primary/10 shadow-[0_24px_70px_-40px_rgba(15,23,42,0.65)] backdrop-blur-xl transition-transform duration-300 hover:-translate-y-1 dark:border-white/10 dark:from-card/95 dark:via-card/85 dark:to-primary/10 ${isLeft ? "md:col-start-1 md:row-start-1" : "md:col-start-3 md:row-start-1"}`}
+                  >
+                    <div className="h-1.5 bg-gradient-to-r from-primary via-primary/50 to-transparent" />
+
+                    <div className="flex items-start justify-between gap-4 p-6 pb-4">
+                      <div className="grid h-12 w-12 place-items-center rounded-2xl border border-border bg-card/80 p-2 shadow-sm">
+                        <Image src={item.logoUrl} alt={`${item.company} logo`} width={40} height={40} />
                       </div>
+                      <span className="rounded-full border border-border bg-card/70 px-3 py-1.5 text-right text-xs font-semibold leading-relaxed text-muted-foreground">
+                        {item.date}
+                      </span>
                     </div>
-                    <p className="text-body-sm mb-4 italic">{item.date}</p>
-                    <ul className="list-disc list-inside space-y-2 text-body-base">
-                      {item.description.map((point, i) => (
-                        <li key={i}>{point}</li>
-                      ))}
-                    </ul>
+
+                    <div className="px-6 pb-6">
+                      <p className="text-xs font-bold uppercase tracking-[0.18em] text-primary">
+                        {item.company}
+                      </p>
+                      <h3 className="mt-2 font-display text-2xl font-black tracking-[-0.04em] text-foreground">
+                        {item.title}
+                      </h3>
+                      <div className="my-5 h-px w-full bg-border/70" />
+                      <ul className="space-y-3 text-body-sm leading-relaxed text-foreground/80">
+                        {item.description.map((point) => (
+                          <li key={point} className="flex items-start gap-2.5">
+                            <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                            <span>{point}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </article>
+
+                  <div className="relative z-10 hidden h-16 w-16 place-items-center justify-self-center rounded-full border border-border bg-card shadow-lg md:col-start-2 md:row-start-1 md:grid">
+                    <Image src={item.logoUrl} alt="" width={38} height={38} />
                   </div>
                 </div>
-
-                {/* Desktop layout left */}
-                <div className={`hidden md:block w-1/2 px-4 ${!isLeft ? "opacity-0" : "opacity-100"}`}>
-                  {isLeft && (
-                    <div className="border border-gray-600 bg-zinc-900 p-6 rounded-2xl shadow-lg">
-                      <div className="flex items-center mb-4">
-                        <Image src={item.logoUrl} alt={`${item.company} logo`} width={32} height={32} className="mr-3" />
-                        <div>
-                          <h3 className="text-xl font-bold">{item.title}</h3>
-                          <p className="text-body-base">{item.company}</p>
-                        </div>
-                      </div>
-                      <p className="text-body-sm mb-4 italic">{item.date}</p>
-                      <ul className="list-disc list-inside space-y-2 text-body-base">
-                        {item.description.map((point, i) => (
-                          <li key={i}>{point}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </div>
-
-                <div className="hidden md:flex w-24 h-20 rounded-full border border-gray-600 bg-zinc-900 items-center justify-center z-10">
-                  <Image src={item.logoUrl} alt="logo" width={48} height={48} />
-                </div>
-
-                {/* Desktop layout right */}
-                <div className={`hidden md:block w-1/2 px-4 ${isLeft ? "opacity-0" : "opacity-100"}`}>
-                  {!isLeft && (
-                    <div className="border border-gray-600 bg-zinc-900 p-6 rounded-2xl shadow-lg text-right">
-                      <div className="flex items-center mb-4 justify-end">
-                        <div>
-                          <h3 className="text-xl font-bold">{item.title}</h3>
-                          <p className="text-body-base">{item.company}</p>
-                        </div>
-                        <Image src={item.logoUrl} alt={`${item.company} logo`} width={32} height={32} className="ml-3" />
-                      </div>
-                      <p className="text-body-sm mb-4 italic">{item.date}</p>
-                      <ul className="list-disc list-inside space-y-2 text-body-base">
-                        {item.description.map((point, i) => (
-                          <li key={i}>{point}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>

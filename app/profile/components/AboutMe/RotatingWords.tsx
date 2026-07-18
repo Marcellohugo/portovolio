@@ -8,7 +8,7 @@ export default function RotatingWords() {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % words.length);
-    }, 250); // sangat amat sangat cepat
+    }, 2200);
 
     return () => clearInterval(interval);
   }, []);
@@ -18,7 +18,7 @@ export default function RotatingWords() {
       <span className="text-[clamp(1rem,2vw,1.5rem)] leading-[1.4] font-semibold">
         WHAT PEOPLE SAY ABOUT ME
       </span> 
-      <h1 className="text-[clamp(1.6rem,4vw,3rem)] font-bold text-white">
+      <h1 className="text-[clamp(1.6rem,4vw,3rem)] font-bold text-foreground">
         {words[index]}
       </h1>
     </div>
