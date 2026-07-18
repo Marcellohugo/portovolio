@@ -68,7 +68,7 @@ const RotatingText = forwardRef<RotatingTextRef, RotatingTextProps>(
       auto = true,
       splitBy = "characters",
       onNext,
-      mainClassName = "text-[clamp(1rem,6vw,10rem)] bg-blue-300 font-bold overflow-hidden justify-center rounded-lg",
+      mainClassName = "text-[clamp(1rem,6vw,10rem)] font-bold text-foreground overflow-hidden justify-center",
       splitLevelClassName,
       elementLevelClassName,
       ...rest

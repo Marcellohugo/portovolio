@@ -1,11 +1,8 @@
 "use client"
 
 import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import RotatingText from "./RotatingText";
-import { motion, AnimatePresence } from "framer-motion";
-import { Button } from "@/components/ui/button/Button";
-import MagneticEffect from "@/components/ui/button/MagneticEffect";
-import GradientText from "@/components/ui/text/AnimateSubtitle";
 
 type PreloadProps = {
   onStart: () => void;
@@ -13,15 +10,15 @@ type PreloadProps = {
 
 export default function Preload({ onStart }: PreloadProps) {
   const [step, setStep] = useState(1);
+
   useEffect(() => {
-    if (step === 1) {
-      const timer = setTimeout(() => setStep(2), 6000);
-      return () => clearTimeout(timer);
-    }
+    if (step !== 1) return;
+    const timer = setTimeout(() => setStep(2), 6000);
+    return () => clearTimeout(timer);
   }, [step]);
 
   return (
-    <div className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-black">
+    <div className="relative flex min-h-[100svh] w-full items-center justify-center overflow-hidden bg-background px-4">
       <AnimatePresence mode="wait">
         {step === 1 && (
           <motion.div
@@ -30,16 +27,13 @@ export default function Preload({ onStart }: PreloadProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="relative z-10 flex items-center justify-center w-full"
+            className="relative z-10 flex w-full items-center justify-center"
           >
-            <div className="flex items-center justify-center flex-wrap">
-              {/* "I am" */}
-              <span className="text-[clamp(1rem,6vw,10rem)] font-bold mr-2 sm:mr-4 text-white">
+            <div className="flex flex-wrap items-center justify-center">
+              <span className="mr-2 text-[clamp(1rem,6vw,10rem)] font-bold text-foreground sm:mr-4">
                 I am
               </span>
-
-              {/* RotatingText */}
-              <span className="text-[clamp(1rem,6vw,10rem)] font-bold text-white">
+              <span className="text-[clamp(1rem,6vw,10rem)] font-bold text-foreground">
                 <RotatingText
                   texts={[
                     "Front-End Dev",
@@ -52,30 +46,39 @@ export default function Preload({ onStart }: PreloadProps) {
             </div>
           </motion.div>
         )}
-  
+
         {step === 2 && (
           <motion.div
             key="step2"
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -50 }}
-            transition={{ duration: 0.5 }}
-            className="relative z-10 flex flex-col items-center justify-center gap-6"
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-background px-6 text-center text-foreground"
           >
-            <GradientText
-              className="items-center justify-center text-[clamp(1.6rem,4vw,3rem)] font-black"
-              >
-              LOADING STATUS!
-            </GradientText>
-            <h1 className="text-[clamp(1.6rem,4vw,3rem)] font-black text-white text-center">READY</h1>
-            <MagneticEffect>
-              <Button
-                variant = "outline"
-                onClick={onStart}
-              >
-                Get Started
-              </Button>
-            </MagneticEffect>
+            <div className="mb-7 flex items-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.28em] text-muted-foreground">
+              <span className="h-px w-8 bg-primary" /> Ready
+            </div>
+
+            <h1 className="text-[clamp(2.8rem,8vw,6.5rem)] font-black leading-none tracking-[-0.055em]">
+              Let&apos;s begin.
+            </h1>
+            <p className="mt-5 text-sm text-muted-foreground sm:text-base">
+              Everything is ready for you.
+            </p>
+
+            <button
+              type="button"
+              onClick={onStart}
+              className="group mt-9 inline-flex items-center gap-5 border-b border-foreground pb-2 text-sm font-bold transition-colors hover:border-primary hover:text-primary"
+            >
+              Enter portfolio
+              <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
+            </button>
+
+            <p className="absolute bottom-6 text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground sm:bottom-8">
+              Marcello Hugo · Portfolio 2026
+            </p>
           </motion.div>
         )}
       </AnimatePresence>

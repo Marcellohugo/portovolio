@@ -31,26 +31,26 @@ const CatLoader: React.FC = () => {
         .animate-eyeBlink { animation: eyeBlink 3s ease-in-out infinite; }
       `}</style>
 
-      <div className="w-screen h-screen flex items-center justify-center bg-black">
+      <div className="flex min-h-[100svh] w-full items-center justify-center bg-background">
         <div className="relative w-48 h-48">
           {/* Body */}
-          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-40 h-24 bg-gray-700 rounded-t-full rounded-b-md"></div>
+          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-40 h-24 bg-muted-foreground rounded-t-full rounded-b-md"></div>
 
           {/* Head */}
-          <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 w-24 h-24 bg-gray-700 rounded-full flex items-center justify-center">
+          <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 w-24 h-24 bg-muted-foreground rounded-full flex items-center justify-center">
             {/* Eyes */}
-            <div className="absolute top-8 left-10 w-2 h-2 bg-white rounded-full animate-eyeBlink"></div>
-            <div className="absolute top-8 right-10 w-2 h-2 bg-white rounded-full animate-eyeBlink"></div>
+            <div className="absolute top-8 left-10 w-2 h-2 bg-foreground rounded-full animate-eyeBlink"></div>
+            <div className="absolute top-8 right-10 w-2 h-2 bg-foreground rounded-full animate-eyeBlink"></div>
           </div>
 
           {/* Ears */}
           <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2 flex space-x-12">
-            <div className="w-6 h-6 bg-gray-700 rotate-45 animate-earTwitch"></div>
-            <div className="w-6 h-6 bg-gray-700 -rotate-45 animate-earTwitch"></div>
+            <div className="w-6 h-6 bg-muted-foreground rotate-45 animate-earTwitch"></div>
+            <div className="w-6 h-6 bg-muted-foreground -rotate-45 animate-earTwitch"></div>
           </div>
 
           {/* Tail */}
-          <div className="absolute bottom-4 right-4 w-2 h-20 bg-gray-700 rounded-full animate-tailSwing"></div>
+          <div className="absolute bottom-4 right-4 w-2 h-20 bg-muted-foreground rounded-full animate-tailSwing"></div>
         </div>
       </div>
     </>
