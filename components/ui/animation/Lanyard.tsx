@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unknown-property */
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { Canvas, extend, useFrame } from "@react-three/fiber";
+import { Canvas, extend, useFrame, type ThreeEvent } from "@react-three/fiber";
 import {
   useGLTF,
   useTexture,
@@ -15,7 +15,8 @@ import {
   RigidBody,
   useRopeJoint,
   useSphericalJoint,
-  RigidBodyProps,
+  type RapierRigidBody,
+  type RigidBodyProps,
 } from "@react-three/rapier";
 import { MeshLineGeometry, MeshLineMaterial } from "meshline";
 import * as THREE from "three";
@@ -45,7 +46,8 @@ export default function Lanyard({
     <div className="relative h-[60vh] z-0 w-full flex justify-center items-center transform scale-100 origin-center">
       <Canvas
         camera={{ position, fov }}
-        gl={{ alpha: transparent }}
+        dpr={[1, 1.5]}
+        gl={{ alpha: transparent, antialias: false, powerPreference: "low-power" }}
         onCreated={({ gl }) =>
           gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)
         }
@@ -94,29 +96,40 @@ interface BandProps {
   minSpeed?: number;
 }
 
+type CardModel = {
+  nodes: {
+    card: { geometry: THREE.BufferGeometry };
+    clip: { geometry: THREE.BufferGeometry };
+    clamp: { geometry: THREE.BufferGeometry };
+  };
+  materials: {
+    base: THREE.MeshStandardMaterial;
+    metal: THREE.Material;
+  };
+};
+
 function Band({ maxSpeed = 100, minSpeed = 50 }: BandProps) {
-  // Using "any" for refs since the exact types depend on Rapier's internals
-  const band = useRef<any>(null);
-  const fixed = useRef<any>(null);
-  const j1 = useRef<any>(null);
-  const j2 = useRef<any>(null);
-  const j3 = useRef<any>(null);
-  const card = useRef<any>(null);
+  const band = useRef<THREE.Mesh>(null);
+  const fixed = useRef<RapierRigidBody>(null);
+  const j1 = useRef<RapierRigidBody>(null);
+  const j2 = useRef<RapierRigidBody>(null);
+  const j3 = useRef<RapierRigidBody>(null);
+  const card = useRef<RapierRigidBody>(null);
+  const lerpedPositions = useRef(new Map<RapierRigidBody, THREE.Vector3>());
 
   const vec = new THREE.Vector3();
   const ang = new THREE.Vector3();
   const rot = new THREE.Vector3();
   const dir = new THREE.Vector3();
 
-  const segmentProps: any = {
-    type: "dynamic" as RigidBodyProps["type"],
+  const segmentProps: Omit<RigidBodyProps, "type"> = {
     canSleep: true,
     colliders: false,
     angularDamping: 4,
     linearDamping: 4,
   };
 
-  const { nodes, materials } = useGLTF(cardGLB) as any;
+  const { nodes, materials } = useGLTF(cardGLB) as unknown as CardModel;
   const texture = useTexture(lanyard);
   const [curve] = useState(
     () =>
@@ -175,29 +188,34 @@ function Band({ maxSpeed = 100, minSpeed = 50 }: BandProps) {
         z: vec.z - dragged.z,
       });
     }
-    if (fixed.current) {
+    const fixedBody = fixed.current;
+    const j1Body = j1.current;
+    const j2Body = j2.current;
+    const j3Body = j3.current;
+    const cardBody = card.current;
+    if (fixedBody && j1Body && j2Body && j3Body && cardBody) {
       [j1, j2].forEach((ref) => {
-        if (!ref.current.lerped)
-          ref.current.lerped = new THREE.Vector3().copy(
-            ref.current.translation(),
-          );
+        if (!ref.current) return;
+        const currentPosition = ref.current.translation();
+        const lerped = lerpedPositions.current.get(ref.current) ?? new THREE.Vector3().copy(currentPosition);
+        lerpedPositions.current.set(ref.current, lerped);
         const clampedDistance = Math.max(
           0.1,
-          Math.min(1, ref.current.lerped.distanceTo(ref.current.translation())),
+          Math.min(1, lerped.distanceTo(currentPosition)),
         );
-        ref.current.lerped.lerp(
-          ref.current.translation(),
+        lerped.lerp(
+          currentPosition,
           delta * (minSpeed + clampedDistance * (maxSpeed - minSpeed)),
         );
       });
-      curve.points[0].copy(j3.current.translation());
-      curve.points[1].copy(j2.current.lerped);
-      curve.points[2].copy(j1.current.lerped);
-      curve.points[3].copy(fixed.current.translation());
-      band.current.geometry.setPoints(curve.getPoints(32));
-      ang.copy(card.current.angvel());
-      rot.copy(card.current.rotation());
-      card.current.setAngvel({ x: ang.x, y: ang.y - rot.y * 0.25, z: ang.z });
+      curve.points[0].copy(j3Body.translation());
+      curve.points[1].copy(lerpedPositions.current.get(j2Body) ?? j2Body.translation());
+      curve.points[2].copy(lerpedPositions.current.get(j1Body) ?? j1Body.translation());
+      curve.points[3].copy(fixedBody.translation());
+      (band.current?.geometry as InstanceType<typeof MeshLineGeometry> | undefined)?.setPoints(curve.getPoints(24));
+      ang.copy(cardBody.angvel());
+      rot.copy(cardBody.rotation());
+      cardBody.setAngvel({ x: ang.x, y: ang.y - rot.y * 0.25, z: ang.z }, true);
     }
   });
 
@@ -210,13 +228,13 @@ function Band({ maxSpeed = 100, minSpeed = 50 }: BandProps) {
         <RigidBody
           ref={fixed}
           {...segmentProps}
-          type={"fixed" as RigidBodyProps["type"]}
+          type="fixed"
         />
         <RigidBody
           position={[0.5, 0, 0]}
           ref={j1}
           {...segmentProps}
-          type={"dynamic" as RigidBodyProps["type"]}
+          type="dynamic"
         >
           <BallCollider args={[0.1]} />
         </RigidBody>
@@ -224,7 +242,7 @@ function Band({ maxSpeed = 100, minSpeed = 50 }: BandProps) {
           position={[1, 0, 0]}
           ref={j2}
           {...segmentProps}
-          type={"dynamic" as RigidBodyProps["type"]}
+          type="dynamic"
         >
           <BallCollider args={[0.1]} />
         </RigidBody>
@@ -232,7 +250,7 @@ function Band({ maxSpeed = 100, minSpeed = 50 }: BandProps) {
           position={[1.5, 0, 0]}
           ref={j3}
           {...segmentProps}
-          type={"dynamic" as RigidBodyProps["type"]}
+          type="dynamic"
         >
           <BallCollider args={[0.1]} />
         </RigidBody>
@@ -240,11 +258,7 @@ function Band({ maxSpeed = 100, minSpeed = 50 }: BandProps) {
           position={[2, 0, 0]}
           ref={card}
           {...segmentProps}
-          type={
-            dragged
-              ? ("kinematicPosition" as RigidBodyProps["type"])
-              : ("dynamic" as RigidBodyProps["type"])
-          }
+          type={dragged ? "kinematicPosition" : "dynamic"}
         >
           <CuboidCollider args={[0.8, 1.125, 0.01]} />
           <group
@@ -252,23 +266,27 @@ function Band({ maxSpeed = 100, minSpeed = 50 }: BandProps) {
             position={[0, -1.2, -0.05]}
             onPointerOver={() => hover(true)}
             onPointerOut={() => hover(false)}
-            onPointerUp={(e: any) => {
-              e.target.releasePointerCapture(e.pointerId);
+            onPointerUp={(event: ThreeEvent<PointerEvent>) => {
+              const target = event.target as unknown as { releasePointerCapture: (pointerId: number) => void };
+              target.releasePointerCapture(event.pointerId);
               drag(false);
             }}
-            onPointerDown={(e: any) => {
-              e.target.setPointerCapture(e.pointerId);
+            onPointerDown={(event: ThreeEvent<PointerEvent>) => {
+              const cardBody = card.current;
+              if (!cardBody) return;
+              const target = event.target as unknown as { setPointerCapture: (pointerId: number) => void };
+              target.setPointerCapture(event.pointerId);
               drag(
                 new THREE.Vector3()
-                  .copy(e.point)
-                  .sub(vec.copy(card.current.translation())),
+                  .copy(event.point)
+                  .sub(vec.copy(cardBody.translation())),
               );
             }}
           >
             <mesh geometry={nodes.card.geometry}>
               <meshPhysicalMaterial
                 map={materials.base.map}
-                map-anisotropy={16}
+                map-anisotropy={4}
                 clearcoat={1}
                 clearcoatRoughness={0.15}
                 roughness={0.9}

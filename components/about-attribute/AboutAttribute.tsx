@@ -6,7 +6,7 @@ import GradientText from "@/components/ui/text/AnimateSubtitle"
 export default function AboutAttribute() {
     return(
       <section id="AboutAttribute" className="relative w-full">
-        <div className="relative z-10 text-[whitesmoke] w-full">
+        <div className="relative z-10 w-full text-foreground dark:text-white">
           <ParallaxText direction={500} baseVelocity={-1}>
             Frontend Web Developer
           </ParallaxText>
@@ -16,15 +16,13 @@ export default function AboutAttribute() {
 
           <ParallaxPhotoGallery/>
 
-          <div className="w-full flex flex-col items-center justify-center text-center">
-            <GradientText
-              className="text-[clamp(1.6rem,4vw,3rem)] leading-[1.5] font-semibold"
-              >
-              PROGRAMMING SKILL
+          <div className="mt-20 flex w-full flex-col items-center justify-center text-center sm:mt-28">
+            <GradientText className="text-[clamp(1.6rem,4vw,3rem)] font-semibold leading-[1.5]">
+              TECH STACK
             </GradientText>
-            <span className="text-[clamp(1rem,2vw,1.5rem)] leading-[1.4] font-semibold">
-              LIST OF MY SKILL SET
-            </span> 
+            <span className="text-[clamp(1rem,2vw,1.5rem)] font-semibold leading-[1.4]">
+              TECHNOLOGIES & TOOLS
+            </span>
           </div>
           <SkillCardStack/>
         </div>

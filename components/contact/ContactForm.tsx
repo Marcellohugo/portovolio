@@ -94,7 +94,7 @@ export default function ContactForm() {
       {/* Bagian untuk menampilkan pesan feedback (sukses atau gagal) */}
       {/* Pesan ini hanya muncul jika ada pesan di state DAN form sedang tidak terlihat (setelah submit sukses) */}
       {state.message && !formVisible && (
-        <div className={`p-4 my-4 rounded-md text-center text-base font-semibold ${state.success ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+        <div className={`my-4 rounded-md p-4 text-center text-base font-semibold ${state.success ? 'bg-success/15 text-success' : 'bg-destructive/15 text-destructive'}`}>
           {state.message}
         </div>
       )}
@@ -111,12 +111,12 @@ export default function ContactForm() {
                   name="name"
                   autoComplete="off"
                   onFocus={() => handleFocus(1)}
-                  className="peer w-full bg-transparent py-5 text-xl font-bold text-zinc-200 outline-none transition-colors duration-200 ease-in-out placeholder:text-zinc-200/50 "
+                  className="peer w-full bg-transparent py-5 text-body-lg font-semibold text-foreground outline-none transition-colors duration-200 ease-in-out placeholder:text-foreground/85 dark:text-white dark:placeholder:text-white/90"
                 />
                 <ContactFormLine inputId={1} hasError={errors.name} />
               </div>
               {errors.name && (
-                <span className="block text-sm font-light text-red-500 lg:text-base">
+                  <span className="block text-sm font-light text-destructive lg:text-base">
                   Please enter a valid name
                 </span>
               )}
@@ -130,12 +130,12 @@ export default function ContactForm() {
                   autoComplete="off"
                   placeholder="Your email"
                   onFocus={() => handleFocus(2)}
-                  className="peer w-full bg-transparent py-5 text-xl font-bold text-zinc-200 outline-none transition-colors duration-200 ease-in-out placeholder:text-zinc-200/50 "
+                  className="peer w-full bg-transparent py-5 text-body-lg font-semibold text-foreground outline-none transition-colors duration-200 ease-in-out placeholder:text-foreground/85 dark:text-white dark:placeholder:text-white/90"
                 />
                 <ContactFormLine inputId={2} hasError={errors.email} />
               </div>
               {errors.email && (
-                <span className="block text-sm font-light text-red-500 lg:text-base">
+                  <span className="block text-sm font-light text-destructive lg:text-base">
                   Please enter a valid email address
                 </span>
               )}
@@ -149,12 +149,12 @@ export default function ContactForm() {
                   autoComplete="off"
                   placeholder="Subject"
                   onFocus={() => handleFocus(3)}
-                  className="peer w-full bg-transparent py-5 text-xl font-bold text-zinc-200 outline-none transition-colors duration-200 ease-in-out placeholder:text-zinc-200/50 "
+                  className="peer w-full bg-transparent py-5 text-body-lg font-semibold text-foreground outline-none transition-colors duration-200 ease-in-out placeholder:text-foreground/85 dark:text-white dark:placeholder:text-white/90"
                 />
                 <ContactFormLine inputId={3} hasError={errors.subject} />
               </div>
               {errors.subject && (
-                <span className="block text-sm font-light text-red-500 lg:text-base">
+                  <span className="block text-sm font-light text-destructive lg:text-base">
                   Please enter a valid subject
                 </span>
               )}
@@ -163,7 +163,7 @@ export default function ContactForm() {
             <div className="group">
               <div className="relative overflow-hidden">
                 <textarea
-                  className="peer min-h-[11rem] w-full resize-none bg-transparent py-5 text-xl font-bold text-zinc-200 outline-none transition-colors duration-200 ease-in-out placeholder:text-zinc-200/50 "
+                  className="peer min-h-[11rem] w-full resize-none bg-transparent py-5 text-body-lg font-semibold text-foreground outline-none transition-colors duration-200 ease-in-out placeholder:text-foreground/85 dark:text-white dark:placeholder:text-white/90"
                   placeholder="Your Message"
                   name="message"
                   onFocus={() => handleFocus(4)}
@@ -171,7 +171,7 @@ export default function ContactForm() {
                 <ContactFormLine inputId={4} hasError={errors.message} />
               </div>
               {errors.message && (
-                <span className="block text-sm font-light text-red-500 lg:text-base">
+                  <span className="block text-sm font-light text-destructive lg:text-base">
                   Please enter a message at least 3 characters long
                 </span>
               )}

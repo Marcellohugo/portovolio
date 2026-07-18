@@ -1,263 +1,160 @@
-'use client';
-
-import { motion, useMotionValue, useTransform } from 'framer-motion';
-import { useState } from 'react';
+import type { ReactNode } from "react";
+import { ChevronDown } from "lucide-react";
 import {
-  SiMysql,
-  SiNextdotjs,
-  SiTailwindcss,
-  SiReact,
-  SiJavascript,
-  SiTypescript,
-  SiNodedotjs,
-  SiLaravel,
-  SiPostgresql,
-  SiMongodb,
-  SiVercel,
-  SiGithubactions,
-  SiXml,
-  SiKotlin,
-  SiSwift,
+  SiAmazon,
+  SiBlazor,
+  SiCloudflare,
+  SiDocker,
+  SiDotnet,
+  SiExpress,
+  SiGit,
   SiGithub,
+  SiGithubactions,
   SiJira,
+  SiJavascript,
+  SiKotlin,
+  SiLinux,
+  SiNextdotjs,
+  SiNodedotjs,
   SiNotion,
-  SiMiro,
-  SiFigma,
-  SiAndroidstudio,
-  SiProgress
-} from 'react-icons/si';
+  SiNginx,
+  SiOpenapiinitiative,
+  SiPostgresql,
+  SiSqlite,
+  SiTailwindcss,
+  SiTrello,
+  SiTypescript,
+  SiFlutter,
+  SiVuedotjs,
+} from "react-icons/si";
 import { FaJava } from "react-icons/fa";
-import clsx from 'clsx';
-import { Button } from '@/components/ui/button/Button';
-import MagneticEffect from '@/components/ui/button/MagneticEffect';
 
-interface SkillCard {
-  id: number;
+type Skill = {
+  icon: ReactNode;
+  name: string;
+};
+
+type SkillGroup = {
   title: string;
-  skills: { icon: JSX.Element; name: string }[];
   description: string;
-}
+  skills: Skill[];
+};
 
-interface CardRotateProps {
-  children: React.ReactNode;
-  onSendToBack: () => void;
-  sensitivity: number;
-}
-
-function CardRotate({ children, onSendToBack, sensitivity }: CardRotateProps) {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const rotateX = useTransform(y, [-100, 100], [60, -60]);
-  const rotateY = useTransform(x, [-100, 100], [-60, 60]);
-
-  function handleDragEnd(_: never, info: { offset: { x: number; y: number } }) {
-    if (
-      Math.abs(info.offset.x) > sensitivity ||
-      Math.abs(info.offset.y) > sensitivity
-    ) {
-      onSendToBack();
-    } else {
-      x.set(0);
-      y.set(0);
-    }
-  }
-
-  return (
-    <motion.div
-      className="absolute cursor-grab"
-      style={{ x, y, rotateX, rotateY }}
-      drag
-      dragConstraints={{ top: 0, right: 0, bottom: 0, left: 0 }}
-      dragElastic={0.6}
-      whileTap={{ cursor: 'grabbing' }}
-      onDragEnd={handleDragEnd}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
-const skillCards: SkillCard[] = [
+const groups: SkillGroup[] = [
   {
-    id: 1,
-    title: 'Frontend',
+    title: "Programming Languages",
+    description: "Languages and styling tools used to build reliable applications.",
     skills: [
-      { icon: <SiNextdotjs />, name: 'Next' },
-      { icon: <SiReact />, name: 'React' },
-      { icon: <SiReact />, name: 'React Native' },
-      { icon: <SiTailwindcss />, name: 'Tailwind' },
-      { icon: <SiJavascript />, name: 'Javascript' },
-      { icon: <SiTypescript />, name: 'Typescript' },
+      { icon: <SiDotnet />, name: "C#" },
+      { icon: <SiJavascript />, name: "JavaScript" },
+      { icon: <SiTypescript />, name: "TypeScript" },
+      { icon: <SiKotlin />, name: "Kotlin" },
+      { icon: <FaJava />, name: "Java" },
+      { icon: <SiSqlite />, name: "SQL" },
+      { icon: <SiTailwindcss />, name: "TailwindCSS" },
     ],
-    description:
-      'I blend artwork with technology, designing immersive and functional interfaces.',
   },
   {
-    id: 2,
-    title: 'Backend',
+    title: "Frontend Development",
+    description: "Responsive interfaces and component-driven web experiences.",
     skills: [
-      { icon: <SiNodedotjs />, name: 'Node' },
-      { icon: <SiLaravel />, name: 'laravel' },
-      { icon: <SiMysql />, name: 'MySQL' },
-      { icon: <SiPostgresql />, name: 'PostgreeSql' },
-      { icon: <SiMongodb />, name: 'Mongodb' },
+      { icon: <SiBlazor />, name: "Blazor Server" },
+      { icon: <SiBlazor />, name: "Blazor WebAssembly" },
+      { icon: <SiDotnet />, name: "Razor Components" },
+      { icon: <SiNextdotjs />, name: "Next.js" },
+      { icon: <SiVuedotjs />, name: "Vue.js" },
     ],
-    description:
-      'I have foundational knowledge and minimal experience in developing APIs.',
   },
   {
-    id: 3,
-    title: 'Mobile',
+    title: "Backend Development",
+    description: "APIs and services built with the .NET and Node.js ecosystems.",
     skills: [
-      { icon: <SiXml />, name: 'XML' },
-      { icon: <FaJava />, name: 'Java' },
-      { icon: <SiKotlin />, name: 'Kotlin' },
-      { icon: <SiSwift />, name: 'Swift' },
+      { icon: <SiDotnet />, name: ".NET" },
+      { icon: <SiDotnet />, name: ".NET Core" },
+      { icon: <SiDotnet />, name: "ASP.NET Core" },
+      { icon: <SiDotnet />, name: "ASP.NET Core Web API" },
+      { icon: <SiNodedotjs />, name: "Node.js" },
+      { icon: <SiExpress />, name: "Express.js" },
+      { icon: <SiOpenapiinitiative />, name: "REST API" },
     ],
-    description:
-      'Capable of integrating modern routing & state management libraries into React-based applications.',
   },
   {
-    id: 4,
-    title: 'Cloud',
+    title: "Mobile Development",
+    description: "Cross-platform and Android application development.",
     skills: [
-      { icon: <SiVercel />, name: 'Vercel' },
-      { icon: <SiGithubactions />, name: 'Github Action' },
+      { icon: <SiFlutter />, name: "Flutter" },
+      { icon: <SiKotlin />, name: "Android Kotlin" },
     ],
-    description:
-      'Experienced in deploying and automating workflows using modern cloud tools.',
   },
   {
-    id: 5,
-    title: 'Utilities',
+    title: "Database Management",
+    description: "Relational data storage and .NET data access patterns.",
     skills: [
-      { icon: <SiGithub />, name: 'Github' },
-      { icon: <SiProgress />, name: 'Vscode' },
-      { icon: <SiAndroidstudio />, name: 'Android Studio' },
-      { icon: <SiJira />, name: 'Jira' },
-      { icon: <SiNotion />, name: 'Notion' },
-      { icon: <SiMiro />, name: 'Miro' },
-      { icon: <SiFigma />, name: 'Figma' },
+      { icon: <SiPostgresql />, name: "PostgreSQL" },
+      { icon: <SiDotnet />, name: "Entity Framework Core" },
     ],
-    description:
-      'Proficient with tools that streamline collaboration and productivity.',
+  },
+  {
+    title: "Version Control, DevOps & Deployment",
+    description: "Version control, automation, infrastructure, and deployment workflows.",
+    skills: [
+      { icon: <SiGit />, name: "Git" },
+      { icon: <SiGithub />, name: "GitHub" },
+      { icon: <SiGithubactions />, name: "GitHub Actions" },
+      { icon: <SiAmazon />, name: "AWS" },
+      { icon: <SiCloudflare />, name: "Cloudflare" },
+      { icon: <SiDocker />, name: "Docker" },
+      { icon: <SiNginx />, name: "Nginx" },
+      { icon: <SiLinux />, name: "VPS Deployment" },
+    ],
+  },
+  {
+    title: "Tools",
+    description: "Tools for planning, tracking, and documenting project work.",
+    skills: [
+      { icon: <SiJira />, name: "Jira" },
+      { icon: <SiTrello />, name: "Trello" },
+      { icon: <SiNotion />, name: "Notion" },
+    ],
   },
 ];
 
 export default function SkillCardStack() {
-  const [cards, setCards] = useState(skillCards);
-  const sensitivity = 200;
-  const animationConfig = { stiffness: 260, damping: 20 };
-  const randomRotation = false;
-
-  const sendToBack = (id: number) => {
-    setCards((prev) => {
-      const newCards = [...prev];
-      const index = newCards.findIndex((card) => card.id === id);
-      if (index !== -1) {
-        const [card] = newCards.splice(index, 1);
-        newCards.unshift(card);
-      }
-      return newCards;
-    });
-  };
-
-  const moveForward = () => {
-    setCards((prev) => {
-      const newCards = [...prev];
-      const first = newCards.shift();
-      if (first) newCards.push(first);
-      return newCards;
-    });
-  };
-
-  const moveBackward = () => {
-    setCards((prev) => {
-      const newCards = [...prev];
-      const last = newCards.pop();
-      if (last) newCards.unshift(last);
-      return newCards;
-    });
-  };
-
   return (
-    <div
-      className="relative mx-auto w-full max-w-[280px] aspect-[320/400] sm:max-w-[320px] sm:aspect-[320/400]"
-      style={{ perspective: 800 }}
-    >
-      {cards.map((card, index) => {
-        const randomRotate = randomRotation ? Math.random() * 10 - 5 : 0;
-
-        return (
-          <CardRotate
-            key={card.id}
-            onSendToBack={() => sendToBack(card.id)}
-            sensitivity={sensitivity}
+    <section className="mx-auto w-full max-w-[1200px] px-4 pb-24 pt-10 sm:px-6 sm:pb-32 sm:pt-14 lg:px-8">
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {groups.map((group) => (
+          <details
+            key={group.title}
+            name="tech-stack-accordion"
+            className="group h-full overflow-hidden rounded-2xl border border-border bg-card/80 text-foreground shadow-sm transition-colors open:border-primary/50"
           >
-            <motion.div
-              className={clsx(
-                'rounded-3xl p-6 shadow-2xl bg-zinc-900 text-white text-center',
-                'transform-style-3d w-full h-full min-h-[400px] '
-              )}
-              animate={{
-                rotateZ: (cards.length - index - 1) * 4 + randomRotate,
-                scale: 1 + index * 0.06 - cards.length * 0.06,
-                transformOrigin: '50% 50%',
-              }}
-              transition={{
-                type: 'spring',
-                stiffness: animationConfig.stiffness,
-                damping: animationConfig.damping,
-              }}
-            >
-              <h3 className="text-[clamp(1rem,2vw,1.5rem)] font-bold mb-1">
-                {card.title}
-              </h3>
-              <p className="text-xs text-gray-400 mb-4 tracking-widest">
-                DRAG TO INTERACT
-              </p>
-              <hr className="border-t border-blue-500 w-2/3 mx-auto mb-6" />
-              <div className="hide-scrollbar flex flex-col gap-4 items-start h-[200px] overflow-y-auto px-2 mb-6 text-left ">
-                {card.skills.map((skill, j) => (
-                  <div key={j} className="flex items-center gap-3 text-xl">
-                    {skill.icon}
-                    <span>{skill.name}</span>
-                  </div>
+            <summary className="flex h-28 cursor-pointer list-none items-center justify-between gap-3 p-4 [&::-webkit-details-marker]:hidden">
+              <span>
+                <span className="block font-display text-lg font-bold tracking-[-0.03em]">{group.title}</span>
+                <span className="mt-1 line-clamp-2 block text-xs leading-relaxed text-muted-foreground">{group.description}</span>
+              </span>
+              <ChevronDown className="h-5 w-5 shrink-0 text-primary transition-transform duration-300 group-open:rotate-180" />
+            </summary>
+
+            <div className="border-t border-border/70 p-4">
+              <div className="flex flex-wrap items-center gap-2">
+                {group.skills.map((skill) => (
+                  <span
+                    key={skill.name}
+                    className="group/chip inline-flex items-center gap-1.5 rounded-full border border-border/80 bg-background/60 px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:border-primary/50 hover:bg-primary hover:text-primary-foreground"
+                  >
+                    <span className="text-primary group-hover/chip:text-primary-foreground">
+                      {skill.icon}
+                    </span>
+                    {skill.name}
+                  </span>
                 ))}
               </div>
-              <div className="flex items-end">  
-                <p className="text-sm text-gray-400">{card.description}</p>
-              </div>
-            </motion.div>
-          </CardRotate>
-        );
-      })}
-
-      {/* Left Nav */}
-      <div className="absolute -left-8 sm:-left-20 top-1/2 -translate-y-1/2 z-10">
-        <MagneticEffect>
-          <Button
-            variant="secondary"
-            className="rounded-full py-6 px-4 text-2xl sm:py-8 sm:px-6 sm:text-4xl"
-            onClick={moveBackward}
-          >
-            &laquo;
-          </Button>
-        </MagneticEffect>
+            </div>
+          </details>
+        ))}
       </div>
-
-      {/* Right Nav */}
-      <div className="absolute -right-8 sm:-right-20 top-1/2 -translate-y-1/2 z-10">
-        <MagneticEffect>
-          <Button
-            variant="secondary"
-            className="rounded-full py-6 px-4 text-2xl sm:py-8 sm:px-6 sm:text-4xl"
-            onClick={moveForward}
-          >
-            &raquo;
-          </Button>
-        </MagneticEffect>
-      </div>
-    </div>
+    </section>
   );
 }

@@ -256,7 +256,7 @@ export default function TiltedCard({
 
       {showTooltip && !isMobile && (
         <motion.figcaption
-          className="pointer-events-none absolute left-0 top-0 rounded-[4px] bg-white px-[10px] py-[4px] text-[10px] text-[#2d2d2d] opacity-0 z-[3]"
+          className="pointer-events-none absolute left-0 top-0 z-[3] rounded-[4px] border border-border bg-card px-[10px] py-[4px] text-[10px] text-foreground opacity-0"
           style={{
             x,
             y,
