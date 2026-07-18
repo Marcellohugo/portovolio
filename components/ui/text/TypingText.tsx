@@ -35,7 +35,7 @@ const TypingText: React.FC<TypingTextProps> = ({
   }, [index, text, speed, loop, delay]);
 
   return (
-    <div className="text-[clamp(1.6rem,4vw,3rem)] font-serif text-center text-white">
+    <div className="text-[clamp(1.6rem,4vw,3rem)] font-display text-center text-foreground">
       {displayedText}
       <span className="animate-pulse">|</span>
     </div>

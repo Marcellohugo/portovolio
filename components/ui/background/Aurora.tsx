@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useTheme } from "next-themes";
 import { Renderer, Program, Mesh, Color, Triangle } from "ogl";
 
 const VERT = `#version 300 es
@@ -117,14 +118,17 @@ interface AuroraProps {
   speed?: number;
 }
 
+const defaultColorStops = ["#00d8ff", "#7cff67", "#00d8ff"];
+
 export default function Aurora(props: AuroraProps) {
-  const {
-    colorStops = ["#00d8ff", "#7cff67", "#00d8ff"],
-    amplitude = 1.0,
-    blend = 0.5,
-  } = props;
+  const { resolvedTheme } = useTheme();
   const propsRef = useRef<AuroraProps>(props);
-  propsRef.current = props;
+  propsRef.current = {
+    ...props,
+    colorStops: resolvedTheme === "light"
+      ? ["#dbeafe", "#bfdbfe", "#f8fafc"]
+      : props.colorStops,
+  };
 
   const ctnDom = useRef<HTMLDivElement>(null);
 
@@ -143,60 +147,51 @@ export default function Aurora(props: AuroraProps) {
     gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
     gl.canvas.style.backgroundColor = "transparent";
 
-    let program: Program | undefined;
-
     function resize() {
       if (!ctn) return;
       const width = ctn.offsetWidth;
       const height = ctn.offsetHeight;
       renderer.setSize(width, height);
-      if (program) {
-        program.uniforms.uResolution.value = [width, height];
-      }
+      program.uniforms.uResolution.value = [width, height];
     }
-    window.addEventListener("resize", resize);
 
     const geometry = new Triangle(gl);
     if (geometry.attributes.uv) {
-      // TypeScript may require a type assertion here.
-      delete (geometry.attributes as any).uv;
+      delete geometry.attributes.uv;
     }
 
-    const colorStopsArray = colorStops.map((hex) => {
+    const toColorStops = (stops: string[]) => stops.map((hex) => {
       const c = new Color(hex);
       return [c.r, c.g, c.b];
     });
+    const initialProps = propsRef.current;
 
-    program = new Program(gl, {
+    const program = new Program(gl, {
       vertex: VERT,
       fragment: FRAG,
       uniforms: {
         uTime: { value: 0 },
-        uAmplitude: { value: amplitude },
-        uColorStops: { value: colorStopsArray },
+        uAmplitude: { value: initialProps.amplitude ?? 1.0 },
+        uColorStops: { value: toColorStops(initialProps.colorStops ?? defaultColorStops) },
         uResolution: { value: [ctn.offsetWidth, ctn.offsetHeight] },
-        uBlend: { value: blend },
+        uBlend: { value: initialProps.blend ?? 0.5 },
       },
     });
 
     const mesh = new Mesh(gl, { geometry, program });
     ctn.appendChild(gl.canvas);
+    window.addEventListener("resize", resize);
 
     let animateId = 0;
     const update = (t: number) => {
       animateId = requestAnimationFrame(update);
       const { time = t * 0.01, speed = 1.0 } = propsRef.current;
-      if (program) {
-        program.uniforms.uTime.value = time * speed * 0.1;
-        program.uniforms.uAmplitude.value = propsRef.current.amplitude ?? 1.0;
-        program.uniforms.uBlend.value = propsRef.current.blend ?? blend;
-        const stops = propsRef.current.colorStops ?? colorStops;
-        program.uniforms.uColorStops.value = stops.map((hex: string) => {
-          const c = new Color(hex);
-          return [c.r, c.g, c.b];
-        });
-        renderer.render({ scene: mesh });
-      }
+      const currentProps = propsRef.current;
+      program.uniforms.uTime.value = time * speed * 0.1;
+      program.uniforms.uAmplitude.value = currentProps.amplitude ?? 1.0;
+      program.uniforms.uBlend.value = currentProps.blend ?? 0.5;
+      program.uniforms.uColorStops.value = toColorStops(currentProps.colorStops ?? defaultColorStops);
+      renderer.render({ scene: mesh });
     };
     animateId = requestAnimationFrame(update);
 
@@ -210,7 +205,7 @@ export default function Aurora(props: AuroraProps) {
       }
       gl.getExtension("WEBGL_lose_context")?.loseContext();
     };
-  }, [amplitude]);
+  }, []);
 
   return <div ref={ctnDom} className="w-full h-full" />;
 }

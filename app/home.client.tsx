@@ -13,9 +13,15 @@ export default function HomeClient() {
   const [isBlurred, setIsBlurred] = useState(false);
 
   useEffect(() => {
+    let previous = false;
     const onScroll = () => {
-      setIsBlurred(window.scrollY > 0);
+      const next = window.scrollY > 0;
+      if (next !== previous) {
+        previous = next;
+        setIsBlurred(next);
+      }
     };
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
 
     return () => {
@@ -24,16 +30,15 @@ export default function HomeClient() {
   }, []);
 
   return (
-    <main className="relative scroll-smooth">
+    <main className="relative scroll-smooth bg-slate-400 dark:bg-background">
       <div
-        className="fixed top-0 left-0 w-full h-screen z-0 transition-filter duration-500"
-        style={{ filter: isBlurred ? "blur(30px)" : "blur(0px)" }}
+        className={`fixed left-0 top-0 z-0 h-[100svh] w-full transition-[filter] duration-500 md:h-screen ${isBlurred ? "blur-[20px] md:blur-[45px]" : "blur-0"}`}
       >
         <Hero />
       </div>
       
       {/* Spacer untuk Hero section */}
-      <div className="h-screen w-full" />
+      <div className="h-[100svh] w-full md:h-screen" />
 
       {/* Konten utama yang dapat di-scroll */}
       <div className="relative z-10">

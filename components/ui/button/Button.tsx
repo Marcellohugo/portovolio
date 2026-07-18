@@ -9,32 +9,32 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: `
-          bg-white text-gray-900 
-          hover:bg-[#092965] hover:text-white
+          bg-primary text-primary-foreground
+          hover:brightness-110
           focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary 
           transition-colors duration-200
         `,
         destructive: `
-          bg-red-600 text-white 
-          hover:bg-red-700 
-          focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 
+          bg-destructive text-destructive-foreground
+          hover:bg-destructive/90
+          focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-destructive
           transition-colors duration-200
         `,
         outline: `
-          border border-white text-white
-          hover:bg-gray-50 hover:text-gray-900 
+          border border-foreground text-foreground
+          hover:bg-foreground hover:text-background
           focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary 
           transition-colors duration-200
         `,
         secondary: `
-          bg-[#092965] text-white 
-          hover:bg-white hover:text-gray-900 
-          focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#092965] 
+          bg-primary text-primary-foreground
+          hover:brightness-110
+          focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary
           transition-colors duration-200
         `,
         ghost: `
-          bg-transparent text-gray-900 
-          hover:bg-gray-100 
+          bg-transparent text-foreground
+          hover:bg-muted
           focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary 
           transition-colors duration-200
         `,

@@ -1,70 +1,53 @@
 "use client";
 
-import React from "react";
-import { FaArrowUp, FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaArrowUp, FaEnvelope, FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 import MagneticEffect from "../ui/button/MagneticEffect";
-import { Button } from "../ui/button/Button";
-// import ThemeSwitcher from "../ui/ThemeSwitcher";
+import ThemeSwitcher from "../ui/ThemeSwitcher";
+import BackButton from "../ui/button/BackButton";
 
-const Nav: React.FC = () => {
+export default function Nav() {
   const handleScrollTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleLogoClick = () => {
-    window.location.href = "/";
-  };
-
   return (
     <>
-      {/* Top Navbar */}
-      <nav className="fixed top-0 w-full z-50 flex items-center justify-between px-1 sm:px-8 py-4 backdrop-blur-md bg-black/50 text-white">
-        {/* Logo */}
-        <div className="flex items-center gap-2">
-          <Button
-            variant="secondary"
-            className="py-6 px-4 text-2xl sm:py-8 sm:px-6 sm:text-4xl"
-            onClick={handleLogoClick}
-          >
-            &laquo;
-          </Button>
-          <div>
-            <div className="text-[#A3D8FF] font-bold text-lg">Marcello Hugo</div>
-            <div className="text-[0.875rem]">Frond-end Developer</div>
-          </div>
-        </div>
+      <div className="fixed left-3 top-3 z-50 sm:left-4 sm:top-4">
+        <BackButton />
+      </div>
 
-        {/* Right Icons */}
-        <div className="flex items-center space-x-4">
+      <div className="fixed right-3 top-3 z-50 flex items-center gap-3 rounded-full border border-border bg-slate-400/80 px-3 py-2 text-foreground backdrop-blur-md dark:bg-background/70 sm:right-4 sm:top-4 sm:gap-4">
+          <MagneticEffect>
+            <a href="mailto:marco.marcello15@gmail.com" aria-label="Email Marco Marcello Hugo">
+              <FaEnvelope className="w-5 h-5 sm:w-6 sm:h-6 cursor-pointer hover:text-primary transition" />
+            </a>
+          </MagneticEffect>
           <MagneticEffect>
             <a href="https://instagram.com/marcellohugo__" target="_blank" rel="noopener noreferrer">
-              <FaInstagram className="w-6 h-6 cursor-pointer hover:text-[#A3D8FF] transition" />
+              <FaInstagram className="w-5 h-5 sm:w-6 sm:h-6 cursor-pointer hover:text-primary transition" />
             </a>
           </MagneticEffect>
           <MagneticEffect>
             <a href="https://linkedin.com/in/marcellohugo" target="_blank" rel="noopener noreferrer">
-              <FaLinkedin className="w-6 h-6 cursor-pointer hover:text-[#A3D8FF] transition" />
+              <FaLinkedin className="w-5 h-5 sm:w-6 sm:h-6 cursor-pointer hover:text-primary transition" />
             </a>
           </MagneticEffect>
           <MagneticEffect>
             <a href="https://github.com/marcellohugo" target="_blank" rel="noopener noreferrer">
-              <FaGithub className="w-6 h-6 cursor-pointer hover:text-[#A3D8FF] transition" />
+              <FaGithub className="w-5 h-5 sm:w-6 sm:h-6 cursor-pointer hover:text-primary transition" />
             </a>
           </MagneticEffect>
-        </div>
-      </nav>
+      </div>
 
       {/* Bottom Footer-Like Bar */}
-      <div className="fixed bottom-0 w-full text-white py-4 flex justify-center items-center text-center z-40">
+      <div className="fixed bottom-0 z-[100] flex w-full items-center justify-center py-4 text-center text-foreground">
         {/* Left Icon */}
-        {/* <div className="absolute left-4 bottom-4">
-          <MagneticEffect>
-            <FaGamepad className="w-6 h-6" />
-          </MagneticEffect>
-        </div> */}
+        <div className="absolute left-3 sm:left-4 bottom-3 sm:bottom-4">
+          <ThemeSwitcher />
+        </div>
 
         {/* Right Icons */}
-        <div className="absolute right-4 bottom-4 flex flex-col items-center justify-center space-y-2">
+        <div className="absolute right-3 sm:right-4 bottom-3 sm:bottom-4 flex flex-col items-center justify-center space-y-2">
           <MagneticEffect>
             <div
               className="flex flex-col items-center cursor-pointer"
@@ -74,16 +57,8 @@ const Nav: React.FC = () => {
               <span className="text-xs font-bold mt-1">Scroll Top</span>
             </div>
           </MagneticEffect>
-          {/* <div className="flex flex-row items-center justify-center space-x-4">
-            <MagneticEffect>
-              <FaVolumeMute className="w-6 h-6" />
-            </MagneticEffect>
-          </div> */}
-          {/* <ThemeSwitcher /> */}
         </div>
       </div>
     </>
   );
-};
-
-export default Nav;
+}

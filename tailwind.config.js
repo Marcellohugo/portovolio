@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: "class",
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -7,20 +8,38 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-body)', 'sans-serif'],
+        display: ['var(--font-display)', 'sans-serif'],
+      },
       // Menambahkan palet warna terpusat untuk konsistensi
       colors: {
-        background: 'black',
-        foreground: 'whitesmoke',
+        background: 'hsl(var(--background) / <alpha-value>)',
+        foreground: 'hsl(var(--foreground) / <alpha-value>)',
         primary: {
-          DEFAULT: '#A3D8FF',
-          dark: '#092965',
+          DEFAULT: 'hsl(var(--primary) / <alpha-value>)',
+          dark: 'hsl(var(--primary-dark) / <alpha-value>)',
+          foreground: 'hsl(var(--primary-foreground) / <alpha-value>)',
         },
+        secondary: 'hsl(var(--secondary) / <alpha-value>)',
         card: {
-          DEFAULT: 'rgb(24 24 27)', // setara dengan zinc-900
-          foreground: 'whitesmoke',
+          DEFAULT: 'hsl(var(--card) / <alpha-value>)',
+          foreground: 'hsl(var(--foreground) / <alpha-value>)',
         },
         muted: {
-          foreground: 'rgb(161 161 170)', // setara dengan zinc-400
+          DEFAULT: 'hsl(var(--muted) / <alpha-value>)',
+          foreground: 'hsl(var(--muted-foreground) / <alpha-value>)',
+        },
+        border: 'hsl(var(--border) / <alpha-value>)',
+        input: 'hsl(var(--border) / <alpha-value>)',
+        ring: 'hsl(var(--primary) / <alpha-value>)',
+        success: {
+          DEFAULT: 'hsl(var(--success) / <alpha-value>)',
+          foreground: 'hsl(var(--success-foreground) / <alpha-value>)',
+        },
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive) / <alpha-value>)',
+          foreground: 'hsl(var(--destructive-foreground) / <alpha-value>)',
         },
       },
       // Menambahkan skala tipografi yang konsisten dan responsif

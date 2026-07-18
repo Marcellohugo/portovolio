@@ -1,20 +1,12 @@
-import MagneticEffect from "@/components/ui/button/MagneticEffect";
-
 export default function Footer() {
   return (
-    <footer className="w-full text-foreground py-8 flex justify-center items-center text-center">
+    <footer className="flex w-full items-center justify-center py-8 text-center text-foreground dark:text-white">
       <div className="text-sm">
-        <MagneticEffect>
-          <div className="font-signature text-xl">Marcello Hugo</div>
-        </MagneticEffect>
-        <MagneticEffect>
-          <div className="text-body-sm">Front-end Developer</div>
-        </MagneticEffect>
-        <MagneticEffect>
-          <div className="text-caption text-muted-foreground mt-2">
-            Copyright © 2025 by Marcello Hugo
-          </div>
-        </MagneticEffect>
+        <div className="font-display text-xl">Marcello Hugo</div>
+        <div className="text-body-sm">Front-end Developer</div>
+        <div className="mt-2 text-caption text-muted-foreground dark:text-white/70">
+          Copyright © 2025 by Marcello Hugo
+        </div>
       </div>
     </footer>
   );

@@ -1,23 +1,38 @@
-import Nav from "@/components/navbar/NavProfile"; // Menggunakan Nav yang sesuai
+"use client";
+
+import Nav from "@/components/navbar/NavProfile";
 import Aurora from "@/components/ui/background/Aurora";
 import Footer from "@/components/shared/Footer";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 interface PageLayoutProps {
   children: React.ReactNode;
 }
 
 export default function PageLayout({ children }: PageLayoutProps) {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 0);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <section className="relative w-full">
+    <section className="relative isolate w-full bg-slate-400 dark:bg-background">
       <Nav />
-      <div className="fixed inset-0 -z-10">
+      <div
+        className={`fixed inset-0 z-0 transition-[filter] duration-500 ${isScrolled ? "blur-[20px] md:blur-[45px]" : "blur-0"}`}
+      >
         <Aurora colorStops={["#092965", "#A3D8FF", "#092965"]} />
       </div>
-      <main className="relative z-10 pt-24">
+      <main className="relative z-10 pt-16 sm:pt-20">
         {children}
       </main>
-      <Footer />
+      <div className="relative z-10">
+        <Footer />
+      </div>
     </section>
   );
 }

@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { FaGithub, FaInstagram, FaLinkedin, FaEnvelope, FaLaptopMedical } from 'react-icons/fa';
 import Aurora from '@/components/ui/background/Aurora';
+import ThemeSwitcher from '@/components/ui/ThemeSwitcher';
 
 const LinkPage: React.FC = () => {
   const socialLinks = [
@@ -18,9 +19,12 @@ const LinkPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen items-center justify-center text-foreground flex flex-col p-4">
+    <div className="flex min-h-[100svh] flex-col items-center justify-center p-4 pb-24 text-foreground">
       <div className="fixed inset-0 -z-10">
         <Aurora colorStops={["#092965", "#A3D8FF", "#092965"]} />
+      </div>
+      <div className="fixed bottom-4 left-4 z-20">
+        <ThemeSwitcher />
       </div>
 
       <div className="flex flex-col max-w-md w-full items-center justify-center text-center">
@@ -56,7 +60,7 @@ const LinkPage: React.FC = () => {
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-foreground/10 text-foreground rounded-full p-3 hover:bg-primary hover:text-primary-dark transition-colors"
+              className="bg-foreground/10 text-foreground rounded-full p-3 hover:bg-primary hover:text-primary-foreground transition-colors"
             >
               {link.icon}
             </a>
@@ -70,7 +74,7 @@ const LinkPage: React.FC = () => {
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full flex items-center justify-center gap-3 bg-foreground/10 text-foreground rounded-lg px-4 py-3 hover:bg-primary hover:text-primary-dark font-medium transition-colors"
+              className="w-full flex items-center justify-center gap-3 bg-foreground/10 text-foreground rounded-lg px-4 py-3 hover:bg-primary hover:text-primary-foreground font-medium transition-colors"
             >
               {link.icon}
               <span>{link.text}</span>
