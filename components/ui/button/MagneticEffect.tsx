@@ -1,8 +1,6 @@
 "use client"
 
-import { motion } from "framer-motion"
 import { useRef, useState } from "react"
-import { clamp } from "three/src/math/MathUtils.js"
 
 interface MagneticEffectProps {
   children: React.ReactNode
@@ -28,7 +26,7 @@ export default function MagneticEffect({ children }: MagneticEffectProps) {
 
     const distance = Math.sqrt(middleX ** 2 + middleY ** 2)
 
-    const radius = clamp(distance, 0, maxDistance)
+    const radius = Math.min(distance, maxDistance)
 
     const theta = Math.atan2(middleY, middleX)
 
@@ -47,19 +45,14 @@ export default function MagneticEffect({ children }: MagneticEffectProps) {
   const { x, y } = position
 
   return (
-    <motion.div
+    <div
       ref={ref}
       onMouseMove={handleMouse}
       onMouseLeave={reset}
-      animate={{ x, y }}
-      transition={{
-        type: "spring",
-        stiffness: 150,
-        damping: 15,
-        mass: 0.1,
-      }}
+      style={{ transform: `translate3d(${x}px, ${y}px, 0)` }}
+      className="transition-transform duration-150 ease-out"
     >
       {children}
-    </motion.div>
+    </div>
   )
 }

@@ -1,18 +1,13 @@
 'use client'
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
 import { useTheme } from "next-themes";
 import { useMemo } from "react";
-import Particles from "../ui/background/Particles";
 
-const entrance = (delay = 0) => ({
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { delay, duration: 0.7, ease: "easeOut" as const },
-});
+const Particles = dynamic(() => import("../ui/background/Particles"), { ssr: false });
 
-export default function Hero() {
+export default function Hero({ paused = false }: { paused?: boolean }) {
   const { resolvedTheme } = useTheme();
   const particleColors = useMemo(
     () => resolvedTheme === "light" ? ["#0f172a", "#0369a1"] : ["#ffffff", "#A3D8FF"],
@@ -26,6 +21,7 @@ export default function Hero() {
     >
       <div className="absolute inset-0 z-0">
         <Particles
+          paused={paused}
           particleColors={particleColors}
           particleCount={240}
           particleSpread={10}
@@ -37,12 +33,12 @@ export default function Hero() {
       <div className="relative z-10 mx-auto h-full max-w-[1440px] px-4 pt-20 sm:px-10 sm:pt-24 lg:px-16">
         <div className="relative isolate h-full">
           <div className="absolute left-1/2 top-3 z-30 -translate-x-1/2 sm:top-5">
-            <motion.div {...entrance()} className="relative inline-flex">
+            <div className="relative inline-flex">
               <span className="inline-flex rounded-full border border-foreground/50 bg-background/60 px-5 py-2 text-sm font-bold shadow-sm backdrop-blur-md sm:px-7 sm:text-base">
                 Hello!
               </span>
 
-            </motion.div>
+            </div>
           </div>
 
           <div className="absolute left-1/2 top-[8%] z-10 w-full max-w-full -translate-x-1/2 px-2 sm:top-[8%] sm:px-0 lg:top-[7%]">
@@ -70,25 +66,23 @@ export default function Hero() {
             />
           </div>
 
-          <motion.aside
-            {...entrance(0.28)}
+          <aside
             className="absolute bottom-[13%] left-0 z-30 hidden max-w-[240px] lg:block"
           >
             <div className="mb-4 h-px w-16 bg-primary" />
             <p className="text-sm font-medium leading-relaxed text-muted-foreground">
               Thoughtful interfaces, responsive experiences, and clean code built for real people.
             </p>
-          </motion.aside>
+          </aside>
 
-          <motion.aside
-            {...entrance(0.34)}
+          <aside
             className="absolute bottom-[13%] right-0 z-30 hidden text-right lg:block"
           >
             <p className="text-3xl font-black leading-none">Creative</p>
             <p className="mt-1 text-sm font-semibold uppercase tracking-[0.24em] text-muted-foreground">
               Developer
             </p>
-          </motion.aside>
+          </aside>
 
         </div>
       </div>

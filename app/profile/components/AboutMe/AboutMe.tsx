@@ -33,7 +33,6 @@ export default function AboutMe() {
           fill
           sizes="100vw"
           className="h-full w-full object-cover"
-          priority
         />
         <div className="absolute inset-0 flex flex-col justify-center items-center text-white z-10 text-center bg-black/30">
           <h2 className="text-body-lg font-bold">IT&apos;S ALL ABOUT</h2>

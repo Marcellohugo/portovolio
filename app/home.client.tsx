@@ -1,13 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import Nav from "@/components/navbar/Nav";
 import Hero from "@/components/hero/Hero";
-import About from "@/components/about/About";
-import AboutAttribute from "@/components/about-attribute/AboutAttribute";
-import Project from "@/components/projects/Projects";
-import Contact from "@/components/contact/Contact";
 import Footer from "@/components/shared/Footer";
+
+const About = dynamic(() => import("@/components/about/About"));
+const AboutAttribute = dynamic(() => import("@/components/about-attribute/AboutAttribute"));
+const Project = dynamic(() => import("@/components/projects/Projects"));
+const Contact = dynamic(() => import("@/components/contact/Contact"));
 
 export default function HomeClient() { 
   const [isBlurred, setIsBlurred] = useState(false);
@@ -34,7 +36,7 @@ export default function HomeClient() {
       <div
         className={`fixed left-0 top-0 z-0 h-[100svh] w-full transition-[filter] duration-500 md:h-screen ${isBlurred ? "blur-[20px] md:blur-[45px]" : "blur-0"}`}
       >
-        <Hero />
+        <Hero paused={isBlurred} />
       </div>
       
       {/* Spacer untuk Hero section */}

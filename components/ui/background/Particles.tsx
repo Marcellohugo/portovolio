@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react"
 import { Renderer, Camera, Geometry, Program, Mesh } from "ogl"
 
 interface ParticlesProps {
+  paused?: boolean
   particleCount?: number
   particleSpread?: number
   speed?: number
@@ -95,6 +96,7 @@ const fragment = /* glsl */ `
 `
 
 const Particles: React.FC<ParticlesProps> = ({
+  paused = false,
   particleCount = 200,
   particleSpread = 10,
   speed = 0.1,
@@ -110,6 +112,11 @@ const Particles: React.FC<ParticlesProps> = ({
 }) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const mouseRef = useRef<{ x: number; y: number }>({ x: 0, y: 0 })
+  const pausedRef = useRef(paused)
+
+  useEffect(() => {
+    pausedRef.current = paused
+  }, [paused])
 
   useEffect(() => {
     const container = containerRef.current
@@ -198,6 +205,10 @@ const Particles: React.FC<ParticlesProps> = ({
 
     const update = (t: number) => {
       animationFrameId = requestAnimationFrame(update)
+      if (pausedRef.current || document.hidden || t - lastTime < 1000 / 30) {
+        if (pausedRef.current || document.hidden) lastTime = t
+        return
+      }
       const delta = t - lastTime
       lastTime = t
       elapsed += delta * speed

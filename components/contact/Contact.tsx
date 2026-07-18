@@ -30,7 +30,7 @@ export default function Contact() {
 
         observer = new IntersectionObserver(
           ([entry]) => setShowLanyard(entry.isIntersecting),
-          { rootMargin: "200px 0px" },
+          { rootMargin: "0px" },
         );
         observer.observe(target);
       };

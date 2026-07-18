@@ -3,7 +3,6 @@ import { cn } from "../lib/utils";
 import type { Metadata } from "next";
 import { Space_Grotesk, Syne } from "next/font/google";
 import "./globals.css";
-import PreloadWrapper from "@/components/preload/PreloadWrapper"; // Pastikan impor ini ada
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import ProtectClient from "@/components/ProtectClient";
 import { Analytics } from "@vercel/analytics/next";
@@ -95,11 +94,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning>
       <body className={cn(bodyFont.variable, displayFont.variable, "font-sans bg-background text-foreground")} suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <PreloadWrapper>
-            {children}
-            <SpeedInsights />
-            <Analytics />
-          </PreloadWrapper>
+          {children}
+          <SpeedInsights />
+          <Analytics />
           <ProtectClient />
         </ThemeProvider>
       </body>

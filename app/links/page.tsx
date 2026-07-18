@@ -2,9 +2,11 @@
 
 import React from 'react';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import { FaGithub, FaInstagram, FaLinkedin, FaEnvelope, FaLaptopMedical } from 'react-icons/fa';
-import Aurora from '@/components/ui/background/Aurora';
 import ThemeSwitcher from '@/components/ui/ThemeSwitcher';
+
+const Aurora = dynamic(() => import('@/components/ui/background/Aurora'), { ssr: false });
 
 const LinkPage: React.FC = () => {
   const socialLinks = [

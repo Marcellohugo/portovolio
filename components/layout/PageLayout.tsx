@@ -1,9 +1,11 @@
 "use client";
 
 import Nav from "@/components/navbar/NavProfile";
-import Aurora from "@/components/ui/background/Aurora";
 import Footer from "@/components/shared/Footer";
+import dynamic from "next/dynamic";
 import React, { useEffect, useState } from "react";
+
+const Aurora = dynamic(() => import("@/components/ui/background/Aurora"), { ssr: false });
 
 interface PageLayoutProps {
   children: React.ReactNode;

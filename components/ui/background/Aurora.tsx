@@ -183,8 +183,11 @@ export default function Aurora(props: AuroraProps) {
     window.addEventListener("resize", resize);
 
     let animateId = 0;
+    let lastFrame = 0;
     const update = (t: number) => {
       animateId = requestAnimationFrame(update);
+      if (document.hidden || t - lastFrame < 1000 / 30) return;
+      lastFrame = t;
       const { time = t * 0.01, speed = 1.0 } = propsRef.current;
       const currentProps = propsRef.current;
       program.uniforms.uTime.value = time * speed * 0.1;
