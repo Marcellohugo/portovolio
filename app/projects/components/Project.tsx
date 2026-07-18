@@ -80,11 +80,11 @@ const OtherProjectsSection: React.FC = () => {
       : projects.filter((p) => p.category === activeFilter);
 
   return (
-    <section className="py-8">
+    <section className="pb-8 pt-6 sm:pb-12 sm:pt-8">
       <div className="container mx-auto max-w-[1200px] px-4">
         
         {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-2 mt-8 mb-8">
+        <div className="mb-8 flex flex-wrap justify-center gap-2">
           {filters.map((f) => (
             <Button
               key={f.value}
@@ -92,8 +92,8 @@ const OtherProjectsSection: React.FC = () => {
               className={`
                 px-4 py-2 rounded-lg font-medium transition
                 ${activeFilter === f.value
-                  ? 'bg-blue-900 text-white'
-                  : 'bg-white text-gray-700 border border-gray-300'}
+                  ? 'bg-primary text-primary-foreground'
+                  : 'bg-card text-foreground border border-border'}
               `}
             >
               {f.label}
@@ -102,11 +102,11 @@ const OtherProjectsSection: React.FC = () => {
         </div>
 
         {/* Project Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {filtered.map((proj) => (
             <div
               key={proj.id}
-              className="relative bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition h-64 sm:h-72 md:h-80 group"
+              className="relative bg-card rounded-lg overflow-hidden shadow-md hover:shadow-lg transition h-64 sm:h-72 md:h-80 group"
             >
               {/* Background Thumbnail */}
               {proj.imageUrl && (
@@ -114,6 +114,7 @@ const OtherProjectsSection: React.FC = () => {
                   src={proj.imageUrl}
                   alt={proj.title}
                   fill
+                  sizes="(max-width: 767px) 100vw, 50vw"
                   className="absolute inset-0 w-full h-full object-cover
                    opacity-30 z-0 transition duration-300 ease-in-out group-hover:opacity-100 group-hover:z-20"
                 />
@@ -121,20 +122,20 @@ const OtherProjectsSection: React.FC = () => {
 
               {/* Overlay Content */}
               <div className="absolute inset-0 flex flex-col justify-center items-center px-4 text-center">
-                <span className="absolute top-3 left-3 bg-gray-800 text-white text-xs sm:text-sm px-2 py-1 rounded">
+                <span className="absolute left-3 top-3 rounded bg-primary-dark px-2 py-1 text-xs text-primary-foreground sm:text-sm">
                   {proj.year}
                 </span>
-                <h3 className="text-lg sm:text-xl font-semibold mb-1 text-gray-900">
+                <h3 className="text-lg sm:text-xl font-semibold mb-1 text-foreground">
                   {proj.title}
                 </h3>
-                <p className="text-gray-700 mb-3 text-xs sm:text-sm">
+                <p className="text-muted-foreground mb-3 text-xs sm:text-sm">
                   {proj.description}
                 </p>
                 <div className="flex flex-wrap justify-center gap-1 sm:gap-2">
                   {proj.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-[10px] sm:text-xs font-medium bg-gray-800 text-white px-2 py-1 rounded-full"
+                      className="rounded-full bg-primary-dark px-2 py-1 text-[10px] font-medium text-primary-foreground sm:text-xs"
                     >
                       {tag}
                     </span>

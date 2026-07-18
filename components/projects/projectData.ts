@@ -7,8 +7,6 @@ export const projects = [
       "A personal portfolio website that showcases my skills, projects, and experiences. This project was created using React, TypeScript, Next.js, and TailwindCSS.",
     image: "/images/Personal.png",
     tech: ["React", "TypeScript", "Next.js", "TailwindCSS"],
-    linkProject: "https://google.com",
-    repo: "https://github.com/Marcellohugo",
   },
   {
     id: 2,
@@ -18,8 +16,6 @@ export const projects = [
       "A simple CV maker website that allows users to create and download their CVs in PDF format. This project was created using HTML and CSS.",
     image: "/images/CVMaker.png",
     tech: ["HTML", "CSS"],
-    linkProject: "https://google.com",
-    repo: "https://github.com/Marcellohugo",
   },
   {
     id: 3,
@@ -29,7 +25,5 @@ export const projects = [
       "A website created for the Castafest event, an annual event held by Amsa-Undip. This website was created using WIX.",
     image: "/images/Castafest.png",
     tech: ["WIX", "JavaScript"],
-    linkProject: "https://google.com",
-    repo: "https://github.com/Marcellohugo",
   },
 ]

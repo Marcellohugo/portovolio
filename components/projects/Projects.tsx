@@ -8,11 +8,11 @@ export default function Projects() {
   return (
     <section
       id="project"
-      className="relative w-full pt-24"
+      className="relative w-full"
     >
-      <div className="relative z-10 mx-auto flex-col text-[whitesmoke]">
+      <div className="relative z-10 mx-auto flex-col text-foreground dark:text-white">
         {/* First content block: Title, Subtitle, Text, Buttons, Image */}
-        <div className="flex flex-col items-start justify-center px-4 sm:px-0 max-w-[1200px] mx-auto">
+        <div className="flex flex-col items-start justify-center px-4 sm:px-6 lg:px-8 max-w-[1200px] mx-auto">
           <GradientText
             className="text-[clamp(1.6rem,4vw,3rem)] leading-[1.5] font-semibold"
             >
@@ -35,7 +35,7 @@ export default function Projects() {
           </div>
         </div>
 
-        <div className="flex flex-row items-center justify-center min-h-full mx-auto w-[100%]">
+        <div className="flex flex-row items-center justify-center min-h-full mx-auto w-full px-4 sm:px-6 lg:px-8">
           <div className="mb-24 grid w-full max-w-[1200px] grid-cols-1 gap-x-6 gap-y-6 lg:grid-cols-1">
             {projects.map((project, index) => (
             <ProjectCard
@@ -44,8 +44,6 @@ export default function Projects() {
               description={project.description}
               image={project.image}
               tech={project.tech}
-              repo={project.repo}
-              projectLink={project.linkProject}
             />
             ))}
           </div>
