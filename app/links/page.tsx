@@ -79,7 +79,7 @@ const LinkPage: React.FC = () => {
               className="w-full flex items-center justify-center gap-3 bg-foreground/10 text-foreground rounded-lg px-4 py-3 hover:bg-primary hover:text-primary-foreground font-medium transition-colors"
             >
               {link.icon}
-              <span>{link.text}</span>
+              <span className="min-w-0 break-words">{link.text}</span>
             </a>
           ))}
         </div>

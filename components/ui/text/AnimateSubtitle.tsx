@@ -20,10 +20,10 @@ export default function GradientText({
 
   return (
     <div
-      className={`relative flex flex-row rounded-[1.25rem] font-medium transition-shadow duration-500 overflow-hidden cursor-pointer ${className}`}
+      className={`relative flex max-w-full flex-row overflow-hidden rounded-[1.25rem] font-medium transition-shadow duration-500 ${className}`}
     >
       <div
-        className="inline-block relative z-2 font-display text-transparent bg-cover animate-gradient"
+        className="relative z-2 inline-block max-w-full break-words bg-cover font-display text-transparent animate-gradient"
         style={{
           ...gradientStyle,
           backgroundClip: "text",

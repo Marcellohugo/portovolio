@@ -34,13 +34,13 @@ export default function HomeClient() {
   return (
     <main className="relative scroll-smooth bg-slate-400 dark:bg-background">
       <div
-        className={`fixed left-0 top-0 z-0 h-[100svh] w-full transition-[filter] duration-500 md:h-screen ${isBlurred ? "blur-[20px] md:blur-[45px]" : "blur-0"}`}
+        className={`fixed left-0 top-0 z-0 h-[max(100svh,620px)] w-full transition-[filter] duration-500 md:h-[max(100vh,620px)] ${isBlurred ? "blur-[20px] md:blur-[45px]" : "blur-0"}`}
       >
         <Hero paused={isBlurred} />
       </div>
       
       {/* Spacer untuk Hero section */}
-      <div className="h-[100svh] w-full md:h-screen" />
+      <div className="h-[max(100svh,620px)] w-full md:h-[max(100vh,620px)]" />
 
       {/* Konten utama yang dapat di-scroll */}
       <div className="relative z-10">

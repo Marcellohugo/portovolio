@@ -27,7 +27,7 @@ export default function ParallaxPhotoGallery() {
   return (
     <section className="relative mt-20 overflow-hidden sm:mt-28 sm:py-5 lg:mt-32">
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="grid w-full max-w-[1200px] grid-cols-3 grid-rows-4 gap-x-0 gap-y-40 sm:gap-x-6 sm:gap-y-10 md:gap-x-8 md:gap-y-20 lg:gap-x-20 lg:gap-y-20 sm:px-0">
+        <div className="grid w-full max-w-[1200px] grid-cols-3 grid-rows-4 gap-x-2 gap-y-40 px-2 sm:gap-x-6 sm:gap-y-10 md:gap-x-8 md:gap-y-20 lg:gap-x-16 lg:gap-y-20">
           {photos.map((photo, index) => {
             const { direction } = positions[index];
 
@@ -48,7 +48,7 @@ export default function ParallaxPhotoGallery() {
             width={800}
             height={800}
             sizes="(max-width: 640px) 300px, (max-width: 1024px) 500px, 800px"
-            className="pointer-events-none h-auto w-[300px] drop-shadow-2xl sm:w-[500px] lg:w-[800px]"
+            className="pointer-events-none h-auto w-[min(80vw,800px)] drop-shadow-2xl"
           />
         </motion.div>
       </div>
@@ -72,12 +72,12 @@ function ParallaxPhoto({
 
   return (
     <motion.div style={{ y }} className={className}>
-      <div className="relative h-[8.8rem] w-[8.8rem] overflow-hidden rounded-xl sm:h-[15.4rem] sm:w-[15.4rem] lg:h-[22rem] lg:w-[22rem]">
+      <div className="relative h-[min(27vw,22rem)] w-[min(27vw,22rem)] overflow-hidden rounded-xl">
         <Image
           src={photo}
           alt={`photo-${index}`}
           fill
-          sizes="(max-width: 640px) 8.8rem, (max-width: 1024px) 15.4rem, 22rem"
+          sizes="27vw"
           className="object-cover"
         />
       </div>
