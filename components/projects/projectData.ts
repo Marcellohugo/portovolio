@@ -23,7 +23,7 @@ export const projects = [
     title: "Castafest Website",
     description:
       "A website created for the Castafest event, an annual event held by Amsa-Undip. This website was created using WIX.",
-    image: "/images/Castafest.png",
+    image: "/images/Castafest.jpg",
     tech: ["WIX", "JavaScript"],
   },
 ]

@@ -8,7 +8,7 @@ import Image from "next/image";
 const projectFeatures = [
   { image: "/images/Personal.png", title: "Portfolio Website", description: "Responsive portfolio with theme switching, motion effects, project showcases, and direct email contact." },
   { image: "/images/CVMaker.png", title: "CV Maker", description: "Form-based CV creation with structured layouts, content preview, and downloadable document output." },
-  { image: "/images/Castafest.png", title: "Castafest Event Website", description: "Responsive event website with clear information hierarchy and participant-focused navigation." },
+  { image: "/images/Castafest.jpg", title: "Castafest Event Website", description: "Responsive event website with clear information hierarchy and participant-focused navigation." },
 ];
 
 export default function ProjectPage() {

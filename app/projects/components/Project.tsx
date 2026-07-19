@@ -48,7 +48,7 @@ const projects: Project[] = [
     description: 'A website created for the Castafest event, an annual event held by Amsa-Undip. This website was created using WIX.',
     tags: ['WIX', 'Javascript'],
     category: 'Web Development',
-    imageUrl: '/images/Castafest.png',
+    imageUrl: '/images/Castafest.jpg',
   },
   {
     id: 'UI-1',
