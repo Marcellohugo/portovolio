@@ -14,9 +14,9 @@ const Nav: React.FC = () => {
   return (
     <>
       {/* Top Navbar */}
-      <nav className="fixed top-0 z-50 flex w-full items-center justify-between bg-slate-400/80 px-3 py-3 text-foreground backdrop-blur-md dark:bg-background/75 sm:px-6 sm:py-4 lg:px-8">
+      <nav className="fixed top-0 z-50 flex w-full items-center justify-between gap-2 bg-slate-400/80 px-3 py-3 text-foreground backdrop-blur-md dark:bg-background/75 sm:px-6 sm:py-4 lg:px-8">
         {/* Logo */}
-        <div className="flex items-center gap-2">
+        <div className="flex min-w-0 items-center gap-2">
           <Image
             src="/icons/logo.png"
             alt="Logo"
@@ -24,14 +24,14 @@ const Nav: React.FC = () => {
             height={60}
             className="h-11 w-11 sm:h-[60px] sm:w-[60px]"
           /> 
-          <div>
+          <div className="min-w-0 max-[380px]:hidden">
             <div className="text-primary font-bold text-sm sm:text-lg">Marcello Hugo</div>
-            <div className="hidden text-[0.875rem] sm:block">Front-end Developer</div>
+            <div className="hidden text-[0.875rem] sm:block">Software Engineer</div>
           </div>
         </div>
 
         {/* Navigation Links */}
-        <div className="absolute left-1/2 hidden -translate-x-1/2 space-x-8 text-sm font-medium uppercase tracking-widest md:flex">
+        <div className="absolute left-1/2 hidden -translate-x-1/2 space-x-8 text-sm font-medium uppercase tracking-widest lg:flex">
           <MagneticEffect>
             <a href="#about" className="hover:text-primary transition">
               Profile
@@ -50,7 +50,7 @@ const Nav: React.FC = () => {
         </div>
 
         {/* Right Icons */}
-        <div className="flex items-center space-x-3 sm:space-x-4">
+        <div className="flex shrink-0 items-center space-x-2 min-[380px]:space-x-3 sm:space-x-4">
           <MagneticEffect>
             <a href="mailto:marco.marcello15@gmail.com" aria-label="Email Marco Marcello Hugo">
               <FaEnvelope className="w-5 h-5 sm:w-6 sm:h-6 cursor-pointer hover:text-primary transition" />

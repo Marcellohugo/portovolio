@@ -1,14 +1,6 @@
 "use client"
-import React, { useState, useEffect } from 'react';
 
-const CatLoader: React.FC = () => {
-  // Wait for mount to ensure animations run in browser
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-  if (!mounted) return null;
-
+const CatLoader = () => {
   return (
     <>
       <style>{`
@@ -31,7 +23,7 @@ const CatLoader: React.FC = () => {
         .animate-eyeBlink { animation: eyeBlink 3s ease-in-out infinite; }
       `}</style>
 
-      <div className="flex min-h-[100svh] w-full items-center justify-center bg-background">
+      <div role="status" aria-label="Loading page" className="flex min-h-[100svh] w-full items-center justify-center bg-background">
         <div className="relative w-48 h-48">
           {/* Body */}
           <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-40 h-24 bg-muted-foreground rounded-t-full rounded-b-md"></div>

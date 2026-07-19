@@ -3,10 +3,12 @@ import { cn } from "../lib/utils";
 import type { Metadata } from "next";
 import { Space_Grotesk, Syne } from "next/font/google";
 import "./globals.css";
+import PreloadWrapper from "@/components/preload/PreloadWrapper";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import ProtectClient from "@/components/ProtectClient";
 import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "next-themes";
+import NavigationLoader from "@/components/preload/NavigationLoader";
 
 const bodyFont = Space_Grotesk({ subsets: ["latin"], variable: "--font-body" });
 const displayFont = Syne({ subsets: ["latin"], variable: "--font-display" });
@@ -94,9 +96,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning>
       <body className={cn(bodyFont.variable, displayFont.variable, "font-sans bg-background text-foreground")} suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          {children}
-          <SpeedInsights />
-          <Analytics />
+          <PreloadWrapper>
+            {children}
+            <NavigationLoader />
+            <SpeedInsights />
+            <Analytics />
+          </PreloadWrapper>
           <ProtectClient />
         </ThemeProvider>
       </body>

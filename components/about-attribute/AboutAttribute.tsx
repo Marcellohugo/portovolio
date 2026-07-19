@@ -8,10 +8,10 @@ export default function AboutAttribute() {
       <section id="AboutAttribute" className="relative w-full">
         <div className="relative z-10 w-full text-foreground dark:text-white">
           <ParallaxText direction={500} baseVelocity={-1}>
-            Frontend Web Developer
+            Software Engineer
           </ParallaxText>
           <ParallaxText direction={-500} baseVelocity={1}>
-            Freelance Web Developer
+            Freelance Full-stack Web Developer
           </ParallaxText>
 
           <ParallaxPhotoGallery/>

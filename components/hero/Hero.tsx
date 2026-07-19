@@ -2,10 +2,17 @@
 
 import Image from "next/image";
 import dynamic from "next/dynamic";
+import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import { useMemo } from "react";
 
 const Particles = dynamic(() => import("../ui/background/Particles"), { ssr: false });
+
+const entrance = (delay = 0) => ({
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { delay, duration: 0.7, ease: "easeOut" as const },
+});
 
 export default function Hero({ paused = false }: { paused?: boolean }) {
   const { resolvedTheme } = useTheme();
@@ -33,20 +40,20 @@ export default function Hero({ paused = false }: { paused?: boolean }) {
       <div className="relative z-10 mx-auto h-full max-w-[1440px] px-4 pt-20 sm:px-10 sm:pt-24 lg:px-16">
         <div className="relative isolate h-full">
           <div className="absolute left-1/2 top-3 z-30 -translate-x-1/2 sm:top-5">
-            <div className="relative inline-flex">
+            <motion.div {...entrance()} className="relative inline-flex">
               <span className="inline-flex rounded-full border border-foreground/50 bg-background/60 px-5 py-2 text-sm font-bold shadow-sm backdrop-blur-md sm:px-7 sm:text-base">
                 Hello!
               </span>
 
-            </div>
+            </motion.div>
           </div>
 
-          <div className="absolute left-1/2 top-[8%] z-10 w-full max-w-full -translate-x-1/2 px-2 sm:top-[8%] sm:px-0 lg:top-[7%]">
+          <div className="absolute left-1/2 top-[12%] z-10 w-full max-w-full -translate-x-1/2 px-2 sm:top-[8%] sm:px-0 lg:top-[7%]">
             <h1 className="w-full text-center text-[clamp(1.75rem,5.5vw,5rem)] font-black leading-[0.9] tracking-[-0.055em]">
               <span className="block whitespace-normal sm:whitespace-nowrap">
                 I&apos;m <span className="text-primary">Marcello</span>,
               </span>
-              <span className="mt-2 block whitespace-normal sm:mt-4 sm:whitespace-nowrap">Creative Developer</span>
+              <span className="mt-2 block whitespace-normal sm:mt-4 sm:whitespace-nowrap">Full-Stack Developer</span>
             </h1>
           </div>
 
@@ -66,23 +73,25 @@ export default function Hero({ paused = false }: { paused?: boolean }) {
             />
           </div>
 
-          <aside
+          <motion.aside
+            {...entrance(0.28)}
             className="absolute bottom-[13%] left-0 z-30 hidden max-w-[240px] lg:block"
           >
             <div className="mb-4 h-px w-16 bg-primary" />
             <p className="text-sm font-medium leading-relaxed text-muted-foreground">
               Thoughtful interfaces, responsive experiences, and clean code built for real people.
             </p>
-          </aside>
+          </motion.aside>
 
-          <aside
+          <motion.aside
+            {...entrance(0.34)}
             className="absolute bottom-[13%] right-0 z-30 hidden text-right lg:block"
           >
-            <p className="text-3xl font-black leading-none">Creative</p>
+            <p className="text-3xl font-black leading-none">Full-Stack</p>
             <p className="mt-1 text-sm font-semibold uppercase tracking-[0.24em] text-muted-foreground">
               Developer
             </p>
-          </aside>
+          </motion.aside>
 
         </div>
       </div>

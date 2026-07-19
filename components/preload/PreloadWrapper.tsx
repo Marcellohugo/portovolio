@@ -28,9 +28,9 @@ export default function PreloadWrapper({ children }: PreloadWrapperProps) {
     setInitialDone(true);
   };
 
-  // Jangan render apapun di server atau sebelum client-side mount
+  // Tampilkan preloader sebagai fallback sampai client-side mount selesai.
   if (!isMounted) {
-    return null;
+    return <Preload onStart={handleStart} />;
   }
 
   // Jika preload awal belum selesai, tampilkan komponen Preload

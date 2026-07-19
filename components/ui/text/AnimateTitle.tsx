@@ -1,21 +1,104 @@
-import type { ReactNode } from "react";
+"use client";
 
-interface AnimateTitleProps {
-  children: ReactNode;
-  containerClassName?: string;
-  textClassName?: string;
+import React, { useEffect, useMemo, useRef, ReactNode, RefObject } from "react"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+gsap.registerPlugin(ScrollTrigger)
+
+interface ScrollFloatProps {
+  children: ReactNode
+  scrollContainerRef?: RefObject<HTMLElement>
+  containerClassName?: string
+  textClassName?: string
+  animationDuration?: number
+  ease?: string
+  scrollStart?: string
+  scrollEnd?: string
+  stagger?: number
 }
 
-export default function AnimateTitle({
+const AnimateTitle: React.FC<ScrollFloatProps> = ({
   children,
+  scrollContainerRef,
   containerClassName = "",
   textClassName = "",
-}: AnimateTitleProps) {
+  animationDuration = 1,
+  ease = "back.inOut(2)",
+  scrollStart = "top bottom",
+  scrollEnd = "top 50%",
+  stagger = 0.05,
+}) => {
+  const containerRef = useRef<HTMLHeadingElement>(null)
+
+  const splitText = useMemo(() => {
+    const text = typeof children === "string" ? children : ""
+    return text.split("").map((char, index) => (
+      <span className="inline-block word" key={index}>
+        {char === " " ? "\u00A0" : char}
+      </span>
+    ))
+  }, [children])
+
+  useEffect(() => {
+    const el = containerRef.current
+    if (!el) return
+
+    const scroller =
+      scrollContainerRef && scrollContainerRef.current
+        ? scrollContainerRef.current
+        : window
+
+    const charElements = el.querySelectorAll(".inline-block")
+
+    gsap.fromTo(
+      charElements,
+      {
+        willChange: "opacity, transform",
+        opacity: 0,
+        yPercent: 120,
+        scaleY: 2.3,
+        scaleX: 0.7,
+        transformOrigin: "50% 0%",
+      },
+      {
+        duration: animationDuration,
+        ease: ease,
+        opacity: 1,
+        yPercent: 0,
+        scaleY: 1,
+        scaleX: 1,
+        stagger: stagger,
+        scrollTrigger: {
+          trigger: el,
+          scroller,
+          start: scrollStart,
+          end: scrollEnd,
+          scrub: true,
+        },
+      }
+    )
+  }, [
+    scrollContainerRef,
+    animationDuration,
+    ease,
+    scrollStart,
+    scrollEnd,
+    stagger,
+  ])
+
   return (
-    <h2 className={`overflow-hidden ${containerClassName}`}>
-      <span className={`inline-block text-[clamp(2.5rem,14vw,10rem)] font-bold leading-[1.1] ${textClassName}`}>
-        {children}
+    <h2
+      ref={containerRef}
+      className={`overflow-hidden ${containerClassName}`}
+    >
+      <span
+        className={`inline-block text-[clamp(2.5rem,14vw,10rem)] font-bold leading-[1.1] ${textClassName}`}
+      >
+        {splitText}
       </span>
     </h2>
-  );
+  )
 }
+
+export default AnimateTitle

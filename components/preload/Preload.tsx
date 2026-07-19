@@ -36,8 +36,8 @@ export default function Preload({ onStart }: PreloadProps) {
               <span className="text-[clamp(1rem,6vw,10rem)] font-bold text-foreground">
                 <RotatingText
                   texts={[
-                    "Front-End Dev",
-                    "Full-Stack Dev",
+                    "Software Engineer",
+                    "Full-Stack Developer",
                     "Funny Guy",
                     "Marco Marcello Hugo",
                   ]}
