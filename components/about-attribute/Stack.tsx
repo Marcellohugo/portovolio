@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { ChevronDown } from "lucide-react";
+import { LuChevronDown as ChevronDown } from "react-icons/lu";
 import {
   SiAmazon,
   SiBlazor,
@@ -130,8 +130,8 @@ export default function SkillCardStack() {
             className="group h-full overflow-hidden rounded-2xl border border-border bg-card/80 text-foreground shadow-sm transition-colors open:border-primary/50"
           >
             <summary className="flex h-28 cursor-pointer list-none items-center justify-between gap-3 p-4 [&::-webkit-details-marker]:hidden">
-              <span>
-                <span className="block font-display text-lg font-bold tracking-[-0.03em]">{group.title}</span>
+              <span className="min-w-0">
+                <span className="block break-words font-display text-lg font-bold tracking-[-0.03em]">{group.title}</span>
                 <span className="mt-1 line-clamp-2 block text-xs leading-relaxed text-muted-foreground">{group.description}</span>
               </span>
               <ChevronDown className="h-5 w-5 shrink-0 text-primary transition-transform duration-300 group-open:rotate-180" />

@@ -1,4 +1,4 @@
-import { ArrowRightIcon, CalendarDays, MinusIcon } from "lucide-react";
+import { LuArrowRight as ArrowRightIcon, LuCalendarDays as CalendarDays, LuMinus as MinusIcon } from "react-icons/lu";
 import { useState } from "react";
 import { Button } from "@/components/ui/button/Button";
 
@@ -75,8 +75,8 @@ export default function EventShowcase() {
           >
             <div className="relative flex h-full flex-col">
               <div className="flex flex-wrap items-center gap-3">
-                <span className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-card/70 px-3 py-1.5 text-xs font-semibold text-muted-foreground">
-                  <CalendarDays className="h-3.5 w-3.5 text-primary" />
+                <span className="inline-flex max-w-full items-center gap-2 whitespace-normal rounded-full border border-border/80 bg-card/70 px-3 py-1.5 text-xs font-semibold text-muted-foreground">
+                  <CalendarDays className="h-3.5 w-3.5 shrink-0 text-primary" />
                   {event.period}
                 </span>
               </div>

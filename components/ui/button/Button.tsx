@@ -1,82 +1,45 @@
-import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
-import { cva, type VariantProps } from "class-variance-authority"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { cn } from "@/lib/utils";
 
-const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
-  {
-    variants: {
-      variant: {
-        default: `
-          bg-primary text-primary-foreground
-          hover:brightness-110
-          focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary 
-          transition-colors duration-200
-        `,
-        destructive: `
-          bg-destructive text-destructive-foreground
-          hover:bg-destructive/90
-          focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-destructive
-          transition-colors duration-200
-        `,
-        outline: `
-          border border-foreground text-foreground
-          hover:bg-foreground hover:text-background
-          focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary 
-          transition-colors duration-200
-        `,
-        secondary: `
-          bg-primary text-primary-foreground
-          hover:brightness-110
-          focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary
-          transition-colors duration-200
-        `,
-        ghost: `
-          bg-transparent text-foreground
-          hover:bg-muted
-          focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary 
-          transition-colors duration-200
-        `,
-        link: `
-          bg-transparent underline-offset-4 text-primary 
-          hover:underline 
-          focus:outline-none focus:ring-0 
-          transition-colors duration-200
-        `,
-      },
-      size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-11 rounded-md px-8",
-        icon: "h-10 w-10",
-      },
-    },
-    defaultVariants: {
-      variant: "default",
-      size: "default",
-    },
-  }
-)
+type ButtonVariant = "default" | "secondary" | "outline";
+type ButtonSize = "default" | "lg";
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
-  asChild?: boolean
+const baseClass = "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50";
+
+export function buttonClassName({
+  variant = "default",
+  size = "default",
+  className,
+}: {
+  variant?: ButtonVariant;
+  size?: ButtonSize;
+  className?: string;
+} = {}) {
+  return cn(
+    baseClass,
+    variant === "outline"
+      ? "border border-foreground text-foreground hover:bg-foreground hover:text-background focus:ring-primary"
+      : "bg-primary text-primary-foreground hover:brightness-110 focus:ring-primary",
+    size === "lg" ? "h-11 rounded-md px-8" : "h-10 px-4 py-2",
+    className,
+  );
+}
+
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: ButtonVariant;
+  size?: ButtonSize;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button"
-    return (
-      <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
-        ref={ref}
-        {...props}
-      />
-    )
-  }
-)
-Button.displayName = "Button"
+  ({ className, variant, size, ...props }, ref) => (
+    <button
+      ref={ref}
+      className={buttonClassName({ variant, size, className })}
+      {...props}
+    />
+  ),
+);
 
-export { Button, buttonVariants }
+Button.displayName = "Button";
+
+export { Button };

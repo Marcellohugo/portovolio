@@ -1,5 +1,14 @@
 import React from 'react';
-import { Box, ChevronDown, Cloud, Code2, Database, Smartphone, Wrench, Zap } from 'lucide-react';
+import {
+  LuBox as Box,
+  LuChevronDown as ChevronDown,
+  LuCloud as Cloud,
+  LuCode as Code2,
+  LuDatabase as Database,
+  LuSmartphone as Smartphone,
+  LuWrench as Wrench,
+  LuZap as Zap,
+} from "react-icons/lu";
 
 interface SkillItem {
   icon: JSX.Element;
@@ -73,7 +82,7 @@ const SkillsSection: React.FC = () => {
                   <span className="block text-body-base font-bold text-foreground sm:text-lg">
                     {skill.label}
                   </span>
-                  <span className="mt-1 block truncate text-sm text-muted-foreground">
+                  <span className="mt-1 line-clamp-2 block text-sm text-muted-foreground">
                     {skill.description}
                   </span>
                 </span>

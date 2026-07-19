@@ -10,7 +10,11 @@ import {
   motion,
 } from "framer-motion"
 import { useRef } from "react"
-import { wrap } from "@motionone/utils"
+
+const wrap = (min: number, max: number, value: number) => {
+  const range = max - min
+  return ((((value - min) % range) + range) % range) + min
+}
 
 interface ParallaxTextProps {
   children: string
@@ -48,7 +52,7 @@ export default function ParallaxText({
 
   const directionFactor = useRef<number>(1)
 
-  useAnimationFrame((t, delta) => {
+  useAnimationFrame((_, delta) => {
     let moveBy = directionFactor.current * baseVelocity * (delta / 1000)
 
     if (velocityFactor.get() < 0) {

@@ -1,4 +1,4 @@
-import { Award, CalendarDays, ChevronDown } from "lucide-react";
+import { LuAward as Award, LuCalendarDays as CalendarDays, LuChevronDown as ChevronDown } from "react-icons/lu";
 import GradientText from "@/components/ui/text/AnimateSubtitle";
 
 type Certification = {
@@ -49,17 +49,17 @@ export default function CertificationsSection() {
               open={index === 0}
               className="group overflow-hidden rounded-3xl border border-white/50 bg-background/80 shadow-[0_20px_50px_-30px_rgba(15,23,42,0.45)] backdrop-blur-xl dark:border-white/10 dark:bg-card/80"
             >
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-5 [&::-webkit-details-marker]:hidden sm:p-6">
-                <span className="flex min-w-0 items-center gap-4">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-2 p-4 [&::-webkit-details-marker]:hidden sm:gap-4 sm:p-6">
+                <span className="flex min-w-0 items-center gap-3 sm:gap-4">
                   <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-primary/10 text-primary">
                     <Award className="h-6 w-6" />
                   </span>
-                  <span className="font-display text-xl font-bold tracking-[-0.03em] text-foreground">
+                  <span className="min-w-0 break-words font-display text-base font-bold tracking-[-0.03em] text-foreground sm:text-xl">
                     {group.title}
                   </span>
                 </span>
                 <span className="flex shrink-0 items-center gap-3">
-                  <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-bold text-primary">
+                  <span className="hidden rounded-full bg-primary/10 px-3 py-1 text-xs font-bold text-primary min-[380px]:inline-flex">
                     {group.items.length}
                   </span>
                   <ChevronDown className="h-5 w-5 text-primary transition-transform duration-300 group-open:rotate-180" />
@@ -68,7 +68,7 @@ export default function CertificationsSection() {
 
               <div className="divide-y divide-border/70 border-t border-border/70">
                 {group.items.map((item) => (
-                  <div key={item.title} className="flex gap-3 p-5 sm:p-6">
+                  <div key={item.title} className="flex min-w-0 gap-3 p-4 sm:p-6">
                     <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
                       <Award className="h-5 w-5" />
                     </div>

@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import { Check } from "lucide-react";
+import { LuCheck as Check } from "react-icons/lu";
 
 interface ExperienceItem {
   id: number;
@@ -69,16 +69,16 @@ export const Experience: React.FC = () => {
                   >
                     <div className="h-1.5 bg-gradient-to-r from-primary via-primary/50 to-transparent" />
 
-                    <div className="flex items-start justify-between gap-4 p-6 pb-4">
-                      <div className="grid h-12 w-12 place-items-center rounded-2xl border border-border bg-card/80 p-2 shadow-sm">
+                    <div className="flex min-w-0 items-start justify-between gap-3 p-5 pb-4 sm:gap-4 sm:p-6 sm:pb-4">
+                      <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl border border-border bg-card/80 p-2 shadow-sm">
                         <Image src={item.logoUrl} alt={`${item.company} logo`} width={40} height={40} />
                       </div>
-                      <span className="rounded-full border border-border bg-card/70 px-3 py-1.5 text-right text-xs font-semibold leading-relaxed text-muted-foreground">
+                      <span className="min-w-0 max-w-full rounded-full border border-border bg-card/70 px-3 py-1.5 text-right text-xs font-semibold leading-relaxed text-muted-foreground">
                         {item.date}
                       </span>
                     </div>
 
-                    <div className="px-6 pb-6">
+                    <div className="px-5 pb-5 sm:px-6 sm:pb-6">
                       <p className="text-xs font-bold uppercase tracking-[0.18em] text-primary">
                         {item.company}
                       </p>

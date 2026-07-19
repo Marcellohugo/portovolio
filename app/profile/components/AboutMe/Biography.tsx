@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button/Button";
-import { ArrowRightIcon, MinusIcon } from "lucide-react";
+import { LuArrowRight as ArrowRightIcon, LuMinus as MinusIcon } from "react-icons/lu";
 import MagneticEffect from "@/components/ui/button/MagneticEffect";
 
 export default function StoryOfMyLife() {

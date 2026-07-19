@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { LuArrowLeft as ArrowLeft } from "react-icons/lu";
 
 export default function BackButton() {
   return (

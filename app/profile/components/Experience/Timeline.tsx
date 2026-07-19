@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button } from "@/components/ui/button/Button";
-import { ArrowRightIcon, CalendarDays, MinusIcon } from "lucide-react";
+import { LuArrowRight as ArrowRightIcon, LuCalendarDays as CalendarDays, LuMinus as MinusIcon } from "react-icons/lu";
 
 type TimelineItem = {
   id: string;
@@ -72,8 +72,8 @@ export default function Timeline() {
             <div className="h-1.5 bg-gradient-to-r from-primary via-primary/50 to-transparent" />
 
             <div className="flex flex-1 flex-col p-6 sm:p-7">
-              <time className="inline-flex w-fit items-center gap-2 rounded-full border border-border bg-card/70 px-3 py-1.5 text-xs font-semibold leading-relaxed text-muted-foreground">
-                <CalendarDays className="h-3.5 w-3.5 text-primary" />
+              <time className="inline-flex w-fit max-w-full items-center gap-2 whitespace-normal rounded-full border border-border bg-card/70 px-3 py-1.5 text-xs font-semibold leading-relaxed text-muted-foreground">
+                <CalendarDays className="h-3.5 w-3.5 shrink-0 text-primary" />
                 {item.period}
               </time>
               <h3 className="mt-6 font-display text-2xl font-black tracking-[-0.04em] text-foreground sm:text-3xl">

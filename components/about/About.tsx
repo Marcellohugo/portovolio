@@ -57,24 +57,6 @@ export default function About() {
               imageSrc="/images/Profile.png"
               altText="Marco Marcello Hugo"
               captionText="Stop staring at me!"
-              customContainerHeights={{
-                mobile: "230px",
-                tablet: "300px",
-                desktop: "380px",
-              }}
-              customImageHeights={{
-                mobile: "230px",
-                tablet: "300px",
-                desktop: "380px",
-              }}
-              customImageWidths={{
-                mobile: "230px",
-                tablet: "300px",
-                desktop: "380px",
-              }}
-              showTooltip={true}
-              showMobileWarning={false}
-              displayOverlayContent={true}
             />
           </div>
         </div>

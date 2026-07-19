@@ -5,7 +5,7 @@
 import { formSubmission } from "@/actions/formAction"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { Loader, Mail } from "lucide-react"
+import { LuLoader as Loader, LuMail as Mail } from "react-icons/lu"
 import { useEffect, useRef, useState } from "react" // Import useEffect & useState
 import { useFormState, useFormStatus } from "react-dom"
 import MagneticEffect from "@/components/ui/button/MagneticEffect"
